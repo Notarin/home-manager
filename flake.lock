@@ -1,5 +1,21 @@
 {
   "nodes": {
+    "helix-config": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1739078024,
+        "narHash": "sha256-jmBRZXRorAVMBMCihCQtRZsfbZIs7VPEBcDWEtskgmQ=",
+        "owner": "Notarin",
+        "repo": "helix-config",
+        "rev": "bda672059f2de47eafa3278a18d9e76cd7169e1d",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Notarin",
+        "repo": "helix-config",
+        "type": "github"
+      }
+    },
     "home-manager": {
       "inputs": {
         "nixpkgs": [
@@ -20,6 +36,38 @@
         "type": "github"
       }
     },
+    "hyprland-config": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1739078153,
+        "narHash": "sha256-1vlAX1CqnpgRBoUCHLNxCDhd5PNyRRM8ue47XYotvCE=",
+        "owner": "Notarin",
+        "repo": "hyprland-config",
+        "rev": "646a5fdb061b84fbffc126cfdda83c3e2148622c",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Notarin",
+        "repo": "hyprland-config",
+        "type": "github"
+      }
+    },
+    "neovim-config": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1739078431,
+        "narHash": "sha256-V6x1voRaMwI0gyFykwRTRMPrNRGf4wazV7QnXMregTk=",
+        "owner": "Notarin",
+        "repo": "neovim-config",
+        "rev": "dbb8319dbb7cea506a6d50da3e906d32b83f7531",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Notarin",
+        "repo": "neovim-config",
+        "type": "github"
+      }
+    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1738961098,
@@ -36,10 +84,98 @@
         "type": "github"
       }
     },
+    "nushell-config": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1739078309,
+        "narHash": "sha256-AytOIHPjP48Eni4YqRsKbRYOZlt+rkfq1M6Jsq8d7uk=",
+        "owner": "Notarin",
+        "repo": "nushell-config",
+        "rev": "f495ddc7014c8756cdc736640515c158852235df",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Notarin",
+        "repo": "nushell-config",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
+        "helix-config": "helix-config",
         "home-manager": "home-manager",
-        "nixpkgs": "nixpkgs"
+        "hyprland-config": "hyprland-config",
+        "neovim-config": "neovim-config",
+        "nixpkgs": "nixpkgs",
+        "nushell-config": "nushell-config",
+        "ssh-config": "ssh-config",
+        "starship-config": "starship-config",
+        "wezterm-config": "wezterm-config",
+        "zsh-config": "zsh-config"
+      }
+    },
+    "ssh-config": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1739077151,
+        "narHash": "sha256-Wq1sA5xetl2U5hReCCyjdUAGO1iVGLUVvpKfePSdNYA=",
+        "owner": "Notarin",
+        "repo": "ssh-config",
+        "rev": "e2a24ef8f8d33147aa35756fdc1e92b84b000558",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Notarin",
+        "repo": "ssh-config",
+        "type": "github"
+      }
+    },
+    "starship-config": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1739078529,
+        "narHash": "sha256-01iRBfUkWnxZoLOQNgCFFxpHjiEbC+BFg5tVevbSq70=",
+        "owner": "Notarin",
+        "repo": "starship-config",
+        "rev": "b69c9e90ea01b99ad30b30e6cff43c3d6300d3c3",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Notarin",
+        "repo": "starship-config",
+        "type": "github"
+      }
+    },
+    "wezterm-config": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1739078714,
+        "narHash": "sha256-54a0PKZXDCes00G8O2Bu8iEk19tNQg6nelaLPovFnVw=",
+        "owner": "Notarin",
+        "repo": "wezterm-config",
+        "rev": "6c84c751db1e682ddfa87d5ddbcfe2570edd8eda",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Notarin",
+        "repo": "wezterm-config",
+        "type": "github"
+      }
+    },
+    "zsh-config": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1739077585,
+        "narHash": "sha256-Tx5Rd6SfQR9D70P011xHcRocMKXMfdndumAJP2ymXqQ=",
+        "owner": "Notarin",
+        "repo": "zsh-config",
+        "rev": "9dae19c2dcfdcd6cc13d0ab3f51da9b5f684fb1a",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Notarin",
+        "repo": "zsh-config",
+        "type": "github"
       }
     }
   },
