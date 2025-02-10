@@ -20,7 +20,8 @@
   home.stateVersion = "24.05";
 
   # Packages
-  home.packages = [
+  home.packages = with pkgs; [
+    killall
   ];
 
   # Deployed files/directories
