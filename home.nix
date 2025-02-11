@@ -7,6 +7,10 @@
 }:
 
 {
+  imports = [
+    ./hyprland-settings.nix
+  ];
+
   # System specific
   home.username = "notarin";
   home.homeDirectory = "/home/notarin";
@@ -32,12 +36,6 @@
   stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-dark-soft.yaml";
   stylix.image = ./Images/Horizontal_WP.png;
 
-  wayland.windowManager.hyprland = {
-    enable = true;
-    package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
-    portalPackage = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
-    settings = import ./hyprland-settings.nix;
-  };
   gtk.enable = true;
   qt.enable = true;
   programs.btop.enable = true;
@@ -93,6 +91,14 @@
     enableNushellIntegration = true;
   };
   programs.bat.enable = true;
+
+  # Nix settings
+  nix = {
+    package = pkgs.nixVersions.latest;
+    settings = {
+      extra-experimental-features = "nix-command flakes";
+    };
+  };
 
   # Allow home-manager to update itself
   programs.home-manager.enable = true;
