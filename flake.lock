@@ -272,22 +272,6 @@
         "type": "github"
       }
     },
-    "helix-config": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1739078024,
-        "narHash": "sha256-jmBRZXRorAVMBMCihCQtRZsfbZIs7VPEBcDWEtskgmQ=",
-        "owner": "Notarin",
-        "repo": "helix-config",
-        "rev": "bda672059f2de47eafa3278a18d9e76cd7169e1d",
-        "type": "github"
-      },
-      "original": {
-        "owner": "Notarin",
-        "repo": "helix-config",
-        "type": "github"
-      }
-    },
     "home-manager": {
       "inputs": {
         "nixpkgs": [
@@ -677,7 +661,6 @@
     },
     "root": {
       "inputs": {
-        "helix-config": "helix-config",
         "home-manager": "home-manager",
         "hyprland": "hyprland",
         "nixpkgs": "nixpkgs_2",

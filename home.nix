@@ -3,7 +3,6 @@
   pkgs,
   wezterm-config,
   nushell-config,
-  helix-config,
   zsh-config,
   ssh-config,
   inputs,
@@ -27,7 +26,6 @@
     ".config/wezterm/".source = wezterm-config;
     ".config/nushell/".source = nushell-config;
     ".config/nushell/".recursive = true;
-    ".config/helix/".source = helix-config;
     ".config/zsh/".source = zsh-config;
     ".ssh/".source = ssh-config;
     ".ssh/".recursive = true;
@@ -65,6 +63,7 @@
       };
     };
   };
+  programs.helix.enable = true;
 
   # Allow home-manager to update itself
   programs.home-manager.enable = true;
