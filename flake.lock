@@ -700,7 +700,6 @@
         "nixpkgs": "nixpkgs_2",
         "nushell-config": "nushell-config",
         "ssh-config": "ssh-config",
-        "starship-config": "starship-config",
         "stylix": "stylix",
         "wezterm-config": "wezterm-config",
         "zsh-config": "zsh-config"
@@ -719,22 +718,6 @@
       "original": {
         "owner": "Notarin",
         "repo": "ssh-config",
-        "type": "github"
-      }
-    },
-    "starship-config": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1739078529,
-        "narHash": "sha256-01iRBfUkWnxZoLOQNgCFFxpHjiEbC+BFg5tVevbSq70=",
-        "owner": "Notarin",
-        "repo": "starship-config",
-        "rev": "b69c9e90ea01b99ad30b30e6cff43c3d6300d3c3",
-        "type": "github"
-      },
-      "original": {
-        "owner": "Notarin",
-        "repo": "starship-config",
         "type": "github"
       }
     },

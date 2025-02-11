@@ -2,7 +2,6 @@
   config,
   pkgs,
   wezterm-config,
-  starship-config,
   neovim-config,
   nushell-config,
   helix-config,
@@ -27,8 +26,6 @@
   # Deployed files/directories
   home.file = {
     ".config/wezterm/".source = wezterm-config;
-    ".config/".source = starship-config;
-    ".config/".recursive = true;
     ".config/nvim/".source = neovim-config;
     ".config/nushell/".source = nushell-config;
     ".config/nushell/".recursive = true;
@@ -58,6 +55,18 @@
   qt.enable = true;
   programs.btop.enable = true;
   programs.btop.settings.update_ms = 100;
+  programs.starship = {
+    enable = true;
+    settings = {
+      add_newline = false;
+      hostname = {
+        ssh_symbol = "📡";
+      };
+      shell = {
+        disabled = false;
+      };
+    };
+  };
 
   # Allow home-manager to update itself
   programs.home-manager.enable = true;

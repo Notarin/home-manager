@@ -15,10 +15,6 @@
       url = "github:Notarin/wezterm-config";
       flake = false;
     };
-    starship-config = {
-      url = "github:Notarin/starship-config";
-      flake = false;
-    };
     neovim-config = {
       url = "github:Notarin/neovim-config";
       flake = false;
@@ -44,7 +40,6 @@
   outputs = { nixpkgs,
     home-manager,
     wezterm-config,
-    starship-config,
     neovim-config,
     nushell-config,
     helix-config,
@@ -61,7 +56,6 @@
         inherit pkgs;
         extraSpecialArgs = {
           inherit wezterm-config;
-          inherit starship-config;
           inherit neovim-config;
           inherit nushell-config;
           inherit helix-config;
