@@ -34,8 +34,12 @@
 
   stylix.enable = true;
   stylix.autoEnable = true;
-  stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml";
+  stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-dark-soft.yaml";
   stylix.image = ./Images/Horizontal_WP.png;
+  stylix.fonts.monospace = {
+    name = "Fira Code";
+    package = pkgs.fira-code;
+  };
 
   gtk.enable = true;
   qt.enable = true;
