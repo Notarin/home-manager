@@ -620,22 +620,6 @@
         "type": "github"
       }
     },
-    "nushell-config": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1739078309,
-        "narHash": "sha256-AytOIHPjP48Eni4YqRsKbRYOZlt+rkfq1M6Jsq8d7uk=",
-        "owner": "Notarin",
-        "repo": "nushell-config",
-        "rev": "f495ddc7014c8756cdc736640515c158852235df",
-        "type": "github"
-      },
-      "original": {
-        "owner": "Notarin",
-        "repo": "nushell-config",
-        "type": "github"
-      }
-    },
     "pre-commit-hooks": {
       "inputs": {
         "flake-compat": "flake-compat",
@@ -664,9 +648,7 @@
         "home-manager": "home-manager",
         "hyprland": "hyprland",
         "nixpkgs": "nixpkgs_2",
-        "nushell-config": "nushell-config",
-        "stylix": "stylix",
-        "wezterm-config": "wezterm-config"
+        "stylix": "stylix"
       }
     },
     "stylix": {
@@ -795,22 +777,6 @@
       "original": {
         "owner": "tinted-theming",
         "repo": "base16-zed",
-        "type": "github"
-      }
-    },
-    "wezterm-config": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1739078714,
-        "narHash": "sha256-54a0PKZXDCes00G8O2Bu8iEk19tNQg6nelaLPovFnVw=",
-        "owner": "Notarin",
-        "repo": "wezterm-config",
-        "rev": "6c84c751db1e682ddfa87d5ddbcfe2570edd8eda",
-        "type": "github"
-      },
-      "original": {
-        "owner": "Notarin",
-        "repo": "wezterm-config",
         "type": "github"
       }
     },

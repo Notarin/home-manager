@@ -1,8 +1,6 @@
 {
   config,
   pkgs,
-  wezterm-config,
-  nushell-config,
   inputs,
   ...
 }:
@@ -21,9 +19,6 @@
 
   # Deployed files/directories
   home.file = {
-    ".config/wezterm/".source = wezterm-config;
-    ".config/nushell/".source = nushell-config;
-    ".config/nushell/".recursive = true;
   };
 
   # ENV variables
@@ -48,6 +43,7 @@
   programs.btop.settings.update_ms = 100;
   programs.starship = {
     enable = true;
+    enableNushellIntegration = true;
     settings = {
       add_newline = false;
       hostname = {
@@ -59,6 +55,41 @@
     };
   };
   programs.helix.enable = true;
+  programs.wezterm = {
+    enable = true;
+    extraConfig = builtins.readFile ./wezterm-settings.lua;
+  };
+  programs.nushell = {
+    enable = true;
+    settings = {
+      show_banner = false;
+      ls = {
+        use_ls_colors = true;
+        clickable_links = true;
+      };
+      rm = {
+        always_trash = true;
+      };
+      history = {
+        max_size = 100000;
+      };
+      filesize = {
+        metric = true;
+      };
+      edit_mode = "emacs";
+      use_kitty_protocol = false;
+    };
+    shellAliases = {
+      q = "exit";
+      l = "ls";
+      c = "clear";
+      cd = "z";
+    };
+  };
+  programs.zoxide = {
+    enable = true;
+    enableNushellIntegration = true;
+  };
 
   # Allow home-manager to update itself
   programs.home-manager.enable = true;
