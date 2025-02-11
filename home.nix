@@ -34,7 +34,7 @@
 
   stylix.enable = true;
   stylix.autoEnable = true;
-  stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-dark-soft.yaml";
+  stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml";
   stylix.image = ./Images/Horizontal_WP.png;
 
   gtk.enable = true;
@@ -93,6 +93,33 @@
     enableNushellIntegration = true;
   };
   programs.bat.enable = true;
+  programs.vscode = {
+    enable = true;
+    userSettings = {
+      "editor.renderWhitespace" = "all";
+      "editor.fontLigatures" = true;
+      "editor.rulers" = [
+        {
+          "column" = 79;
+          "color" = "#0f02";
+        }
+        {
+          "column" = 80;
+          "color" = "#f002";
+        }
+      ];
+      "workbench.editor.enablePreviewFromCodeNavigation" = true;
+      "workbench.editor.highlightModifiedTabs" = true;
+      "workbench.editor.wrapTabs" = true;
+      "git.openRepositoryInParentFolders" = "never";
+      "security.workspace.trust.untrustedFiles" = "open";
+      "security.workspace.trust.enabled" = false;
+      "workbench.settings.editor" = "ui";
+      "workbench.startupEditor" = "none";
+      "window.menuBarVisibility" = "toggle";
+      "git.autofetch" = true;
+    };
+  };
 
   # Nix settings
   nix = {
