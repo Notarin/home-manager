@@ -20,6 +20,7 @@
   # Packages
   home.packages = with pkgs; [
     killall
+    nh
   ];
 
   # Deployed files/directories
