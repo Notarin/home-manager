@@ -2,6 +2,7 @@
   config,
   pkgs,
   inputs,
+  lib,
   ...
 }:
 
@@ -84,12 +85,14 @@
       l = "ls";
       c = "clear";
       cd = "z";
+      cat = lib.getExe pkgs.bat;
     };
   };
   programs.zoxide = {
     enable = true;
     enableNushellIntegration = true;
   };
+  programs.bat.enable = true;
 
   # Allow home-manager to update itself
   programs.home-manager.enable = true;
