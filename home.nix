@@ -102,6 +102,9 @@
     };
   };
 
+  # Allow unfree packages
+  nixpkgs.config.allowUnfree = true;
+
   # Allow home-manager to update itself
   programs.home-manager.enable = true;
 }
