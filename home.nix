@@ -86,6 +86,7 @@
       cd = "z";
       cat = lib.getExe pkgs.bat;
     };
+    extraConfig = "$env.PATH = ($env.PATH | split row (char esep) | append ($env.HOME | append \"/.nix-profile/bin\" | str join))";
   };
   programs.zoxide = {
     enable = true;
