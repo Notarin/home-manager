@@ -19,10 +19,6 @@
       url = "github:Notarin/nushell-config";
       flake = false;
     };
-    zsh-config = {
-      url = "github:Notarin/zsh-config";
-      flake = false;
-    };
     ssh-config = {
       url = "github:Notarin/ssh-config";
       flake = false;
@@ -33,7 +29,6 @@
     home-manager,
     wezterm-config,
     nushell-config,
-    zsh-config,
     ssh-config,
     stylix,
     ...
@@ -47,7 +42,6 @@
         extraSpecialArgs = {
           inherit wezterm-config;
           inherit nushell-config;
-          inherit zsh-config;
           inherit ssh-config;
           inherit inputs;
         };

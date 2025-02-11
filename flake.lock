@@ -667,8 +667,7 @@
         "nushell-config": "nushell-config",
         "ssh-config": "ssh-config",
         "stylix": "stylix",
-        "wezterm-config": "wezterm-config",
-        "zsh-config": "zsh-config"
+        "wezterm-config": "wezterm-config"
       }
     },
     "ssh-config": {
@@ -870,22 +869,6 @@
       "original": {
         "owner": "hyprwm",
         "repo": "xdg-desktop-portal-hyprland",
-        "type": "github"
-      }
-    },
-    "zsh-config": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1739077585,
-        "narHash": "sha256-Tx5Rd6SfQR9D70P011xHcRocMKXMfdndumAJP2ymXqQ=",
-        "owner": "Notarin",
-        "repo": "zsh-config",
-        "rev": "9dae19c2dcfdcd6cc13d0ab3f51da9b5f684fb1a",
-        "type": "github"
-      },
-      "original": {
-        "owner": "Notarin",
-        "repo": "zsh-config",
         "type": "github"
       }
     }

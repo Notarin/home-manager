@@ -3,7 +3,6 @@
   pkgs,
   wezterm-config,
   nushell-config,
-  zsh-config,
   ssh-config,
   inputs,
   ...
@@ -26,7 +25,6 @@
     ".config/wezterm/".source = wezterm-config;
     ".config/nushell/".source = nushell-config;
     ".config/nushell/".recursive = true;
-    ".config/zsh/".source = zsh-config;
     ".ssh/".source = ssh-config;
     ".ssh/".recursive = true;
   };
