@@ -57,6 +57,7 @@
   gtk.enable = true;
   qt.enable = true;
   programs.btop.enable = true;
+  programs.btop.settings.update_ms = 100;
 
   # Allow home-manager to update itself
   programs.home-manager.enable = true;
