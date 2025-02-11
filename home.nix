@@ -5,10 +5,10 @@
   starship-config,
   neovim-config,
   nushell-config,
-  hyprland-config,
   helix-config,
   zsh-config,
   ssh-config,
+  inputs,
   ...
 }:
 
@@ -32,16 +32,31 @@
     ".config/nvim/".source = neovim-config;
     ".config/nushell/".source = nushell-config;
     ".config/nushell/".recursive = true;
-    ".config/hypr/".source = hyprland-config;
     ".config/helix/".source = helix-config;
     ".config/zsh/".source = zsh-config;
     ".ssh/".source = ssh-config;
+    ".ssh/".recursive = true;
   };
 
   # ENV variables
   home.sessionVariables = {
     EDITOR = "hx";
   };
+
+  stylix.enable = true;
+  stylix.autoEnable = true;
+  stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-dark-soft.yaml";
+  stylix.image = ./Images/Horizontal_WP.png;
+
+  wayland.windowManager.hyprland = {
+    enable = true;
+    package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
+    portalPackage = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
+    settings = import ./hyprland-settings.nix;
+  };
+  gtk.enable = true;
+  qt.enable = true;
+  programs.btop.enable = true;
 
   # Allow home-manager to update itself
   programs.home-manager.enable = true;

@@ -7,6 +7,8 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    stylix.url = "github:danth/stylix";
+    hyprland.url = "github:hyprwm/Hyprland";
 
     # dots resources
     wezterm-config = {
@@ -23,10 +25,6 @@
     };
     nushell-config = {
       url = "github:Notarin/nushell-config";
-      flake = false;
-    };
-    hyprland-config = {
-      url = "github:Notarin/hyprland-config";
       flake = false;
     };
     helix-config = {
@@ -49,12 +47,12 @@
     starship-config,
     neovim-config,
     nushell-config,
-    hyprland-config,
     helix-config,
     zsh-config,
     ssh-config,
+    stylix,
     ...
-  }:
+  }@inputs:
     let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
@@ -66,12 +64,15 @@
           inherit starship-config;
           inherit neovim-config;
           inherit nushell-config;
-          inherit hyprland-config;
           inherit helix-config;
           inherit zsh-config;
           inherit ssh-config;
+          inherit inputs;
         };
-        modules = [ ./home.nix ];
+        modules = [
+          ./home.nix
+          stylix.homeManagerModules.stylix
+        ];
       };
     };
 }
