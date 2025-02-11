@@ -15,10 +15,6 @@
       url = "github:Notarin/wezterm-config";
       flake = false;
     };
-    neovim-config = {
-      url = "github:Notarin/neovim-config";
-      flake = false;
-    };
     nushell-config = {
       url = "github:Notarin/nushell-config";
       flake = false;
@@ -40,7 +36,6 @@
   outputs = { nixpkgs,
     home-manager,
     wezterm-config,
-    neovim-config,
     nushell-config,
     helix-config,
     zsh-config,
@@ -56,7 +51,6 @@
         inherit pkgs;
         extraSpecialArgs = {
           inherit wezterm-config;
-          inherit neovim-config;
           inherit nushell-config;
           inherit helix-config;
           inherit zsh-config;

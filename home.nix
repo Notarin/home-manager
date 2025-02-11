@@ -2,7 +2,6 @@
   config,
   pkgs,
   wezterm-config,
-  neovim-config,
   nushell-config,
   helix-config,
   zsh-config,
@@ -26,7 +25,6 @@
   # Deployed files/directories
   home.file = {
     ".config/wezterm/".source = wezterm-config;
-    ".config/nvim/".source = neovim-config;
     ".config/nushell/".source = nushell-config;
     ".config/nushell/".recursive = true;
     ".config/helix/".source = helix-config;

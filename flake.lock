@@ -588,22 +588,6 @@
         "type": "github"
       }
     },
-    "neovim-config": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1739078431,
-        "narHash": "sha256-V6x1voRaMwI0gyFykwRTRMPrNRGf4wazV7QnXMregTk=",
-        "owner": "Notarin",
-        "repo": "neovim-config",
-        "rev": "dbb8319dbb7cea506a6d50da3e906d32b83f7531",
-        "type": "github"
-      },
-      "original": {
-        "owner": "Notarin",
-        "repo": "neovim-config",
-        "type": "github"
-      }
-    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1738410390,
@@ -696,7 +680,6 @@
         "helix-config": "helix-config",
         "home-manager": "home-manager",
         "hyprland": "hyprland",
-        "neovim-config": "neovim-config",
         "nixpkgs": "nixpkgs_2",
         "nushell-config": "nushell-config",
         "ssh-config": "ssh-config",
