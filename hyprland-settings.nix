@@ -1,6 +1,18 @@
 {
   "$mod" = "SUPER";
 
+  bindel = [
+    ",XF86AudioRaiseVolume, exec, pactl set-sink-volume @DEFAULT_AUDIO_SINK@ +5%"
+    ",XF86AudioLowerVolume, exec, pactl set-sink-volume @DEFAULT_AUDIO_SINK@ -5%"
+  ];
+
+  bindl = [
+    ",XF86AudioMute, exec, pactl set-sink-mute @DEFAULT_AUDIO_SINK@ toggle"
+    ",XF86AudioPlay, exec, playerctl play-pause"
+    ",XF86AudioPrev, exec, playerctl previous"
+    ",XF86AudioNext, exec, playerctl next"
+  ];
+
   bindm = [
     "$mod, mouse:272, movewindow"
     "$mod, mouse:273, resizewindow"
