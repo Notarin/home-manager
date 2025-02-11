@@ -3,7 +3,6 @@
   pkgs,
   wezterm-config,
   nushell-config,
-  ssh-config,
   inputs,
   ...
 }:
@@ -25,8 +24,6 @@
     ".config/wezterm/".source = wezterm-config;
     ".config/nushell/".source = nushell-config;
     ".config/nushell/".recursive = true;
-    ".ssh/".source = ssh-config;
-    ".ssh/".recursive = true;
   };
 
   # ENV variables

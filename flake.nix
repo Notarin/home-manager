@@ -19,17 +19,12 @@
       url = "github:Notarin/nushell-config";
       flake = false;
     };
-    ssh-config = {
-      url = "github:Notarin/ssh-config";
-      flake = false;
-    };
   };
 
   outputs = { nixpkgs,
     home-manager,
     wezterm-config,
     nushell-config,
-    ssh-config,
     stylix,
     ...
   }@inputs:
@@ -42,7 +37,6 @@
         extraSpecialArgs = {
           inherit wezterm-config;
           inherit nushell-config;
-          inherit ssh-config;
           inherit inputs;
         };
         modules = [

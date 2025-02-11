@@ -665,25 +665,8 @@
         "hyprland": "hyprland",
         "nixpkgs": "nixpkgs_2",
         "nushell-config": "nushell-config",
-        "ssh-config": "ssh-config",
         "stylix": "stylix",
         "wezterm-config": "wezterm-config"
-      }
-    },
-    "ssh-config": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1739077151,
-        "narHash": "sha256-Wq1sA5xetl2U5hReCCyjdUAGO1iVGLUVvpKfePSdNYA=",
-        "owner": "Notarin",
-        "repo": "ssh-config",
-        "rev": "e2a24ef8f8d33147aa35756fdc1e92b84b000558",
-        "type": "github"
-      },
-      "original": {
-        "owner": "Notarin",
-        "repo": "ssh-config",
-        "type": "github"
       }
     },
     "stylix": {
