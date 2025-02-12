@@ -1,4 +1,4 @@
-{ inputs, pkgs, ... }:
+{ inputs, pkgs, lib, ... }:
 
 {
   wayland.windowManager.hyprland = {
@@ -10,16 +10,10 @@
     settings = {
       "$mod" = "SUPER";
 
-      bindel = [
-        ",XF86AudioRaiseVolume, exec, pactl set-sink-volume @DEFAULT_AUDIO_SINK@ +5%"
-        ",XF86AudioLowerVolume, exec, pactl set-sink-volume @DEFAULT_AUDIO_SINK@ -5%"
-      ];
-
       bindl = [
-        ",XF86AudioMute, exec, pactl set-sink-mute @DEFAULT_AUDIO_SINK@ toggle"
-        ",XF86AudioPlay, exec, playerctl play-pause"
-        ",XF86AudioPrev, exec, playerctl previous"
-        ",XF86AudioNext, exec, playerctl next"
+        ",XF86AudioPlay, exec, ${lib.getExe pkgs.playerctl} play-pause"
+        ",XF86AudioPrev, exec, ${lib.getExe pkgs.playerctl} previous"
+        ",XF86AudioNext, exec, ${lib.getExe pkgs.playerctl} next"
       ];
 
       bindm = [ "$mod, mouse:272, movewindow" "$mod, mouse:273, resizewindow" ];
@@ -27,15 +21,15 @@
       bind = [
         # General Binds
         "$mod, Q, killactive"
-        "$mod, code:36, exec, wezterm"
-        "$mod, E, exec, nautilus"
+        "$mod, code:36, exec, ${lib.getExe pkgs.wezterm}"
+        "$mod, E, exec, ${lib.getExe pkgs.nautilus}"
         "$mod, SPACE, togglefloating,"
         ''
-          $mod, D, exec, wofi --allow-images --allow-markup --hide-scroll --insensitive --height 500 --show drun --prompt "Launch"''
+          $mod, D, exec, ${lib.getExe pkgs.wofi} --allow-images --allow-markup --hide-scroll --insensitive --height 500 --show drun --prompt "Launch"''
         "$mod, J, togglesplit,"
         "$mod, F, fullscreen, 0"
         ",F11, fullscreen, 0"
-        "$mod, L, exec, hyprlock"
+        "$mod, L, exec, ${lib.getExe pkgs.hyprlock}"
 
         # Moving Focus/Windows
         ## Move focus with mainMod + arrow keys
@@ -98,11 +92,11 @@
         "$mod_ALT, UP, movecurrentworkspacetomonitor, HDMI-A-1"
 
         # Screenshot
-        ''$mod_SHIFT, S, exec, grim -g "$(slurp)" - | wl-copy''
-        ",Print, exec, grim -t jpeg - | imv -f -"
+        ''$mod_SHIFT, S, exec, ${lib.getExe pkgs.grim} -g "$(${lib.getExe pkgs.slurp})" - | ${lib.getExe' pkgs.wl-clipboard "wl-copy"}''
+        ",Print, exec, ${lib.getExe pkgs.grim} -t jpeg - | ${lib.getExe pkgs.imv} -f -"
 
         # Notification center
-        "$mod, N, exec, swaync-client -t"
+        "$mod, N, exec, ${lib.getExe' pkgs.swaynotificationcenter "swaync-client"} -t"
       ];
 
       monitor = [
