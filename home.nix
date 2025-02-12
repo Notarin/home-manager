@@ -21,6 +21,7 @@
   home.packages = with pkgs; [
     killall
     nh
+    halloy
   ];
 
   # Deployed files/directories
@@ -40,6 +41,8 @@
     name = "Fira Code";
     package = pkgs.fira-code;
   };
+
+  i18n.inputMethod.enabled = "fcitx5";
 
   gtk.enable = true;
   qt.enable = true;
@@ -124,6 +127,11 @@
       "git.autofetch" = true;
     };
   };
+  programs.cava.enable = true;
+  programs.gitui.enable = true;
+  programs.mangohud.enable = true;
+  services.swaync.enable = true;
+  programs.wofi.enable = true;
 
   # Nix settings
   nix = {
