@@ -24,6 +24,7 @@
     halloy
     nixgl.nixGLIntel
     vesktop
+    pwvucontrol
   ];
 
   # Deployed files/directories
