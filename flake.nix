@@ -7,18 +7,27 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nixgl = {
+      url = "github:johanneshorner/nixGL";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     stylix.url = "github:danth/stylix";
     hyprland.url = "github:hyprwm/Hyprland";
   };
 
-  outputs = { nixpkgs,
+  outputs = {
+    nixpkgs,
+    nixgl,
     home-manager,
     stylix,
     ...
   }@inputs:
     let
       system = "x86_64-linux";
-      pkgs = nixpkgs.legacyPackages.${system};
+      pkgs = import nixpkgs {
+        system = "x86_64-linux";
+        overlays = [ nixgl.overlay ];
+      };
     in {
       homeConfigurations."notarin" = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
@@ -30,5 +39,6 @@
           stylix.homeManagerModules.stylix
         ];
       };
+      inherit nixgl;
     };
 }

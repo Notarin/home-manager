@@ -22,6 +22,7 @@
     killall
     nh
     halloy
+    nixgl.nixGLIntel
   ];
 
   # Deployed files/directories
