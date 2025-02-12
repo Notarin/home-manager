@@ -106,12 +106,10 @@
       ];
 
       exec-once = [
-        "dunst"
-        "fcitx5"
-        "hyprpaper"
-        "swaync"
-        "systemctl --user start plasma-polkit-agent"
-        "swww-daemon"
+        "${lib.getExe pkgs.fcitx5}"
+        "${lib.getExe pkgs.swaynotificationcenter}"
+        "${lib.getExe pkgs.google-chrome}"
+        "${lib.getExe pkgs.vesktop}"
       ];
 
       env = [ "XCURSOR_SIZE,24" ];
@@ -129,6 +127,7 @@
         "noborder, fullscreen:1"
         "nofocus, class:(com.lilithsthrone.main.Main), title:^$"
         "noshortcutsinhibit,class:^(virt-manager)$"
+        "workspace 10, class:^(vesktop)$"
       ];
 
       input = {

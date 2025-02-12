@@ -23,6 +23,7 @@
     nh
     halloy
     nixgl.nixGLIntel
+    vesktop
   ];
 
   # Deployed files/directories
@@ -42,6 +43,8 @@
     name = "Fira Code";
     package = pkgs.fira-code;
   };
+  stylix.cursor.package = pkgs.oreo-cursors-plus;
+  stylix.cursor.name = "Oreo Pink Cursors";
 
   i18n.inputMethod.enabled = "fcitx5";
 
@@ -133,6 +136,7 @@
   programs.mangohud.enable = true;
   services.swaync.enable = true;
   programs.wofi.enable = true;
+  programs.chromium.enable = true;
 
   # Nix settings
   nix = {
