@@ -99,11 +99,6 @@
         "$mod, N, exec, ${lib.getExe' pkgs.swaynotificationcenter "swaync-client"} -t"
       ];
 
-      monitor = [
-        "DP-1,1920x1080@60,0x0,1"
-        "DP-2,1920x1080@60,1920x-420,1,transform,1"
-      ];
-
       workspace = [
         "w[t1], gapsin:0, gapsout:0, border:0, rounding:0"
         "w[tg1], gapsin:0, gapsout:0, border:0, rounding:0"
