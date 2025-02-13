@@ -12,7 +12,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     stylix.url = "github:danth/stylix";
-    hyprland.url = "github:hyprwm/Hyprland";
   };
 
   outputs = {
@@ -26,7 +25,9 @@
       system = "x86_64-linux";
       pkgs = import nixpkgs {
         system = "x86_64-linux";
-        overlays = [ nixgl.overlay ];
+        overlays = [
+          nixgl.overlay
+          ];
       };
     in {
       homeConfigurations."notarin" = home-manager.lib.homeManagerConfiguration {
@@ -39,6 +40,5 @@
           stylix.homeManagerModules.stylix
         ];
       };
-      inherit nixgl;
     };
 }

@@ -3,10 +3,8 @@
 {
   wayland.windowManager.hyprland = {
     enable = true;
-    package =
-      inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
-    portalPackage =
-      inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
+    package = pkgs.hyprland;
+    portalPackage = pkgs.xdg-desktop-portal-hyprland;
     settings = {
       "$mod" = "SUPER";
 
@@ -24,8 +22,7 @@
         "$mod, code:36, exec, ${lib.getExe pkgs.wezterm}"
         "$mod, E, exec, ${lib.getExe pkgs.nautilus}"
         "$mod, SPACE, togglefloating,"
-        ''
-          $mod, D, exec, ${lib.getExe pkgs.wofi} --allow-images --allow-markup --hide-scroll --insensitive --height 500 --show drun --prompt "Launch"''
+        "$mod, D, exec, ${lib.getExe pkgs.fuzzel}"
         "$mod, J, togglesplit,"
         "$mod, F, fullscreen, 0"
         ",F11, fullscreen, 0"

@@ -27,6 +27,7 @@
     pwvucontrol
     gnome-disk-utility
     overskride
+    google-chrome
   ];
 
   # Deployed files/directories
@@ -36,6 +37,7 @@
   # ENV variables
   home.sessionVariables = {
     EDITOR = "hx";
+    NIXOS_OZONE_WL = "1";
   };
 
   stylix.enable = true;
@@ -47,10 +49,24 @@
     package = pkgs.fira-code;
   };
   stylix.cursor.package = pkgs.oreo-cursors-plus;
-  stylix.cursor.name = "Oreo Pink Cursors";
+  stylix.cursor.name = "Oreo-Pink-Cursors";
 
   i18n.inputMethod.enabled = "fcitx5";
 
+  xdg = {
+    portal = {
+      enable = true;
+      xdgOpenUsePortal = true;
+      config = {
+        common.default = ["gtk"];
+        hyprland.default = ["gtk" "hyprland"];
+      };
+      extraPortals = [
+        pkgs.xdg-desktop-portal-gtk
+        pkgs.xdg-desktop-portal-hyprland
+      ];
+    };
+  };
   gtk.enable = true;
   qt.enable = true;
   programs.btop.enable = true;
@@ -139,7 +155,7 @@
   programs.mangohud.enable = true;
   services.swaync.enable = true;
   programs.wofi.enable = true;
-  programs.chromium.enable = true;
+  programs.fuzzel.enable = true;
 
   # Nix settings
   nix = {
