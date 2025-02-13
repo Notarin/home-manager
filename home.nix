@@ -25,6 +25,7 @@
     nixgl.nixGLIntel
     vesktop
     pwvucontrol
+    gnome-disk-utility
   ];
 
   # Deployed files/directories
