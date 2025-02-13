@@ -111,18 +111,10 @@
 
       env = [ "XCURSOR_SIZE,32" ];
 
-      windowrule =
-        [ "move onscreen cursor 50% 50%, ^(vrmonitor)$" "pseudo,fcitx" ];
-
       windowrulev2 = [
-        "opacity 0.0 override 0.0 override,class:^(xwaylandvideobridge)$"
-        "noanim,class:^(xwaylandvideobridge)$"
-        "nofocus,class:^(xwaylandvideobridge)$"
-        "noinitialfocus,class:^(xwaylandvideobridge)$"
         "renderunfocused,title:^(Minecraft)"
         "renderunfocused,class:^(steam_app_3146520)$"
         "noborder, fullscreen:1"
-        "nofocus, class:(com.lilithsthrone.main.Main), title:^$"
         "noshortcutsinhibit,class:^(virt-manager)$"
         "workspace 10, class:^(vesktop)$"
       ];
