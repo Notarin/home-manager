@@ -8,7 +8,7 @@
 
 {
   imports = [
-    ./Software/hyprland-settings.nix
+    ../../Software/hyprland-settings.nix
   ];
 
   # System specific
@@ -43,7 +43,7 @@
   stylix.enable = true;
   stylix.autoEnable = true;
   stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-dark-soft.yaml";
-  stylix.image = ./Images/Horizontal_WP.png;
+  stylix.image = ../../Images/Horizontal_WP.png;
   stylix.fonts.monospace = {
     name = "Fira Code";
     package = pkgs.fira-code;
@@ -88,7 +88,7 @@
   programs.helix.enable = true;
   programs.wezterm = {
     enable = true;
-    extraConfig = builtins.readFile ./Software/wezterm-settings.lua;
+    extraConfig = builtins.readFile ../../Software/wezterm-settings.lua;
   };
   programs.nushell = {
     enable = true;

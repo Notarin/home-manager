@@ -36,7 +36,7 @@
           inherit inputs;
         };
         modules = [
-          ./home.nix
+          ./home-manager/common/home.nix
           stylix.homeManagerModules.stylix
         ];
       };
