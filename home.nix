@@ -148,6 +148,7 @@
       "workbench.startupEditor" = "none";
       "window.menuBarVisibility" = "toggle";
       "git.autofetch" = true;
+      "nix.enableLanguageServer" = true;
     };
   };
   programs.cava.enable = true;
