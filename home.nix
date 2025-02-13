@@ -49,7 +49,8 @@
     package = pkgs.fira-code;
   };
   stylix.cursor.package = pkgs.oreo-cursors-plus;
-  stylix.cursor.name = "Oreo-Pink-Cursors";
+  stylix.cursor.name = "oreo_pink_cursors";
+  stylix.cursor.size = 32;
 
   i18n.inputMethod.enabled = "fcitx5";
 

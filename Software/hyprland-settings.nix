@@ -109,7 +109,7 @@
         "${lib.getExe pkgs.vesktop}"
       ];
 
-      env = [ "XCURSOR_SIZE,24" ];
+      env = [ "XCURSOR_SIZE,32" ];
 
       windowrule =
         [ "move onscreen cursor 50% 50%, ^(vrmonitor)$" "pseudo,fcitx" ];
