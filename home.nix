@@ -8,7 +8,7 @@
 
 {
   imports = [
-    ./hyprland-settings.nix
+    ./Software/hyprland-settings.nix
   ];
 
   # System specific
@@ -87,7 +87,7 @@
   programs.helix.enable = true;
   programs.wezterm = {
     enable = true;
-    extraConfig = builtins.readFile ./wezterm-settings.lua;
+    extraConfig = builtins.readFile ./Software/wezterm-settings.lua;
   };
   programs.nushell = {
     enable = true;
