@@ -63,5 +63,5 @@ return {
             name = 'default',
         },
     },
-    default_gui_startup_args = { 'connect', 'default' },
+    --default_gui_startup_args = { 'connect', 'default' },
 }
