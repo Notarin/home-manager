@@ -26,6 +26,7 @@
     vesktop
     pwvucontrol
     gnome-disk-utility
+    overskride
   ];
 
   # Deployed files/directories
