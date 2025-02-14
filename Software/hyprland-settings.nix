@@ -89,11 +89,18 @@
         "$mod_ALT, UP, movecurrentworkspacetomonitor, HDMI-A-1"
 
         # Screenshot
-        ''$mod_SHIFT, S, exec, ${lib.getExe pkgs.grim} -g "$(${lib.getExe pkgs.slurp})" - | ${lib.getExe' pkgs.wl-clipboard "wl-copy"}''
-        ",Print, exec, ${lib.getExe pkgs.grim} -t jpeg - | ${lib.getExe pkgs.imv} -f -"
+        ''
+          $mod_SHIFT, S, exec, ${lib.getExe pkgs.grim} -g "$(${
+            lib.getExe pkgs.slurp
+          })" - | ${lib.getExe' pkgs.wl-clipboard "wl-copy"}''
+        ",Print, exec, ${lib.getExe pkgs.grim} -t jpeg - | ${
+          lib.getExe pkgs.imv
+        } -f -"
 
         # Notification center
-        "$mod, N, exec, ${lib.getExe' pkgs.swaynotificationcenter "swaync-client"} -t"
+        "$mod, N, exec, ${
+          lib.getExe' pkgs.swaynotificationcenter "swaync-client"
+        } -t"
       ];
 
       workspace = [
