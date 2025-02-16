@@ -15,7 +15,7 @@
     overskride
     google-chrome
     nil
-    nixfmt
+    nixfmt-rfc-style
     jetbrains.rust-rover
     wine
     steam
