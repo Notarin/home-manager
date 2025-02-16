@@ -1,4 +1,4 @@
-{ config, pkgs, inputs, lib, ... }:
+{ pkgs, lib, ... }:
 
 {
   imports = [ ../../../Software/hyprland-settings.nix ];
