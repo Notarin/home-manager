@@ -110,6 +110,7 @@
         "${lib.getExe pkgs.swaynotificationcenter}"
         "${lib.getExe pkgs.google-chrome}"
         "${lib.getExe pkgs.vesktop}"
+        "${lib.getExe pkgs.xdg-desktop-portal-hyprland}"
       ];
 
       env = [ "XCURSOR_SIZE,32" ];

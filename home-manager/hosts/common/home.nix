@@ -47,23 +47,6 @@
 
   i18n.inputMethod.enabled = "fcitx5";
 
-  xdg = {
-    portal = {
-      enable = false;
-      xdgOpenUsePortal = true;
-      config = {
-        common.default = [ "gtk" ];
-        hyprland.default = [
-          "gtk"
-          "hyprland"
-        ];
-      };
-      extraPortals = [
-        pkgs.xdg-desktop-portal-gtk
-        pkgs.xdg-desktop-portal-hyprland
-      ];
-    };
-  };
   gtk.enable = true;
   qt.enable = true;
   programs.nh.enable = true;
