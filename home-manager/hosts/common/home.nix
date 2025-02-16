@@ -6,8 +6,6 @@
   # Packages
   home.packages = with pkgs; [
     killall
-    nh
-    halloy
     nixgl.nixGLIntel
     vesktop
     pwvucontrol
@@ -22,7 +20,6 @@
     discord
     file-roller
     direnv
-    git
   ];
 
   # Deployed files/directories
@@ -67,6 +64,9 @@
   };
   gtk.enable = true;
   qt.enable = true;
+  programs.nh.enable = true;
+  programs.git.enable = true;
+  programs.direnv.enable = true;
   programs.btop.enable = true;
   programs.btop.settings.update_ms = 100;
   programs.starship = {
