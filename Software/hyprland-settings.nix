@@ -4,7 +4,7 @@
   wayland.windowManager.hyprland = {
     enable = true;
     package = pkgs.hyprland;
-    portalPackage = pkgs.xdg-desktop-portal-hyprland;
+    portalPackage = null;
     settings = {
       "$mod" = "SUPER";
 

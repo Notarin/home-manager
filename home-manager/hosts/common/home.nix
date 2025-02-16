@@ -7,7 +7,6 @@
   home.packages = with pkgs; [
     killall
     nixgl.nixGLIntel
-    vesktop
     pwvucontrol
     gnome-disk-utility
     overskride
@@ -17,10 +16,12 @@
     jetbrains.rust-rover
     wine
     steam
-    discord
     file-roller
     direnv
     wl-clipboard
+    (discord.override {
+      withVencord = true;
+    })
   ];
 
   # Deployed files/directories
@@ -48,7 +49,7 @@
 
   xdg = {
     portal = {
-      enable = true;
+      enable = false;
       xdgOpenUsePortal = true;
       config = {
         common.default = [ "gtk" ];
