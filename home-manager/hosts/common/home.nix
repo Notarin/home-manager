@@ -21,6 +21,7 @@
     steam
     discord
     file-roller
+    direnv
   ];
 
   # Deployed files/directories
