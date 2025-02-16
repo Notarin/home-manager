@@ -14,7 +14,14 @@
     stylix.url = "github:danth/stylix";
   };
 
-  outputs = { nixpkgs, nixgl, home-manager, stylix, ... }@inputs:
+  outputs =
+    {
+      nixpkgs,
+      nixgl,
+      home-manager,
+      stylix,
+      ...
+    }@inputs:
     let
       pkgs = import nixpkgs {
         system = "x86_64-linux";
@@ -25,10 +32,17 @@
 
       usersDir = ./home-manager/users;
       removeNixSuffix = raw_name: lib.removeSuffix ".nix" raw_name;
-      getPathString = { location, fileName }:
-        lib.strings.concatStrings [ (builtins.toString location) "/" fileName ];
-      getPath = { location, fileName }:
-        /. + (getPathString {
+      getPathString =
+        { location, fileName }:
+        lib.strings.concatStrings [
+          (builtins.toString location)
+          "/"
+          fileName
+        ];
+      getPath =
+        { location, fileName }:
+        /.
+        + (getPathString {
           inherit location;
           inherit fileName;
         });
@@ -43,31 +57,43 @@
       users = parseRawUsers usersRaw;
 
       hostsDir = ./home-manager/hosts;
-      hostsRaw = builtins.filter (host: host != "common")
-        (builtins.attrNames (builtins.readDir hostsDir));
+      hostsRaw = builtins.filter (host: host != "common") (
+        builtins.attrNames (builtins.readDir hostsDir)
+      );
       hosts = builtins.map (host: {
         hostName = host;
         configPath = /. + "${builtins.toString hostsDir}/${host}/home.nix";
       }) hostsRaw;
 
       common = ./home-manager/hosts/common/home.nix;
-      commonModules = [ common stylix.homeManagerModules.stylix ];
-    in {
-      homeConfigurations = builtins.listToAttrs (builtins.concatMap (user:
-        builtins.concatMap (host: [{
-          name = "${user.userName}@${host.hostName}";
-          value = home-manager.lib.homeManagerConfiguration {
-            inherit pkgs;
-            extraSpecialArgs = { inherit inputs; };
-            modules = commonModules ++ [ host.configPath ];
-          };
-        }]) hosts) users ++ builtins.map (user: {
+      commonModules = [
+        common
+        stylix.homeManagerModules.stylix
+      ];
+    in
+    {
+      homeConfigurations = builtins.listToAttrs (
+        builtins.concatMap (
+          user:
+          builtins.concatMap (host: [
+            {
+              name = "${user.userName}@${host.hostName}";
+              value = home-manager.lib.homeManagerConfiguration {
+                inherit pkgs;
+                extraSpecialArgs = { inherit inputs; };
+                modules = commonModules ++ [ host.configPath ];
+              };
+            }
+          ]) hosts
+        ) users
+        ++ builtins.map (user: {
           name = "${user.userName}";
           value = home-manager.lib.homeManagerConfiguration {
             inherit pkgs;
             extraSpecialArgs = { inherit inputs; };
             modules = commonModules ++ [ user.configPath ];
           };
-        }) users);
+        }) users
+      );
     };
 }

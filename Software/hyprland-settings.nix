@@ -14,7 +14,10 @@
         ",XF86AudioNext, exec, ${lib.getExe pkgs.playerctl} next"
       ];
 
-      bindm = [ "$mod, mouse:272, movewindow" "$mod, mouse:273, resizewindow" ];
+      bindm = [
+        "$mod, mouse:272, movewindow"
+        "$mod, mouse:273, resizewindow"
+      ];
 
       bind = [
         # General Binds
@@ -89,18 +92,11 @@
         "$mod_ALT, UP, movecurrentworkspacetomonitor, HDMI-A-1"
 
         # Screenshot
-        ''
-          $mod_SHIFT, S, exec, ${lib.getExe pkgs.grim} -g "$(${
-            lib.getExe pkgs.slurp
-          })" - | ${lib.getExe' pkgs.wl-clipboard "wl-copy"}''
-        ",Print, exec, ${lib.getExe pkgs.grim} -t jpeg - | ${
-          lib.getExe pkgs.imv
-        } -f -"
+        ''$mod_SHIFT, S, exec, ${lib.getExe pkgs.grim} -g "$(${lib.getExe pkgs.slurp})" - | ${lib.getExe' pkgs.wl-clipboard "wl-copy"}''
+        ",Print, exec, ${lib.getExe pkgs.grim} -t jpeg - | ${lib.getExe pkgs.imv} -f -"
 
         # Notification center
-        "$mod, N, exec, ${
-          lib.getExe' pkgs.swaynotificationcenter "swaync-client"
-        } -t"
+        "$mod, N, exec, ${lib.getExe' pkgs.swaynotificationcenter "swaync-client"} -t"
       ];
 
       workspace = [
@@ -173,11 +169,17 @@
         preserve_split = true;
       };
 
-      master = { mfact = 0.7; };
+      master = {
+        mfact = 0.7;
+      };
 
-      gestures = { workspace_swipe = true; };
+      gestures = {
+        workspace_swipe = true;
+      };
 
-      misc = { force_default_wallpaper = 0; };
+      misc = {
+        force_default_wallpaper = 0;
+      };
 
       debug = {
         disable_logs = false;

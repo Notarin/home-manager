@@ -36,8 +36,7 @@
 
   stylix.enable = true;
   stylix.autoEnable = true;
-  stylix.base16Scheme =
-    "${pkgs.base16-schemes}/share/themes/gruvbox-dark-soft.yaml";
+  stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-dark-soft.yaml";
   stylix.image = ../../../Images/Horizontal_WP.png;
   stylix.fonts.monospace = {
     name = "Fira Code";
@@ -55,10 +54,15 @@
       xdgOpenUsePortal = true;
       config = {
         common.default = [ "gtk" ];
-        hyprland.default = [ "gtk" "hyprland" ];
+        hyprland.default = [
+          "gtk"
+          "hyprland"
+        ];
       };
-      extraPortals =
-        [ pkgs.xdg-desktop-portal-gtk pkgs.xdg-desktop-portal-hyprland ];
+      extraPortals = [
+        pkgs.xdg-desktop-portal-gtk
+        pkgs.xdg-desktop-portal-hyprland
+      ];
     };
   };
   gtk.enable = true;
@@ -70,8 +74,12 @@
     enableNushellIntegration = true;
     settings = {
       add_newline = false;
-      hostname = { ssh_symbol = "📡"; };
-      shell = { disabled = false; };
+      hostname = {
+        ssh_symbol = "📡";
+      };
+      shell = {
+        disabled = false;
+      };
     };
   };
   programs.helix.enable = true;
@@ -87,9 +95,15 @@
         use_ls_colors = true;
         clickable_links = true;
       };
-      rm = { always_trash = true; };
-      history = { max_size = 100000; };
-      filesize = { metric = true; };
+      rm = {
+        always_trash = true;
+      };
+      history = {
+        max_size = 100000;
+      };
+      filesize = {
+        metric = true;
+      };
       edit_mode = "emacs";
       use_kitty_protocol = false;
     };
@@ -100,8 +114,7 @@
       cd = "z";
       cat = lib.getExe pkgs.bat;
     };
-    extraConfig = ''
-      $env.PATH = ($env.PATH | split row (char esep) | append ($env.HOME | append "/.nix-profile/bin" | str join))'';
+    extraConfig = ''$env.PATH = ($env.PATH | split row (char esep) | append ($env.HOME | append "/.nix-profile/bin" | str join))'';
   };
   programs.zoxide = {
     enable = true;
@@ -110,11 +123,13 @@
   programs.bat.enable = true;
   programs.vscode = {
     enable = true;
-    keybindings = [{
-      key = "ctrl+r";
-      command = "workbench.action.tasks.runTask";
-      when = "taskCommandsRegistered";
-    }];
+    keybindings = [
+      {
+        key = "ctrl+r";
+        command = "workbench.action.tasks.runTask";
+        when = "taskCommandsRegistered";
+      }
+    ];
     userSettings = {
       "editor.renderWhitespace" = "all";
       "editor.fontLigatures" = true;
@@ -151,7 +166,9 @@
   # Nix settings
   nix = {
     package = pkgs.nixVersions.latest;
-    settings = { extra-experimental-features = "nix-command flakes"; };
+    settings = {
+      extra-experimental-features = "nix-command flakes";
+    };
   };
 
   # Allow unfree packages
