@@ -14,6 +14,13 @@
     gnome-disk-utility
     overskride
     google-chrome
+    nil
+    nixfmt
+    jetbrains.rust-rover
+    wine
+    steam
+    discord
+    file-roller
   ];
 
   # Deployed files/directories
@@ -101,6 +108,11 @@
   programs.bat.enable = true;
   programs.vscode = {
     enable = true;
+    keybindings = [{
+      key = "ctrl+r";
+      command = "workbench.action.tasks.runTask";
+      when = "taskCommandsRegistered";
+    }];
     userSettings = {
       "editor.renderWhitespace" = "all";
       "editor.fontLigatures" = true;
