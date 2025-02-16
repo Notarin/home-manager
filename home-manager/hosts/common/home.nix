@@ -20,6 +20,7 @@
     discord
     file-roller
     direnv
+    wl-clipboard
   ];
 
   # Deployed files/directories
