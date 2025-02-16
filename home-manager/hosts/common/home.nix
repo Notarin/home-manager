@@ -22,6 +22,7 @@
     discord
     file-roller
     direnv
+    git
   ];
 
   # Deployed files/directories
