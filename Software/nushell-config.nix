@@ -13,9 +13,6 @@
     history = {
       max_size = 100000;
     };
-    filesize = {
-      metric = true;
-    };
     edit_mode = "emacs";
     use_kitty_protocol = false;
   };
