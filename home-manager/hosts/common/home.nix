@@ -22,6 +22,7 @@
     (discord.override {
       withVencord = true;
     })
+    jetbrains.rust-rover
   ];
 
   # Deployed files/directories
