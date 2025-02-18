@@ -19,9 +19,7 @@
     file-roller
     direnv
     wl-clipboard
-    (discord.override {
-      withVencord = true;
-    })
+    vesktop
     jetbrains.rust-rover
   ];
 
