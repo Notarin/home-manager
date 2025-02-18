@@ -73,7 +73,17 @@
         };
       };
     };
-    helix.enable = true;
+    helix = {
+      enable = true;
+      defaultEditor = true;
+      settings = {
+        keys.normal = {
+          y = "yank_to_clipboard";
+          p = "paste_clipboard_after";
+          P = "paste_clipboard_before";
+        };
+      };
+    };
     wezterm = {
       enable = true;
       extraConfig = builtins.readFile ../../../Software/wezterm-settings.lua;
