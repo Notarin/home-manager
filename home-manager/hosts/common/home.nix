@@ -75,6 +75,9 @@
     helix = {
       enable = true;
       defaultEditor = true;
+      extraPackages = with pkgs; [
+        rust-analyzer
+      ];
       settings = {
         keys.normal = {
           y = "yank_to_clipboard";
