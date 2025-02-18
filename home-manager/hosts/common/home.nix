@@ -12,7 +12,6 @@
       google-chrome
       nil
       nixfmt-rfc-style
-      jetbrains.rust-rover
       wine
       steam
       file-roller
