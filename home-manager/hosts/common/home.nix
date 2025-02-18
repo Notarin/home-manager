@@ -102,6 +102,10 @@
     mangohud.enable = true;
     wofi.enable = true;
     fuzzel.enable = true;
+    carapace = {
+      enable = true;
+      enableNushellIntegration = true;
+    };
   };
 
   services.swaync.enable = true;
