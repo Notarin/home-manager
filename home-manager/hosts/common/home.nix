@@ -100,7 +100,10 @@
       enableNushellIntegration = true;
     };
     bat.enable = true;
-    vscode = import ../../../Software/vscode-settings.nix;
+    vscode = import ../../../Software/vscode-settings.nix {
+      inherit pkgs;
+      inherit lib;
+    };
     cava.enable = true;
     gitui.enable = true;
     mangohud.enable = true;
