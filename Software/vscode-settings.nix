@@ -98,6 +98,9 @@
     yzhang.markdown-all-in-one
     jnoortheen.nix-ide
     arrterian.nix-env-selector
+    rust-lang.rust-analyzer
+    tamasfe.even-better-toml
+    fill-labs.dependi
   ];
   mutableExtensionsDir = false;
   enableExtensionUpdateCheck = false;
