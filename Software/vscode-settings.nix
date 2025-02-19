@@ -40,6 +40,8 @@
         };
       };
     };
+    "files.autoSave" = "onFocusChange";
+    "editor.formatOnSave" = true;
   };
   userTasks = {
     version = "2.0.0";
