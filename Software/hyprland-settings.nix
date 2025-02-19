@@ -105,7 +105,6 @@
     ];
 
     exec-once = [
-      "${lib.getExe pkgs.fcitx5}"
       "${lib.getExe pkgs.swaynotificationcenter}"
       "${lib.getExe pkgs.google-chrome}"
       "${lib.getExe pkgs.vesktop}"

@@ -1,5 +1,5 @@
 # This is the configuration that is deployed to ALL managed users.
-{ pkgs, lib, ... }:
+{ pkgs, lib, config, ... }:
 
 {
   home = {
@@ -45,7 +45,13 @@
       size = 32;
     };
   };
-  i18n.inputMethod.enabled = "fcitx5";
+  i18n.inputMethod = {
+    enabled = "fcitx5";
+    fcitx5 = {
+      addons = with pkgs; [ fcitx5-mozc ];
+      waylandFrontend = true;
+    };
+  };
 
   gtk.enable = true;
   qt.enable = true;
@@ -92,7 +98,7 @@
       extraConfig = builtins.readFile ../../../Software/wezterm-settings.lua;
     };
     nushell = import ../../../Software/nushell-config.nix {
-      inherit pkgs lib;
+      inherit pkgs lib config;
     };
     zoxide = {
       enable = true;

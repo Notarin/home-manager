@@ -1,4 +1,4 @@
-{ lib, pkgs }:
+{ lib, pkgs, config }:
 {
   enable = true;
   settings = {
@@ -23,8 +23,6 @@
     cd = "z";
     cat = lib.getExe pkgs.bat;
   };
-  environmentVariables = {
-    EDITOR = "hx";
-  };
+  environmentVariables = config.home.sessionVariables;
   extraConfig = ''$env.PATH = ($env.PATH | split row (char esep) | append ($env.HOME | append "/.nix-profile/bin" | str join))'';
 }
