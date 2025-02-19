@@ -18,6 +18,7 @@
       direnv
       wl-clipboard
       vesktop
+      jetbrains.rust-rover
     ];
 
     # Files that are symlinked to the home directory

@@ -23,5 +23,8 @@
     cd = "z";
     cat = lib.getExe pkgs.bat;
   };
+  environmentVariables = {
+    EDITOR = "hx";
+  };
   extraConfig = ''$env.PATH = ($env.PATH | split row (char esep) | append ($env.HOME | append "/.nix-profile/bin" | str join))'';
 }
