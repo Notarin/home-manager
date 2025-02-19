@@ -1,5 +1,10 @@
 # This is the configuration that is deployed to ALL managed users.
-{ pkgs, lib, config, ... }:
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}:
 
 {
   home = {

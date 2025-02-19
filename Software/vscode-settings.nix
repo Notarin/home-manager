@@ -63,7 +63,7 @@
           executable = "${lib.getExe pkgs.nushell}";
           args = [ "-c" ];
         };
-        problemMatcher = [];
+        problemMatcher = [ ];
       }
       {
         label = "Rebuild & Deploy NixOS with nh";
@@ -84,7 +84,7 @@
           executable = "${lib.getExe pkgs.nushell}";
           args = [ "-c" ];
         };
-        problemMatcher = [];
+        problemMatcher = [ ];
       }
     ];
   };
