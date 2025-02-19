@@ -44,6 +44,12 @@
       name = "oreo_pink_cursors";
       size = 32;
     };
+    iconTheme = {
+      enable = true;
+      package = pkgs.papirus-icon-theme;
+      dark = "Papirus-Dark";
+      light = "Papirus-Light";
+    };
   };
   i18n.inputMethod = {
     enabled = "fcitx5";
