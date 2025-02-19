@@ -92,8 +92,7 @@
       extraConfig = builtins.readFile ../../../Software/wezterm-settings.lua;
     };
     nushell = import ../../../Software/nushell-config.nix {
-      inherit pkgs;
-      inherit lib;
+      inherit pkgs lib;
     };
     zoxide = {
       enable = true;
@@ -101,8 +100,7 @@
     };
     bat.enable = true;
     vscode = import ../../../Software/vscode-settings.nix {
-      inherit pkgs;
-      inherit lib;
+      inherit pkgs lib;
     };
     cava.enable = true;
     gitui.enable = true;
@@ -118,8 +116,7 @@
   services.swaync.enable = true;
 
   wayland.windowManager.hyprland = import ../../../Software/hyprland-settings.nix {
-    inherit pkgs;
-    inherit lib;
+    inherit pkgs lib;
   };
 
   # Nix settings
