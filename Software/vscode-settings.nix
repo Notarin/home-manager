@@ -101,6 +101,7 @@
     rust-lang.rust-analyzer
     tamasfe.even-better-toml
     fill-labs.dependi
+    thenuprojectcontributors.vscode-nushell-lang
   ];
   mutableExtensionsDir = false;
   enableExtensionUpdateCheck = false;
