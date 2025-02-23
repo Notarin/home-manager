@@ -7,6 +7,11 @@
       command = "workbench.action.tasks.runTask";
       when = "taskCommandsRegistered";
     }
+    {
+      key = "alt+enter";
+      command = "editor.action.quickFix";
+      when = "editorHasCodeActionsProvider && textInputFocus && !editorReadonly";
+    }
   ];
   userSettings = {
     "editor.renderWhitespace" = "all";
