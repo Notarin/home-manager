@@ -42,6 +42,13 @@
     };
     "files.autoSave" = "onFocusChange";
     "editor.formatOnSave" = true;
+    "rust-analyzer.server.extraEnv" = {
+      "PATH" = lib.makeBinPath [
+        pkgs.gcc
+        pkgs.cargo
+        pkgs.rustc
+      ];
+    };
   };
   userTasks = {
     version = "2.0.0";
