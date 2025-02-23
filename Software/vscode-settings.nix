@@ -48,11 +48,15 @@
     "files.autoSave" = "onFocusChange";
     "editor.formatOnSave" = true;
     "rust-analyzer.server.extraEnv" = {
-      "PATH" = lib.makeBinPath [
-        pkgs.gcc
-        pkgs.cargo
-        pkgs.rustc
-      ];
+      "PATH" = lib.makeBinPath (
+        with pkgs;
+        [
+          gcc
+          cargo
+          rustc
+          rustfmt
+        ]
+      );
     };
     "rust-analyzer.diagnostics.styleLints.enable" = true;
     "rust-analyzer.checkOnSave.command" = "clippy";
