@@ -60,6 +60,7 @@
     };
     "rust-analyzer.diagnostics.styleLints.enable" = true;
     "rust-analyzer.checkOnSave.command" = "clippy";
+    "github.copilot.nextEditSuggestions.enabled" = false;
   };
   userTasks = {
     version = "2.0.0";
