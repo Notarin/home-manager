@@ -18,7 +18,6 @@
       nil
       nixfmt-rfc-style
       wine
-      steam
       file-roller
       direnv
       wl-clipboard
@@ -34,6 +33,8 @@
       NIXOS_OZONE_WL = "1";
     };
   };
+
+  xdg.portal.config.common.default = "*";
 
   stylix = {
     enable = true;

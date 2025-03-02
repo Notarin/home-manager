@@ -3,7 +3,8 @@
 {
   enable = true;
   package = pkgs.hyprland;
-  portalPackage = null;
+  portalPackage = pkgs.xdg-desktop-portal-hyprland;
+  systemd.variables = [ "--all" ];
   settings = {
     "$mod" = "SUPER";
 
@@ -108,10 +109,12 @@
       "${lib.getExe pkgs.swaynotificationcenter}"
       "${lib.getExe pkgs.google-chrome}"
       "${lib.getExe pkgs.vesktop}"
-      "${lib.getExe pkgs.xdg-desktop-portal-hyprland}"
     ];
 
-    env = [ "XCURSOR_SIZE,32" ];
+    env = [
+      "XCURSOR_SIZE,32"
+      "XDG_SESSION_DESKTOP,Hyprland"
+    ];
 
     windowrulev2 = [
       "renderunfocused,title:^(Minecraft)"
