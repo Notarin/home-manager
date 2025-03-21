@@ -1,7 +1,9 @@
 { pkgs, lib }:
 {
   enable = true;
-  keybindings = [
+  mutableExtensionsDir = false;
+  profiles.default = {
+      keybindings = [
     {
       key = "ctrl+r";
       command = "workbench.action.tasks.runTask";
@@ -16,6 +18,7 @@
   userSettings = {
     "editor.renderWhitespace" = "all";
     "editor.fontLigatures" = true;
+    "editor.formatOnSave" = true;
     "editor.rulers" = [
       {
         "column" = 79;
@@ -29,13 +32,13 @@
     "workbench.editor.enablePreviewFromCodeNavigation" = true;
     "workbench.editor.highlightModifiedTabs" = true;
     "workbench.editor.wrapTabs" = true;
-    "git.openRepositoryInParentFolders" = "never";
-    "security.workspace.trust.untrustedFiles" = "open";
-    "security.workspace.trust.enabled" = false;
     "workbench.settings.editor" = "ui";
     "workbench.startupEditor" = "none";
-    "window.menuBarVisibility" = "toggle";
+    "git.openRepositoryInParentFolders" = "never";
     "git.autofetch" = true;
+    "security.workspace.trust.untrustedFiles" = "open";
+    "security.workspace.trust.enabled" = false;
+    "window.menuBarVisibility" = "toggle";
     "nix.enableLanguageServer" = true;
     "nix.serverPath" = "${lib.getExe pkgs.nil}";
     "nix.serverSettings" = {
@@ -46,7 +49,9 @@
       };
     };
     "files.autoSave" = "onFocusChange";
-    "editor.formatOnSave" = true;
+    "rust-analyzer.diagnostics.styleLints.enable" = true;
+    "rust-analyzer.check.command" = "clippy";
+    "rust-analyzer.checkOnSave" = true;
     "rust-analyzer.server.extraEnv" = {
       "PATH" = lib.makeBinPath (
         with pkgs;
@@ -58,9 +63,13 @@
         ]
       );
     };
-    "rust-analyzer.diagnostics.styleLints.enable" = true;
-    "rust-analyzer.checkOnSave.command" = "clippy";
-    "github.copilot.nextEditSuggestions.enabled" = false;
+    "github.copilot.nextEditSuggestions.enabled" = true;
+    "github.copilot.enable" = {
+      "*" = true;
+      "plaintext" = true;
+      "markdown" = true;
+      "rust" = false;
+    };
   };
   userTasks = {
     version = "2.0.0";
@@ -122,6 +131,7 @@
     fill-labs.dependi
     thenuprojectcontributors.vscode-nushell-lang
   ];
-  mutableExtensionsDir = false;
   enableExtensionUpdateCheck = false;
+
+  };
 }
