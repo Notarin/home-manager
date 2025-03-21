@@ -23,6 +23,7 @@
       wl-clipboard
       vesktop
       jetbrains.rust-rover
+      prismlauncher
     ];
 
     # Files that are symlinked to the home directory
