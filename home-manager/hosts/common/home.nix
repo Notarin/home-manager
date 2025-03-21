@@ -24,6 +24,7 @@
       vesktop
       jetbrains.rust-rover
       prismlauncher
+      tealdeer
     ];
 
     # Files that are symlinked to the home directory
