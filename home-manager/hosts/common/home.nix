@@ -25,6 +25,7 @@
       jetbrains.rust-rover
       prismlauncher
       tealdeer
+      r2modman
     ];
 
     # Files that are symlinked to the home directory
