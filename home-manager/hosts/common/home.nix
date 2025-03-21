@@ -58,6 +58,7 @@
       dark = "Papirus-Dark";
       light = "Papirus-Light";
     };
+    targets.vscode.profileNames = ["default"];
   };
   i18n.inputMethod = {
     enabled = "fcitx5";
