@@ -26,6 +26,7 @@
       prismlauncher
       tealdeer
       r2modman
+      packwiz
     ];
 
     # Files that are symlinked to the home directory
