@@ -36,6 +36,7 @@
       "workbench.startupEditor" = "none";
       "git.openRepositoryInParentFolders" = "never";
       "git.autofetch" = true;
+      "git.confirmSync" = false;
       "security.workspace.trust.untrustedFiles" = "open";
       "security.workspace.trust.enabled" = false;
       "window.menuBarVisibility" = "toggle";
