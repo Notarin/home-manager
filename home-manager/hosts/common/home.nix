@@ -2,6 +2,7 @@
 {
   pkgs,
   lib,
+  root,
   config,
   ...
 }:
@@ -44,7 +45,7 @@
     enable = true;
     autoEnable = true;
     base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-dark-soft.yaml";
-    image = ../../../Images/Horizontal_WP.png;
+    image = root + /Images/Horizontal_WP.png;
     fonts.monospace = {
       name = "Fira Code";
       package = pkgs.fira-code;
@@ -112,9 +113,9 @@
     };
     wezterm = {
       enable = true;
-      extraConfig = builtins.readFile ../../../Software/wezterm-settings.lua;
+      extraConfig = builtins.readFile (root + /Software/wezterm-settings.lua);
     };
-    nushell = import ../../../Software/nushell-config.nix {
+    nushell = import (root + /Software/nushell-config.nix) {
       inherit pkgs lib config;
     };
     zoxide = {
@@ -122,7 +123,7 @@
       enableNushellIntegration = true;
     };
     bat.enable = true;
-    vscode = import ../../../Software/vscode-settings.nix {
+    vscode = import (root + /Software/vscode-settings.nix) {
       inherit pkgs lib;
     };
     cava.enable = true;
@@ -144,7 +145,7 @@
 
   services.swaync.enable = true;
 
-  wayland.windowManager.hyprland = import ../../../Software/hyprland-settings.nix {
+  wayland.windowManager.hyprland = import (root + /Software/hyprland-settings.nix) {
     inherit pkgs lib;
   };
 
