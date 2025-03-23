@@ -73,7 +73,7 @@
       ];
 
       extraSpecialArgs = {
-        root = self;
+        rootDir = self;
       };
     in
     {
