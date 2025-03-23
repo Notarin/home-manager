@@ -16,6 +16,7 @@
 
   outputs =
     {
+      self,
       nixpkgs,
       nixgl,
       home-manager,
@@ -70,6 +71,10 @@
         common
         stylix.homeManagerModules.stylix
       ];
+
+      extraSpecialArgs = {
+        root = self;
+      };
     in
     {
       homeConfigurations = builtins.listToAttrs (
@@ -79,7 +84,7 @@
             {
               name = "${user.userName}@${host.hostName}";
               value = home-manager.lib.homeManagerConfiguration {
-                inherit pkgs;
+                inherit pkgs extraSpecialArgs;
                 modules = commonModules ++ [ host.configPath ];
               };
             }
@@ -88,7 +93,7 @@
         ++ builtins.map (user: {
           name = "${user.userName}";
           value = home-manager.lib.homeManagerConfiguration {
-            inherit pkgs;
+            inherit pkgs extraSpecialArgs;
             modules = commonModules ++ [ user.configPath ];
           };
         }) users
