@@ -127,7 +127,13 @@
     };
     cava.enable = true;
     gitui.enable = true;
-    mangohud.enable = true;
+    mangohud = {
+      enable = true;
+      settings = {
+        round_corners = 6;
+        position = "top-right";
+      };
+    };
     wofi.enable = true;
     fuzzel.enable = true;
     carapace = {
