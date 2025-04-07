@@ -59,7 +59,7 @@ in
     file = { };
 
     sessionVariables = {
-      EDITOR = "hx";
+      VISUAL = config.home.sessionVariables.EDITOR;
       NIXOS_OZONE_WL = "1";
     };
   };
