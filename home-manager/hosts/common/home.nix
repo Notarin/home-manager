@@ -62,6 +62,7 @@
       light = "Papirus-Light";
     };
     targets.vscode.profileNames = [ "default" ];
+    targets.qt.enable = true; # For whatever reason, this must be explicitly enabled.
   };
   i18n.inputMethod = {
     enabled = "fcitx5";
