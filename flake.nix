@@ -11,7 +11,10 @@
       url = "github:johanneshorner/nixGL";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    stylix.url = "github:danth/stylix";
+    stylix = {
+      url = "github:danth/stylix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
