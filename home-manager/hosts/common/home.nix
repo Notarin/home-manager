@@ -57,6 +57,7 @@ in
       r2modman
       packwiz
       qjackctl
+      gparted
     ];
 
     sessionVariables = {
