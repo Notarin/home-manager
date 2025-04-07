@@ -41,6 +41,10 @@ in
 
   home = {
     packages = with pkgs; [
+      (discord.override {
+        withVencord = true;
+      })
+      vesktop
       killall
       pwvucontrol
       gnome-disk-utility
@@ -51,7 +55,6 @@ in
       wine
       file-roller
       wl-clipboard
-      vesktop
       jetbrains.rust-rover
       prismlauncher
       r2modman
@@ -102,5 +105,11 @@ in
   };
 
   # Allow unfree packages
-  nixpkgs.config.allowUnfree = true;
+  nixpkgs.config = {
+    allowUnfree = true;
+    vivaldi = {
+      proprietaryCodecs = true;
+      enableWideVine = true;
+    };
+  };
 }
