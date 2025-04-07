@@ -28,6 +28,7 @@
       tealdeer
       r2modman
       packwiz
+      qjackctl
     ];
 
     # Files that are symlinked to the home directory
