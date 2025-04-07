@@ -7,6 +7,33 @@
   ...
 }:
 
+let
+  simpleEnabledPrograms =
+    programs:
+    lib.foldl' (prevIteration: program: prevIteration // { "${program}".enable = true; }) { } programs;
+  complexEnabledPrograms =
+    dir:
+    let
+      nixFiles = builtins.filter (file: lib.hasSuffix ".nix" file) (
+        builtins.attrNames (builtins.readDir dir)
+      );
+      programAttrs = builtins.foldl' (
+        prevIteration: file:
+        prevIteration
+        // {
+          "${lib.removeSuffix ".nix" file}" = import (dir + "/${file}") {
+            inherit
+              pkgs
+              lib
+              config
+              rootDir
+              ;
+          };
+        }
+      ) { } nixFiles;
+    in
+    programAttrs;
+in
 {
   home = {
     packages = with pkgs; [
@@ -73,79 +100,24 @@
   gtk.enable = true;
   qt.enable = true;
 
-  programs = {
-    nh.enable = true;
-    git.enable = true;
-    direnv.enable = true;
-    tealdeer.enable = true;
-    btop = {
-      enable = true;
-      settings = {
-        update_ms = 100;
-      };
-    };
-    starship = {
-      enable = true;
-      enableNushellIntegration = true;
-      settings = {
-        add_newline = false;
-        hostname = {
-          ssh_symbol = "📡";
-        };
-        shell = {
-          disabled = false;
-        };
-      };
-    };
-    helix = {
-      enable = true;
-      defaultEditor = true;
-      extraPackages = with pkgs; [
-        rust-analyzer
-      ];
-      settings = {
-        keys.normal = {
-          y = "yank_to_clipboard";
-          p = "paste_clipboard_after";
-          P = "paste_clipboard_before";
-        };
-      };
-    };
-    wezterm = {
-      enable = true;
-      extraConfig = builtins.readFile (rootDir + /Software/wezterm-settings.lua);
-    };
-    nushell = import (rootDir + /Software/nushell-config.nix) {
-      inherit pkgs lib config;
-    };
-    zoxide = {
-      enable = true;
-      enableNushellIntegration = true;
-    };
-    bat.enable = true;
-    vscode = import (rootDir + /Software/vscode-settings.nix) {
-      inherit pkgs lib;
-    };
-    cava.enable = true;
-    gitui.enable = true;
-    mangohud = {
-      enable = true;
-      settings = {
-        round_corners = 6;
-        position = "top-right";
-      };
-    };
-    wofi.enable = true;
-    fuzzel.enable = true;
-    carapace = {
-      enable = true;
-      enableNushellIntegration = true;
-    };
-  };
+  programs =
+    (simpleEnabledPrograms [
+      "home-manager"
+      "nh"
+      "git"
+      "direnv"
+      "tealdeer"
+      "bat"
+      "cava"
+      "gitui"
+      "wofi"
+      "fuzzel"
+    ])
+    // (complexEnabledPrograms (rootDir + /Software));
 
   services.swaync.enable = true;
 
-  wayland.windowManager.hyprland = import (rootDir + /Software/hyprland-settings.nix) {
+  wayland.windowManager.hyprland = import (rootDir + /resources/hyprland.nix) {
     inherit pkgs lib;
   };
 
@@ -159,7 +131,4 @@
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
-
-  # Allow home-manager to update itself
-  programs.home-manager.enable = true;
 }
