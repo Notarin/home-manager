@@ -62,6 +62,7 @@ in
       qjackctl
       gparted
       comma
+      vlc
     ];
 
     sessionVariables = {
