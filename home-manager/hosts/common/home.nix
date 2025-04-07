@@ -11,7 +11,6 @@
   home = {
     packages = with pkgs; [
       killall
-      nixgl.nixGLIntel
       pwvucontrol
       gnome-disk-utility
       overskride

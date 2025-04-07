@@ -121,21 +121,6 @@
       }
     },
     "flake-utils": {
-      "locked": {
-        "lastModified": 1659877975,
-        "narHash": "sha256-zllb8aq3YO3h8B/U0/J1WBgAL8EX5yWf5pMj3G0NAmc=",
-        "owner": "numtide",
-        "repo": "flake-utils",
-        "rev": "c0e246b9b83f637f4681389ecabcb2681b4f3af0",
-        "type": "github"
-      },
-      "original": {
-        "owner": "numtide",
-        "repo": "flake-utils",
-        "type": "github"
-      }
-    },
-    "flake-utils_2": {
       "inputs": {
         "systems": [
           "stylix",
@@ -278,27 +263,6 @@
         "type": "github"
       }
     },
-    "nixgl": {
-      "inputs": {
-        "flake-utils": "flake-utils",
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1737970673,
-        "narHash": "sha256-WDBc35XdHCdmgVYbPOtd2IeUtUHCYwNyEpIr5vLZMng=",
-        "owner": "johanneshorner",
-        "repo": "nixGL",
-        "rev": "137f5222848faee575db10f1998a775bf0de7107",
-        "type": "github"
-      },
-      "original": {
-        "owner": "johanneshorner",
-        "repo": "nixGL",
-        "type": "github"
-      }
-    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1743827369,
@@ -341,7 +305,6 @@
     "root": {
       "inputs": {
         "home-manager": "home-manager",
-        "nixgl": "nixgl",
         "nixpkgs": "nixpkgs",
         "stylix": "stylix"
       }
@@ -354,7 +317,7 @@
         "base16-vim": "base16-vim",
         "firefox-gnome-theme": "firefox-gnome-theme",
         "flake-compat": "flake-compat",
-        "flake-utils": "flake-utils_2",
+        "flake-utils": "flake-utils",
         "git-hooks": "git-hooks",
         "gnome-shell": "gnome-shell",
         "home-manager": "home-manager_2",

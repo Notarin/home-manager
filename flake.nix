@@ -7,10 +7,6 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nixgl = {
-      url = "github:johanneshorner/nixGL";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     stylix = {
       url = "github:danth/stylix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -21,7 +17,6 @@
     {
       self,
       nixpkgs,
-      nixgl,
       home-manager,
       stylix,
       ...
@@ -29,7 +24,7 @@
     let
       pkgs = import nixpkgs {
         system = "x86_64-linux";
-        overlays = [ nixgl.overlay ];
+        overlays = [ ];
       };
 
       lib = inputs.nixpkgs.lib;
