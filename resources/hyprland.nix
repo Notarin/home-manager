@@ -106,7 +106,6 @@
     ];
 
     exec-once = [
-      "${lib.getExe pkgs.swaynotificationcenter}"
       "${lib.getExe pkgs.google-chrome}"
       "${lib.getExe pkgs.vesktop}"
     ];
