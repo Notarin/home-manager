@@ -19,12 +19,10 @@
       nixfmt-rfc-style
       wine
       file-roller
-      direnv
       wl-clipboard
       vesktop
       jetbrains.rust-rover
       prismlauncher
-      tealdeer
       r2modman
       packwiz
       qjackctl
@@ -79,6 +77,7 @@
     nh.enable = true;
     git.enable = true;
     direnv.enable = true;
+    tealdeer.enable = true;
     btop = {
       enable = true;
       settings = {
