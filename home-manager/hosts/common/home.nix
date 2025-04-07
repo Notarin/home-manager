@@ -58,6 +58,7 @@ in
       packwiz
       qjackctl
       gparted
+      comma
     ];
 
     sessionVariables = {
