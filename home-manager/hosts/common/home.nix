@@ -59,9 +59,6 @@ in
       qjackctl
     ];
 
-    # Files that are symlinked to the home directory
-    file = { };
-
     sessionVariables = {
       VISUAL = config.home.sessionVariables.EDITOR;
       NIXOS_OZONE_WL = "1";
