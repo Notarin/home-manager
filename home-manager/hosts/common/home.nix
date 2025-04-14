@@ -63,6 +63,7 @@ in
       gparted
       comma
       vlc
+      gimp
     ];
 
     sessionVariables = {
