@@ -3,7 +3,7 @@
   stylix = {
     enable = true;
     autoEnable = true;
-    base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-dark-soft.yaml";
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/chalk.yaml";
     image = rootDir + /Images/Horizontal_WP.png;
     fonts.monospace = {
       name = "Fira Code";
