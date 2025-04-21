@@ -55,7 +55,6 @@ in
       wine
       file-roller
       wl-clipboard
-      jetbrains.rust-rover
       prismlauncher
       r2modman
       packwiz
