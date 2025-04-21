@@ -63,6 +63,7 @@ in
       comma
       vlc
       gimp
+      element-desktop
     ];
 
     sessionVariables = {
