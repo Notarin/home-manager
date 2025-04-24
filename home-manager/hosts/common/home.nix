@@ -64,6 +64,7 @@ in
       vlc
       gimp
       element-desktop
+      hydrus
     ];
 
     sessionVariables = {
