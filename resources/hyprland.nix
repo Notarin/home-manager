@@ -119,7 +119,7 @@
       "renderunfocused,title:^(Minecraft)"
       "renderunfocused,class:^(steam_app_3146520)$"
       "noborder, fullscreen:1"
-      "noshortcutsinhibit,class:^(virt-manager)$"
+      "noshortcutsinhibit,class:.*virt-manager.*"
       "workspace 10, class:^(vesktop)$"
     ];
 
