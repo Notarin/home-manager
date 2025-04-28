@@ -24,6 +24,7 @@
   shellAliases = {
     q = "exit";
     l = "ls";
+    la = "ls -la";
     c = "clear";
     cd = "z";
     cat = lib.getExe pkgs.bat;
