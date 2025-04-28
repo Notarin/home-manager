@@ -3,6 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    flake-utils.url = "github:numtide/flake-utils";
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -17,23 +18,17 @@
     {
       self,
       nixpkgs,
+      flake-utils,
       home-manager,
       stylix,
       ...
-    }@inputs:
+    }:
     let
-      pkgs = import nixpkgs {
-        system = "x86_64-linux";
-        overlays = [ ];
-      };
-
-      lib = inputs.nixpkgs.lib;
-
       usersDir = ./home-manager/users;
-      removeNixSuffix = raw_name: lib.removeSuffix ".nix" raw_name;
+      removeNixSuffix = raw_name: nixpkgs.lib.removeSuffix ".nix" raw_name;
       getPathString =
         { location, fileName }:
-        lib.strings.concatStrings [
+        nixpkgs.lib.strings.concatStrings [
           (builtins.toString location)
           "/"
           fileName
@@ -74,27 +69,33 @@
         rootDir = self;
       };
     in
-    {
-      homeConfigurations = builtins.listToAttrs (
-        builtins.concatMap (
-          user:
-          builtins.concatMap (host: [
-            {
-              name = "${user.userName}@${host.hostName}";
-              value = home-manager.lib.homeManagerConfiguration {
-                inherit pkgs extraSpecialArgs;
-                modules = commonModules ++ [ host.configPath ];
-              };
-            }
-          ]) hosts
-        ) users
-        ++ builtins.map (user: {
-          name = "${user.userName}";
-          value = home-manager.lib.homeManagerConfiguration {
-            inherit pkgs extraSpecialArgs;
-            modules = commonModules ++ [ user.configPath ];
-          };
-        }) users
-      );
-    };
+    flake-utils.lib.eachDefaultSystemPassThrough (
+      system:
+      let
+        pkgs = nixpkgs.legacyPackages.${system};
+      in
+      {
+        homeConfigurations = builtins.listToAttrs (
+          builtins.concatMap (
+            user:
+            builtins.concatMap (host: [
+              {
+                name = "${user.userName}@${host.hostName}";
+                value = home-manager.lib.homeManagerConfiguration {
+                  inherit pkgs extraSpecialArgs;
+                  modules = commonModules ++ [ host.configPath ];
+                };
+              }
+            ]) hosts
+          ) users
+          ++ builtins.map (user: {
+            name = "${user.userName}";
+            value = home-manager.lib.homeManagerConfiguration {
+              inherit pkgs extraSpecialArgs;
+              modules = commonModules ++ [ user.configPath ];
+            };
+          }) users
+        );
+      }
+    );
 }
