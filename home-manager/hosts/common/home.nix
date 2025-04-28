@@ -94,6 +94,24 @@ in
     // (complexEnabledPrograms (rootDir + /Software));
 
   services.swaync.enable = true;
+  services.glance.enable = true;
+  services.glance.settings = {
+    pages = [
+      {
+        columns = [
+          {
+            size = "full";
+            widgets = [
+              {
+                type = "calendar";
+              }
+            ];
+          }
+        ];
+        name = "Calendar";
+      }
+    ];
+  };
 
   wayland.windowManager.hyprland = import (rootDir + /resources/hyprland.nix) {
     inherit pkgs lib;
