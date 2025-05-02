@@ -33,6 +33,31 @@ let
       ) { } nixFiles;
     in
     programAttrs;
+  simpleEnabledServices =
+    services:
+    lib.foldl' (prevIteration: service: prevIteration // { "${service}".enable = true; }) { } services;
+  complexEnabledServices =
+    dir:
+    let
+      nixFiles = builtins.filter (file: lib.hasSuffix ".nix" file) (
+        builtins.attrNames (builtins.readDir dir)
+      );
+      serviceAttrs = builtins.foldl' (
+        prevIteration: file:
+        prevIteration
+        // {
+          "${lib.removeSuffix ".nix" file}" = import (dir + "/${file}") {
+            inherit
+              pkgs
+              lib
+              config
+              rootDir
+              ;
+          };
+        }
+      ) { } nixFiles;
+    in
+    serviceAttrs;
 in
 {
   imports = [
@@ -93,25 +118,11 @@ in
     ])
     // (complexEnabledPrograms (rootDir + /Software));
 
-  services.swaync.enable = true;
-  services.glance.enable = true;
-  services.glance.settings = {
-    pages = [
-      {
-        columns = [
-          {
-            size = "full";
-            widgets = [
-              {
-                type = "calendar";
-              }
-            ];
-          }
-        ];
-        name = "Calendar";
-      }
-    ];
-  };
+  services =
+    (simpleEnabledServices [
+      "swaync"
+    ])
+    // (complexEnabledServices (rootDir + /Services));
 
   wayland.windowManager.hyprland = import (rootDir + /resources/hyprland.nix) {
     inherit pkgs lib;
