@@ -115,6 +115,7 @@ in
       "gitui"
       "wofi"
       "fuzzel"
+      "gpg"
     ])
     // (complexEnabledPrograms (rootDir + /Software));
 
