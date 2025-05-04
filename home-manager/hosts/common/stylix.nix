@@ -5,9 +5,13 @@
     autoEnable = true;
     base16Scheme = "${pkgs.base16-schemes}/share/themes/chalk.yaml";
     image = rootDir + /Images/Horizontal_WP.png;
-    fonts.monospace = {
-      name = "Fira Code";
-      package = pkgs.fira-code;
+    fonts = rec {
+      monospace = {
+        name = "Fira Code";
+        package = pkgs.fira-code;
+      };
+      serif = monospace;
+      sansSerif = monospace;
     };
     cursor = {
       package = pkgs.oreo-cursors-plus;
