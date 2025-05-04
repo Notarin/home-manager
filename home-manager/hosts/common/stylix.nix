@@ -7,8 +7,8 @@
     image = rootDir + /Images/Horizontal_WP.png;
     fonts = rec {
       monospace = {
-        name = "Fira Code";
-        package = pkgs.fira-code;
+        name = "Fira Code Nerd Font";
+        package = pkgs.nerd-fonts.fira-code;
       };
       serif = monospace;
       sansSerif = monospace;
