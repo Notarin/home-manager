@@ -83,7 +83,10 @@
                 name = "${user.userName}@${host.hostName}";
                 value = home-manager.lib.homeManagerConfiguration {
                   inherit pkgs extraSpecialArgs;
-                  modules = commonModules ++ [ host.configPath ];
+                  modules = commonModules ++ [
+                    host.configPath
+                    user.configPath
+                  ];
                 };
               }
             ]) hosts

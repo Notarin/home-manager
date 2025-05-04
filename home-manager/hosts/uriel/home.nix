@@ -1,10 +1,6 @@
 { lib, ... }:
 
 {
-  # Uriel specific configuration
-  home.username = "notarin";
-  home.homeDirectory = "/home/notarin";
-
   wayland.windowManager.hyprland = {
     package = lib.mkForce null;
     #portalPackage = lib.mkForce null;
