@@ -26,6 +26,8 @@
     };
     targets.vscode.profileNames = [ "default" ];
     targets.qt.enable = true; # For whatever reason, this must be explicitly enabled.
+    targets.vesktop.enable = true;
+    targets.vencord.enable = true;
   };
   i18n.inputMethod = {
     enable = true;
