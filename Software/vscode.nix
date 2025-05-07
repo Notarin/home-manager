@@ -1,5 +1,8 @@
-{ pkgs, lib, ... }:
 {
+  pkgs,
+  lib,
+  ...
+}: {
   enable = true;
   mutableExtensionsDir = false;
   profiles.default = {
@@ -45,7 +48,7 @@
       "nix.serverSettings" = {
         nil = {
           formatting = {
-            command = [ "${lib.getExe pkgs.nixfmt-rfc-style}" ];
+            command = ["${lib.getExe pkgs.nixfmt-rfc-style}"];
           };
         };
       };
@@ -55,8 +58,7 @@
       "rust-analyzer.checkOnSave" = true;
       "rust-analyzer.server.extraEnv" = {
         "PATH" = lib.makeBinPath (
-          with pkgs;
-          [
+          with pkgs; [
             gcc
             cargo
             rustc
@@ -92,9 +94,9 @@
           };
           options.shell = {
             executable = "${lib.getExe pkgs.nushell}";
-            args = [ "-c" ];
+            args = ["-c"];
           };
-          problemMatcher = [ ];
+          problemMatcher = [];
         }
         {
           label = "Rebuild & Deploy NixOS with nh";
@@ -113,9 +115,9 @@
           };
           options.shell = {
             executable = "${lib.getExe pkgs.nushell}";
-            args = [ "-c" ];
+            args = ["-c"];
           };
-          problemMatcher = [ ];
+          problemMatcher = [];
         }
       ];
     };
@@ -133,6 +135,5 @@
       thenuprojectcontributors.vscode-nushell-lang
     ];
     enableExtensionUpdateCheck = false;
-
   };
 }

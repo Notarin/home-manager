@@ -14,90 +14,98 @@
     };
   };
 
-  outputs =
-    {
-      self,
-      nixpkgs,
-      flake-utils,
-      home-manager,
-      stylix,
-      ...
+  outputs = {
+    self,
+    nixpkgs,
+    flake-utils,
+    home-manager,
+    stylix,
+    ...
+  }: let
+    usersDir = ./home-manager/users;
+    removeNixSuffix = raw_name: nixpkgs.lib.removeSuffix ".nix" raw_name;
+    getPathString = {
+      location,
+      fileName,
     }:
-    let
-      usersDir = ./home-manager/users;
-      removeNixSuffix = raw_name: nixpkgs.lib.removeSuffix ".nix" raw_name;
-      getPathString =
-        { location, fileName }:
-        nixpkgs.lib.strings.concatStrings [
-          (builtins.toString location)
-          "/"
-          fileName
-        ];
-      getPath =
-        { location, fileName }:
-        /.
-        + (getPathString {
-          inherit location;
-          inherit fileName;
-        });
-      usersRaw = builtins.attrNames (builtins.readDir usersDir);
-      parseRawUsers = builtins.map (rawUser: {
-        userName = removeNixSuffix rawUser;
-        configPath = getPath {
-          location = usersDir;
-          fileName = rawUser;
-        };
+      nixpkgs.lib.strings.concatStrings [
+        (builtins.toString location)
+        "/"
+        fileName
+      ];
+    getPath = {
+      location,
+      fileName,
+    }:
+      /.
+      + (getPathString {
+        inherit location;
+        inherit fileName;
       });
-      users = parseRawUsers usersRaw;
+    usersRaw = builtins.attrNames (builtins.readDir usersDir);
+    parseRawUsers = builtins.map (rawUser: {
+      userName = removeNixSuffix rawUser;
+      configPath = getPath {
+        location = usersDir;
+        fileName = rawUser;
+      };
+    });
+    users = parseRawUsers usersRaw;
 
-      hostsDir = ./home-manager/hosts;
-      hostsRaw = builtins.filter (host: host != "common") (
-        builtins.attrNames (builtins.readDir hostsDir)
-      );
-      hosts = builtins.map (host: {
+    hostsDir = ./home-manager/hosts;
+    hostsRaw = builtins.filter (host: host != "common") (
+      builtins.attrNames (builtins.readDir hostsDir)
+    );
+    hosts =
+      builtins.map (host: {
         hostName = host;
         configPath = /. + "${builtins.toString hostsDir}/${host}/home.nix";
-      }) hostsRaw;
+      })
+      hostsRaw;
 
-      common = ./home-manager/hosts/common/home.nix;
-      commonModules = [
-        common
-        stylix.homeManagerModules.stylix
-      ];
+    common = ./home-manager/hosts/common/home.nix;
+    commonModules = [
+      common
+      stylix.homeManagerModules.stylix
+    ];
 
-      extraSpecialArgs = {
-        rootDir = self;
-      };
-    in
+    extraSpecialArgs = {
+      rootDir = self;
+    };
+  in
     flake-utils.lib.eachDefaultSystemPassThrough (
-      system:
-      let
+      system: let
         pkgs = nixpkgs.legacyPackages.${system};
-      in
-      {
+      in {
+        formatter.${system} = pkgs.alejandra;
         homeConfigurations = builtins.listToAttrs (
           builtins.concatMap (
             user:
-            builtins.concatMap (host: [
-              {
-                name = "${user.userName}@${host.hostName}";
-                value = home-manager.lib.homeManagerConfiguration {
-                  inherit pkgs extraSpecialArgs;
-                  modules = commonModules ++ [
-                    host.configPath
-                    user.configPath
-                  ];
-                };
-              }
-            ]) hosts
-          ) users
+              builtins.concatMap (host: [
+                {
+                  name = "${user.userName}@${host.hostName}";
+                  value = home-manager.lib.homeManagerConfiguration {
+                    inherit pkgs extraSpecialArgs;
+                    modules =
+                      commonModules
+                      ++ [
+                        host.configPath
+                        user.configPath
+                      ];
+                  };
+                }
+              ])
+              hosts
+          )
+          users
           ++ builtins.map (user: {
             name = "${user.userName}";
             value = home-manager.lib.homeManagerConfiguration {
               inherit pkgs extraSpecialArgs;
-              modules = commonModules ++ [ user.configPath ];
+              modules = commonModules ++ [user.configPath];
             };
-          }) users
+          })
+          users
         );
       }
     );

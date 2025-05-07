@@ -1,10 +1,12 @@
-{ pkgs, lib, ... }:
-
 {
+  pkgs,
+  lib,
+  ...
+}: {
   enable = true;
   package = pkgs.hyprland;
   portalPackage = pkgs.xdg-desktop-portal-hyprland;
-  systemd.variables = [ "--all" ];
+  systemd.variables = ["--all"];
   settings = {
     "$mod" = "SUPER";
 

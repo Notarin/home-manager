@@ -1,6 +1,4 @@
-{ ... }:
-
-{
+{...}: {
   enable = true;
   enableNushellIntegration = true;
   settings = {

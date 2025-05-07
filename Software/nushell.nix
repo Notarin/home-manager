@@ -3,8 +3,7 @@
   pkgs,
   config,
   ...
-}:
-{
+}: {
   enable = true;
   settings = {
     show_banner = false;
