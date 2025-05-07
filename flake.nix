@@ -12,6 +12,7 @@
       url = "github:danth/stylix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    treefmt-nix.url = "github:numtide/treefmt-nix";
   };
 
   outputs = {
@@ -20,6 +21,7 @@
     flake-utils,
     home-manager,
     stylix,
+    treefmt-nix,
     ...
   }: let
     usersDir = ./home-manager/users;
@@ -76,8 +78,10 @@
     flake-utils.lib.eachDefaultSystemPassThrough (
       system: let
         pkgs = nixpkgs.legacyPackages.${system};
+        treefmt-config = treefmt-nix.lib.evalModule pkgs ./treefmt.nix;
       in {
-        formatter.${system} = pkgs.alejandra;
+        formatter.${system} = treefmt-config.config.build.wrapper;
+        checks.${system}.formatting = treefmt-config.config.build.check self;
         homeConfigurations = builtins.listToAttrs (
           builtins.concatMap (
             user:
