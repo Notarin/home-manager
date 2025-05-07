@@ -1,6 +1,4 @@
-{ ... }:
-
-{
+{...}: {
   enable = true;
   settings = {
     round_corners = 6;

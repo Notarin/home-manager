@@ -1,5 +1,8 @@
-{ pkgs, rootDir, ... }:
 {
+  pkgs,
+  rootDir,
+  ...
+}: {
   stylix = {
     enable = true;
     autoEnable = true;
@@ -24,7 +27,7 @@
       dark = "Papirus-Dark";
       light = "Papirus-Light";
     };
-    targets.vscode.profileNames = [ "default" ];
+    targets.vscode.profileNames = ["default"];
     targets.qt.enable = true; # For whatever reason, this must be explicitly enabled.
     targets.vesktop.enable = true;
     targets.vencord.enable = true;
@@ -33,7 +36,7 @@
     enable = true;
     type = "fcitx5";
     fcitx5 = {
-      addons = with pkgs; [ fcitx5-mozc ];
+      addons = with pkgs; [fcitx5-mozc];
       waylandFrontend = true;
     };
   };
