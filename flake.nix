@@ -82,6 +82,21 @@
       in {
         formatter.${system} = treefmt-config.config.build.wrapper;
         checks.${system}.formatting = treefmt-config.config.build.check self;
+        devShells.${system}.default = pkgs.mkShell {
+          shellHook = ''
+            oldHookDir=$(git config --local core.hooksPath)
+
+            if [ "$oldHookDir" != "$PWD/.githooks" ]; then
+              read -rp "Set git hooks to $PWD/.githooks? (y/n) " answer
+              if [ "$answer" = "y" ]; then
+                git config core.hooksPath "$PWD"/.githooks
+                echo "Set git hooks to $PWD/.githooks"
+              else
+                echo "Skipping git hooks setup"
+              fi
+            fi
+          '';
+        };
         homeConfigurations = builtins.listToAttrs (
           builtins.concatMap (
             user:
