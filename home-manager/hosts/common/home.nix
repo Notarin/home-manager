@@ -18,26 +18,20 @@
         withVencord = true;
       })
       vesktop
-      killall
       pwvucontrol
       gnome-disk-utility
       overskride
       google-chrome
-      nil
-      nixfmt-rfc-style
       wine
       file-roller
       wl-clipboard
       prismlauncher
       r2modman
-      packwiz
       qjackctl
-      gparted
       comma
       vlc
       gimp
       element-desktop
-      hydrus
     ];
 
     sessionVariables = {
