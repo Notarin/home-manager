@@ -63,7 +63,7 @@ in {
       "tealdeer"
       "bat"
       "cava"
-      "gitui"
+      "lazygit"
       "wofi"
       "fuzzel"
       "gpg"
