@@ -3,6 +3,7 @@
   lib,
   config,
   self,
+  system,
   ...
 }: let
   simpleEnabledPrograms = programs:
@@ -22,6 +23,7 @@
                 lib
                 config
                 self
+                system
                 ;
             };
           }
