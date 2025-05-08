@@ -1,13 +1,13 @@
 {
   pkgs,
-  rootDir,
+  self,
   ...
 }: {
   stylix = {
     enable = true;
     autoEnable = true;
     base16Scheme = "${pkgs.base16-schemes}/share/themes/chalk.yaml";
-    image = rootDir + /Images/Horizontal_WP.png;
+    image = self + /Images/Horizontal_WP.png;
     fonts = rec {
       monospace = {
         name = "Fira Code Nerd Font";

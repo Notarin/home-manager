@@ -1,4 +1,4 @@
-{rootDir, ...}: {
+{self, ...}: {
   enable = true;
-  extraConfig = builtins.readFile (rootDir + /resources/wezterm.lua);
+  extraConfig = builtins.readFile (self + /resources/wezterm.lua);
 }

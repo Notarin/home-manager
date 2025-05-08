@@ -2,7 +2,7 @@
 {
   pkgs,
   lib,
-  rootDir,
+  self,
   config,
   ...
 }: {
@@ -45,7 +45,7 @@
   gtk.enable = true;
   qt.enable = true;
 
-  wayland.windowManager.hyprland = import (rootDir + /resources/hyprland.nix) {
+  wayland.windowManager.hyprland = import (self + /resources/hyprland.nix) {
     inherit pkgs lib;
   };
 }
