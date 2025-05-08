@@ -1,6 +1,8 @@
 {
   pkgs,
   lib,
+  self,
+  system,
   ...
 }: {
   enable = true;
@@ -48,7 +50,7 @@
       "nix.serverSettings" = {
         nil = {
           formatting = {
-            command = ["${lib.getExe pkgs.nixfmt-rfc-style}"];
+            command = ["${lib.getExe self.formatter.${system}}" "--quiet" "--stdin" "\${file}"];
           };
         };
       };
