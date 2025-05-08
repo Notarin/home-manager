@@ -3,25 +3,7 @@
   pkgs,
   config,
   ...
-}: let
-  patternMatch = match: none: multiple: pattern: let
-    isValidPattern =
-      builtins.all (
-        entry: (builtins.isList entry) && (builtins.length entry == 2)
-      )
-      pattern;
-    matches = builtins.filter (entry: (builtins.elemAt entry 0) == match) pattern;
-    return =
-      if builtins.length matches == 1
-      then builtins.elemAt (builtins.elemAt matches 0) 1
-      else if builtins.length matches == 0
-      then none
-      else if builtins.length matches > 1
-      then multiple
-      else throw "Unreachable branch! Somehow a lists length was not 0, 1, or any greater number?!";
-  in
-    assert isValidPattern; return;
-in {
+}: {
   enable = true;
   settings = {
     show_banner = false;
@@ -46,7 +28,7 @@ in {
     cd = "z";
     cat = lib.getExe pkgs.bat;
     gitui =
-      patternMatch true "echo 'No visual git enabled.'" (throw "Multiple visual git clients enabled.")
+      lib.local.patternMatch true "echo 'No visual git enabled.'" (throw "Multiple visual git clients enabled.")
       [
         [
           config.programs.gitui.enable
