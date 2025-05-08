@@ -76,7 +76,7 @@
           stylix.homeManagerModules.stylix
         ];
         extraSpecialArgs = {
-          rootDir = self;
+          inherit self;
         };
       in {
         formatter.${system} = treefmt-config.config.build.wrapper;

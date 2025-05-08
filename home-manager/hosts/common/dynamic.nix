@@ -2,7 +2,7 @@
   pkgs,
   lib,
   config,
-  rootDir,
+  self,
   ...
 }: let
   simpleEnabledPrograms = programs:
@@ -21,7 +21,7 @@
                 pkgs
                 lib
                 config
-                rootDir
+                self
                 ;
             };
           }
@@ -45,7 +45,7 @@
                 pkgs
                 lib
                 config
-                rootDir
+                self
                 ;
             };
           }
@@ -68,11 +68,11 @@ in {
       "fuzzel"
       "gpg"
     ])
-    // (complexEnabledPrograms (rootDir + /Software));
+    // (complexEnabledPrograms (self + /Software));
 
   services =
     (simpleEnabledServices [
       "swaync"
     ])
-    // (complexEnabledServices (rootDir + /Services));
+    // (complexEnabledServices (self + /Services));
 }
