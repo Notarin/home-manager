@@ -23,62 +23,61 @@
     stylix,
     treefmt-nix,
     ...
-  }: let
-    usersDir = ./home-manager/users;
-    removeNixSuffix = raw_name: nixpkgs.lib.removeSuffix ".nix" raw_name;
-    getPathString = {
-      location,
-      fileName,
-    }:
-      nixpkgs.lib.strings.concatStrings [
-        (builtins.toString location)
-        "/"
-        fileName
-      ];
-    getPath = {
-      location,
-      fileName,
-    }:
-      /.
-      + (getPathString {
-        inherit location;
-        inherit fileName;
-      });
-    usersRaw = builtins.attrNames (builtins.readDir usersDir);
-    parseRawUsers = builtins.map (rawUser: {
-      userName = removeNixSuffix rawUser;
-      configPath = getPath {
-        location = usersDir;
-        fileName = rawUser;
-      };
-    });
-    users = parseRawUsers usersRaw;
-
-    hostsDir = ./home-manager/hosts;
-    hostsRaw = builtins.filter (host: host != "common") (
-      builtins.attrNames (builtins.readDir hostsDir)
-    );
-    hosts =
-      builtins.map (host: {
-        hostName = host;
-        configPath = /. + "${builtins.toString hostsDir}/${host}/home.nix";
-      })
-      hostsRaw;
-
-    common = ./home-manager/hosts/common/home.nix;
-    commonModules = [
-      common
-      stylix.homeManagerModules.stylix
-    ];
-
-    extraSpecialArgs = {
-      rootDir = self;
-    };
-  in
+  }:
     flake-utils.lib.eachDefaultSystemPassThrough (
       system: let
         pkgs = nixpkgs.legacyPackages.${system};
         treefmt-config = treefmt-nix.lib.evalModule pkgs ./treefmt.nix;
+
+        usersDir = ./home-manager/users;
+        removeNixSuffix = raw_name: nixpkgs.lib.removeSuffix ".nix" raw_name;
+        getPathString = {
+          location,
+          fileName,
+        }:
+          nixpkgs.lib.strings.concatStrings [
+            (builtins.toString location)
+            "/"
+            fileName
+          ];
+        getPath = {
+          location,
+          fileName,
+        }:
+          /.
+          + (getPathString {
+            inherit location;
+            inherit fileName;
+          });
+        usersRaw = builtins.attrNames (builtins.readDir usersDir);
+        parseRawUsers = builtins.map (rawUser: {
+          userName = removeNixSuffix rawUser;
+          configPath = getPath {
+            location = usersDir;
+            fileName = rawUser;
+          };
+        });
+        users = parseRawUsers usersRaw;
+
+        hostsDir = ./home-manager/hosts;
+        hostsRaw = builtins.filter (host: host != "common") (
+          builtins.attrNames (builtins.readDir hostsDir)
+        );
+        hosts =
+          builtins.map (host: {
+            hostName = host;
+            configPath = /. + "${builtins.toString hostsDir}/${host}/home.nix";
+          })
+          hostsRaw;
+
+        common = ./home-manager/hosts/common/home.nix;
+        commonModules = [
+          common
+          stylix.homeManagerModules.stylix
+        ];
+        extraSpecialArgs = {
+          rootDir = self;
+        };
       in {
         formatter.${system} = treefmt-config.config.build.wrapper;
         checks.${system}.formatting = treefmt-config.config.build.check self;
