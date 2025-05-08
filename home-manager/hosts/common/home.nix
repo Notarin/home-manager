@@ -5,58 +5,11 @@
   rootDir,
   config,
   ...
-}: let
-  simpleEnabledPrograms = programs:
-    lib.foldl' (prevIteration: program: prevIteration // {"${program}".enable = true;}) {} programs;
-  complexEnabledPrograms = dir: let
-    nixFiles = builtins.filter (file: lib.hasSuffix ".nix" file) (
-      builtins.attrNames (builtins.readDir dir)
-    );
-    programAttrs =
-      builtins.foldl' (
-        prevIteration: file:
-          prevIteration
-          // {
-            "${lib.removeSuffix ".nix" file}" = import (dir + "/${file}") {
-              inherit
-                pkgs
-                lib
-                config
-                rootDir
-                ;
-            };
-          }
-      ) {}
-      nixFiles;
-  in
-    programAttrs;
-  simpleEnabledServices = services:
-    lib.foldl' (prevIteration: service: prevIteration // {"${service}".enable = true;}) {} services;
-  complexEnabledServices = dir: let
-    nixFiles = builtins.filter (file: lib.hasSuffix ".nix" file) (
-      builtins.attrNames (builtins.readDir dir)
-    );
-    serviceAttrs =
-      builtins.foldl' (
-        prevIteration: file:
-          prevIteration
-          // {
-            "${lib.removeSuffix ".nix" file}" = import (dir + "/${file}") {
-              inherit
-                pkgs
-                lib
-                config
-                rootDir
-                ;
-            };
-          }
-      ) {}
-      nixFiles;
-  in
-    serviceAttrs;
-in {
+}: {
   imports = [
+    ./nix.nix
     ./stylix.nix
+    ./dynamic.nix
   ];
 
   home = {
@@ -98,46 +51,7 @@ in {
   gtk.enable = true;
   qt.enable = true;
 
-  programs =
-    (simpleEnabledPrograms [
-      "home-manager"
-      "nh"
-      "git"
-      "direnv"
-      "tealdeer"
-      "bat"
-      "cava"
-      "gitui"
-      "wofi"
-      "fuzzel"
-      "gpg"
-    ])
-    // (complexEnabledPrograms (rootDir + /Software));
-
-  services =
-    (simpleEnabledServices [
-      "swaync"
-    ])
-    // (complexEnabledServices (rootDir + /Services));
-
   wayland.windowManager.hyprland = import (rootDir + /resources/hyprland.nix) {
     inherit pkgs lib;
-  };
-
-  # Nix settings
-  nix = {
-    package = pkgs.nixVersions.latest;
-    settings = {
-      extra-experimental-features = "nix-command flakes";
-    };
-  };
-
-  # Allow unfree packages
-  nixpkgs.config = {
-    allowUnfree = true;
-    vivaldi = {
-      proprietaryCodecs = true;
-      enableWideVine = true;
-    };
   };
 }
