@@ -68,6 +68,7 @@
       p = "paste_after";
       P = "paste_clipboard_before";
       w = ":write";
+      q = ":quit";
       r = ":config-reload";
       b = ":buffer-next";
       C-right = "move_next_word_start";
