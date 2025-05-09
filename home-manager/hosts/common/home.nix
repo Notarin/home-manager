@@ -35,7 +35,21 @@
     ];
 
     sessionVariables = {
-      VISUAL = config.home.sessionVariables.EDITOR;
+      VISUAL =
+        lib.local.patternMatch true
+        (throw "No editor set to default!")
+        (throw "Multiple editors set to default simultaneously!")
+        [
+          [
+            config.programs.helix.enable
+            (lib.getExe pkgs.helix)
+          ]
+          [
+            config.programs.neovim.enable
+            (lib.getExe pkgs.neovim)
+          ]
+        ];
+      EDITOR = lib.mkForce "";
       NIXOS_OZONE_WL = "1";
     };
   };
