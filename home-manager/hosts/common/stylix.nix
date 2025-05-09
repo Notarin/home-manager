@@ -10,7 +10,7 @@
     image = self + /Images/Horizontal_WP.png;
     fonts = rec {
       monospace = {
-        name = "Fira Code Nerd Font";
+        name = "FiraCode Nerd Font";
         package = pkgs.nerd-fonts.fira-code;
       };
       serif = monospace;
