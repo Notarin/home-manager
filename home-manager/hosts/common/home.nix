@@ -17,7 +17,6 @@
       (discord.override {
         withVencord = true;
       })
-      vesktop
       pwvucontrol
       gnome-disk-utility
       overskride
