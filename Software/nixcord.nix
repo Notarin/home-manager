@@ -1,0 +1,5 @@
+{...}: {
+  vesktop = {
+    enable = true;
+  };
+}

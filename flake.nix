@@ -13,6 +13,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     treefmt-nix.url = "github:numtide/treefmt-nix";
+    nixcord.url = "github:kaylorben/nixcord";
   };
 
   outputs = {
@@ -22,6 +23,7 @@
     home-manager,
     stylix,
     treefmt-nix,
+    nixcord,
     ...
   }:
     flake-utils.lib.eachDefaultSystemPassThrough (
@@ -53,6 +55,7 @@
         commonModules = [
           ./home-manager/hosts/common/home.nix
           stylix.homeManagerModules.stylix
+          nixcord.homeModules.nixcord
         ];
         extraSpecialArgs = {
           inherit self system;
