@@ -31,6 +31,7 @@
       vlc
       gimp
       element-desktop
+      logseq
     ];
 
     sessionVariables = {
