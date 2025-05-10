@@ -36,6 +36,11 @@
       gimp
       element-desktop
       logseq
+
+      # Fonts
+      pkgs.nerd-fonts.fira-code
+      pkgs.dejavu_fonts
+      pkgs.jetbrains-mono
     ];
 
     sessionVariables = {
@@ -62,6 +67,8 @@
 
   gtk.enable = true;
   qt.enable = true;
+
+  fonts.fontconfig.enable = true;
 
   wayland.windowManager.hyprland = import (self + /resources/hyprland.nix) {
     inherit pkgs lib;
