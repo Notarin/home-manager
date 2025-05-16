@@ -17,6 +17,7 @@
       "wofi"
       "fuzzel"
       "gpg"
+      "obs-studio"
     ])
     // (lib.local.complexEnabledPrograms config (self + /Software));
 
