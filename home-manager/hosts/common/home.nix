@@ -36,6 +36,7 @@
       gimp
       element-desktop
       logseq
+      youtube-music
 
       # Fonts
       pkgs.nerd-fonts.fira-code
