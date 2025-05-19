@@ -108,8 +108,6 @@
     ];
 
     exec-once = [
-      "${lib.getExe pkgs.google-chrome}"
-      "${lib.getExe pkgs.vesktop}"
     ];
 
     env = [
