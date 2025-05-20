@@ -116,8 +116,7 @@
     ];
 
     windowrulev2 = [
-      "renderunfocused,title:^(Minecraft)"
-      "renderunfocused,class:^(steam_app_3146520)$"
+      "renderunfocused,title:^.*$"
       "noborder, fullscreen:1"
       "noshortcutsinhibit,class:.*virt-manager.*"
       "workspace 10, class:^(vesktop)$"
