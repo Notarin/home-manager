@@ -14,6 +14,12 @@
       ",XF86AudioPlay, exec, ${lib.getExe pkgs.playerctl} play-pause"
       ",XF86AudioPrev, exec, ${lib.getExe pkgs.playerctl} previous"
       ",XF86AudioNext, exec, ${lib.getExe pkgs.playerctl} next"
+      ",XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
+    ];
+
+    bindel = [
+      ",XF86AudioRaiseVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 1%+"
+      ",XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 1%-"
     ];
 
     bindm = [
