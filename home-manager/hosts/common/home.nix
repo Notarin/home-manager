@@ -38,6 +38,7 @@
       logseq
       youtube-music
       heroic
+      nautilus
 
       # Fonts
       pkgs.nerd-fonts.fira-code
@@ -65,7 +66,16 @@
     };
   };
 
-  xdg.portal.config.common.default = "*";
+  xdg.portal = {
+    enable = true;
+    extraPortals = with pkgs; [
+      xdg-desktop-portal-hyprland
+      xdg-desktop-portal-gtk
+    ];
+    config = {
+      hyprland.default = ["hyprland" "gtk"];
+    };
+  };
 
   gtk.enable = true;
   qt.enable = true;
