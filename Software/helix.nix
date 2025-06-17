@@ -87,6 +87,14 @@
           command = lib.getExe pkgs.alejandra;
         };
       }
+      {
+        name = "nu";
+        auto-format = true;
+        formatter = {
+          command = lib.getExe pkgs.nufmt;
+          args = ["--stdin"];
+        };
+      }
     ];
   };
 }
