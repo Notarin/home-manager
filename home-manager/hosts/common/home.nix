@@ -37,6 +37,7 @@
       element-desktop
       logseq
       youtube-music
+      heroic
 
       # Fonts
       pkgs.nerd-fonts.fira-code
