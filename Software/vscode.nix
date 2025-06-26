@@ -135,6 +135,7 @@
       tamasfe.even-better-toml
       fill-labs.dependi
       thenuprojectcontributors.vscode-nushell-lang
+      sumneko.lua
     ];
     enableExtensionUpdateCheck = false;
   };
