@@ -14,6 +14,7 @@
     };
     treefmt-nix.url = "github:numtide/treefmt-nix";
     nixcord.url = "github:kaylorben/nixcord";
+    nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions/00e11463876a04a77fb97ba50c015ab9e5bee90d";
   };
 
   outputs = {
@@ -24,6 +25,7 @@
     stylix,
     treefmt-nix,
     nixcord,
+    nix-vscode-extensions,
     ...
   }:
     flake-utils.lib.eachDefaultSystemPassThrough (
@@ -31,6 +33,9 @@
         pkgs = import nixpkgs {
           inherit system;
           config.allowUnfree = true;
+          overlays = [
+            nix-vscode-extensions.overlays.default
+          ];
         };
         lib = pkgs.lib.extend (prev: final:
           {
@@ -54,7 +59,7 @@
 
         commonModules = [
           ./home-manager/hosts/common/home.nix
-          stylix.homeManagerModules.stylix
+          stylix.homeModules.stylix
           nixcord.homeModules.nixcord
         ];
         extraSpecialArgs = {
