@@ -19,6 +19,22 @@
         command = "editor.action.quickFix";
         when = "editorHasCodeActionsProvider && textInputFocus && !editorReadonly";
       }
+      {
+        key = "ctrl+c";
+        command = "runCommands";
+        when = "terminalFocus && terminalTextSelected";
+        args = {
+          commands = [
+            "workbench.action.terminal.copySelection"
+            "workbench.action.terminal.clearSelection"
+          ];
+        };
+      }
+      {
+        key = "ctrl+v";
+        command = "workbench.action.terminal.paste";
+        when = "terminalFocus";
+      }
     ];
     userSettings = {
       "editor.renderWhitespace" = "all";
@@ -75,6 +91,10 @@
         "markdown" = true;
         "rust" = false;
       };
+      "terminal.integrated.commandsToSkipShell" = [
+        "workbench.action.terminal.copySelection"
+        "workbench.action.terminal.paste"
+      ];
     };
     userTasks = {
       version = "2.0.0";
