@@ -124,19 +124,22 @@
       ];
     };
     enableUpdateCheck = false;
-    extensions = with pkgs.vscode-extensions; [
-      mkhl.direnv
-      github.copilot
-      github.copilot-chat
-      yzhang.markdown-all-in-one
-      jnoortheen.nix-ide
-      arrterian.nix-env-selector
-      rust-lang.rust-analyzer
-      tamasfe.even-better-toml
-      fill-labs.dependi
-      thenuprojectcontributors.vscode-nushell-lang
-      sumneko.lua
-    ];
+    extensions =
+      #with pkgs.vscode-marketplace;
+      with pkgs.vscode-extensions; [
+        mkhl.direnv
+        github.copilot
+        github.copilot-chat
+        yzhang.markdown-all-in-one
+        jnoortheen.nix-ide
+        arrterian.nix-env-selector
+        rust-lang.rust-analyzer
+        tamasfe.even-better-toml
+        fill-labs.dependi
+        thenuprojectcontributors.vscode-nushell-lang
+        sumneko.lua
+        #vscode-intelli-refactor
+      ];
     enableExtensionUpdateCheck = false;
   };
 }

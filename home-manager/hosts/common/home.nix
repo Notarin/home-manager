@@ -17,10 +17,10 @@
       (discord.override {
         withVencord = true;
       })
-      (
-        pkgs.writeShellScriptBin "hydrus-client"
-        "env --unset=WAYLAND_DISPLAY ${lib.getExe' pkgs.hydrus "hydrus-client"}"
-      )
+      #(
+      #  pkgs.writeShellScriptBin "hydrus-client"
+      #  "env --unset=WAYLAND_DISPLAY ${lib.getExe' pkgs.hydrus "hydrus-client"}"
+      #)
       pwvucontrol
       gnome-disk-utility
       overskride
