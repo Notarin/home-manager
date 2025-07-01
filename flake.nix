@@ -3,6 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-25.05";
     flake-utils.url = "github:numtide/flake-utils";
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -20,6 +21,7 @@
   outputs = {
     self,
     nixpkgs,
+    nixpkgs-stable,
     flake-utils,
     home-manager,
     stylix,
@@ -36,6 +38,10 @@
           overlays = [
             nix-vscode-extensions.overlays.default
           ];
+        };
+        pkgs-stable = import nixpkgs-stable {
+          inherit system;
+          config.allowUnfree = true;
         };
         lib = pkgs.lib.extend (prev: final:
           {
@@ -63,7 +69,7 @@
           nixcord.homeModules.nixcord
         ];
         extraSpecialArgs = {
-          inherit self system;
+          inherit self system pkgs-stable;
         };
       in {
         formatter.${system} = treefmt-config.config.build.wrapper;
