@@ -1,6 +1,7 @@
 # This is the configuration that is deployed to ALL managed users.
 {
   pkgs,
+  pkgs-stable,
   lib,
   self,
   config,
@@ -17,10 +18,10 @@
       (discord.override {
         withVencord = true;
       })
-      #(
-      #  pkgs.writeShellScriptBin "hydrus-client"
-      #  "env --unset=WAYLAND_DISPLAY ${lib.getExe' pkgs.hydrus "hydrus-client"}"
-      #)
+      (
+        pkgs.writeShellScriptBin "hydrus-client"
+        "env --unset=WAYLAND_DISPLAY ${lib.getExe' pkgs-stable.hydrus "hydrus-client"}"
+      )
       pwvucontrol
       gnome-disk-utility
       overskride
