@@ -41,6 +41,10 @@
       heroic
       nautilus
 
+      # Editors
+      jetbrains.idea-community-bin
+      jetbrains.rust-rover
+
       # Fonts
       pkgs.nerd-fonts.fira-code
       pkgs.dejavu_fonts
