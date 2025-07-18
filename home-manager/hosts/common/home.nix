@@ -66,7 +66,6 @@
             (lib.getExe pkgs.neovim)
           ]
         ];
-      EDITOR = lib.mkForce "";
       NIXOS_OZONE_WL = "1";
     };
   };
