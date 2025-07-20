@@ -2,8 +2,13 @@
   lib,
   pkgs,
   config,
+  self,
   ...
-}: {
+}: let
+  nix_locate =
+    builtins.replaceStrings ["~nix-locate~"] [(lib.getExe' pkgs.nix-index "nix-locate")]
+    (builtins.readFile (self + "/resources/nix-locate.nu"));
+in {
   enable = true;
   settings = {
     show_banner = false;
@@ -41,5 +46,8 @@
       ];
   };
   environmentVariables = config.home.sessionVariables;
-  extraConfig = ''$env.PATH = ($env.PATH | split row (char esep) | append ($env.HOME | append "/.nix-profile/bin" | str join))'';
+  extraConfig =
+    ''$env.PATH = ($env.PATH | split row (char esep) | append ($env.HOME | append "/.nix-profile/bin" | str join))''
+    + "\n"
+    + nix_locate;
 }
