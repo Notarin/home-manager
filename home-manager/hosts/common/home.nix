@@ -2,6 +2,7 @@
 {
   pkgs,
   pkgs-stable,
+  plexpkgs,
   lib,
   self,
   config,
@@ -40,6 +41,7 @@
       youtube-music
       heroic
       nautilus
+      plexpkgs.plex-htpc
 
       # Editors
       jetbrains.idea-community-bin

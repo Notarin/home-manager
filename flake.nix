@@ -4,6 +4,7 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-25.05";
+    plexnixpkgs.url = "github:detroyejr/nixpkgs/plex-htpc";
     flake-utils.url = "github:numtide/flake-utils";
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -22,6 +23,7 @@
     self,
     nixpkgs,
     nixpkgs-stable,
+    plexnixpkgs,
     flake-utils,
     home-manager,
     stylix,
@@ -40,6 +42,10 @@
           ];
         };
         pkgs-stable = import nixpkgs-stable {
+          inherit system;
+          config.allowUnfree = true;
+        };
+        plexpkgs = import plexnixpkgs {
           inherit system;
           config.allowUnfree = true;
         };
@@ -69,7 +75,7 @@
           nixcord.homeModules.nixcord
         ];
         extraSpecialArgs = {
-          inherit self system pkgs-stable;
+          inherit self system pkgs-stable plexpkgs;
         };
       in {
         formatter.${system} = treefmt-config.config.build.wrapper;

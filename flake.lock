@@ -384,6 +384,22 @@
         "type": "github"
       }
     },
+    "plexnixpkgs": {
+      "locked": {
+        "lastModified": 1750947240,
+        "narHash": "sha256-7hKPI6Sp460DropTnGwJo9RQ9D9rrpHGg+weTCRENds=",
+        "owner": "detroyejr",
+        "repo": "nixpkgs",
+        "rev": "6bc546ad7dc9569f095909f39744aa2abc427849",
+        "type": "github"
+      },
+      "original": {
+        "owner": "detroyejr",
+        "ref": "plex-htpc",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "flake-utils": "flake-utils",
@@ -392,6 +408,7 @@
         "nixcord": "nixcord",
         "nixpkgs": "nixpkgs_3",
         "nixpkgs-stable": "nixpkgs-stable",
+        "plexnixpkgs": "plexnixpkgs",
         "stylix": "stylix",
         "treefmt-nix": "treefmt-nix"
       }
