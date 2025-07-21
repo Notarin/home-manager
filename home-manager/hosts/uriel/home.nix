@@ -1,8 +1,14 @@
-{lib, ...}: {
+{
+  pkgs,
+  lib,
+  ...
+}: {
   wayland.windowManager.hyprland = {
     package = lib.mkForce null;
     #portalPackage = lib.mkForce null;
   };
+
+  programs.btop.package = pkgs.btop-rocm;
 
   # Do not touch
   home.stateVersion = "24.05";
