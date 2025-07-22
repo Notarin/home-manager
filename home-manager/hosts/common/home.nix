@@ -44,8 +44,8 @@
       plexpkgs.plex-htpc
 
       # Editors
-      jetbrains.idea-community-bin
-      jetbrains.rust-rover
+      pkgs-stable.jetbrains.idea-community-bin
+      pkgs-stable.jetbrains.rust-rover
 
       # Fonts
       pkgs.nerd-fonts.fira-code
