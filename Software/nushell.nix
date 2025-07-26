@@ -25,12 +25,14 @@ in {
     edit_mode = "emacs";
     use_kitty_protocol = false;
   };
-  shellAliases = {
+  shellAliases = rec {
     q = "exit"; # `q` for "quit"
     l = "ls";
-    la = "ls -la";
+    la = "${l} -la";
     c = "clear";
     cd = "z"; # Zoxide support
+    r = reload;
+    reload = "exec nu"; # Technically just starts a fresh nushell
     helix = "hx"; # I keep accidentally typing `helix` instead of `hx`
     cat = lib.getExe pkgs.bat;
     gitui =
