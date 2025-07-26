@@ -34,6 +34,7 @@ in {
     r = reload;
     reload = "exec nu"; # Technically just starts a fresh nushell
     helix = "hx"; # I keep accidentally typing `helix` instead of `hx`
+    edit = config.home.sessionVariables.VISUAL;
     cat = lib.getExe pkgs.bat;
     gitui =
       lib.local.patternMatch true "echo 'No visual git enabled.'" (throw "Multiple visual git clients enabled.")
