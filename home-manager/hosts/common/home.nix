@@ -68,7 +68,7 @@
             (lib.getExe pkgs.neovim)
           ]
         ];
-      NIXOS_OZONE_WL = "1";
+      NIXOS_OZONE_WL = "1"; # Enables wayland support in nixpkgs
     };
   };
 
