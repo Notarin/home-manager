@@ -26,10 +26,11 @@ in {
     use_kitty_protocol = false;
   };
   shellAliases = {
-    q = "exit";
+    q = "exit"; # `q` for "quit"
     l = "ls";
     la = "ls -la";
     c = "clear";
+    cd = "z"; # Zoxide support
     helix = "hx"; # I keep accidentally typing `helix` instead of `hx`
     cat = lib.getExe pkgs.bat;
     gitui =
