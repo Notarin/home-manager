@@ -30,7 +30,7 @@ in {
     l = "ls";
     la = "ls -la";
     c = "clear";
-    cd = "z";
+    helix = "hx"; # I keep accidentally typing `helix` instead of `hx`
     cat = lib.getExe pkgs.bat;
     gitui =
       lib.local.patternMatch true "echo 'No visual git enabled.'" (throw "Multiple visual git clients enabled.")
