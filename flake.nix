@@ -17,6 +17,10 @@
     treefmt-nix.url = "github:numtide/treefmt-nix";
     nixcord.url = "github:kaylorben/nixcord";
     nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions";
+    caelestia = {
+      url = "github:caelestia-dots/shell";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {
@@ -30,6 +34,7 @@
     treefmt-nix,
     nixcord,
     nix-vscode-extensions,
+    caelestia,
     ...
   }:
     flake-utils.lib.eachDefaultSystemPassThrough (
@@ -76,6 +81,7 @@
         ];
         extraSpecialArgs = {
           inherit self system pkgs-stable plexpkgs;
+          caelestia = caelestia.packages.${system};
         };
       in {
         formatter.${system} = treefmt-config.config.build.wrapper;

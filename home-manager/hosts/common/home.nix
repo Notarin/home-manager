@@ -12,6 +12,7 @@
     ./nix.nix
     ./stylix.nix
     ./dynamic.nix
+    ./desktop-shell.nix
   ];
 
   home = {
