@@ -159,6 +159,7 @@
       sumneko.lua
       justarandomgeek.factoriomod-debug
       svizzini.factorio-lua-api-autocomplete
+      vadimcn.vscode-lldb
     ];
     enableExtensionUpdateCheck = false;
   };
