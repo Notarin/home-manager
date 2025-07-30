@@ -45,8 +45,12 @@
       plexpkgs.plex-htpc
 
       # Editors
-      pkgs-stable.jetbrains.idea-community-bin
-      pkgs-stable.jetbrains.rust-rover
+      (pkgs-stable.jetbrains.idea-community-bin.override {
+        jdk = pkgs.openjdk21;
+      })
+      (jetbrains.rust-rover.override {
+        jdk = pkgs.openjdk21;
+      })
 
       # Fonts
       pkgs.nerd-fonts.fira-code
