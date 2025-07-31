@@ -33,6 +33,9 @@ in {
     cd = "z"; # Zoxide support
     r = reload;
     reload = "exec nu"; # Technically just starts a fresh nushell
+    "nix build" = "${lib.getExe pkgs.nix-output-monitor} build";
+    "nix shell" = "${lib.getExe pkgs.nix-output-monitor} shell";
+    "nix develop" = "${lib.getExe pkgs.nix-output-monitor} develop";
     helix = "hx"; # I keep accidentally typing `helix` instead of `hx`
     edit = config.home.sessionVariables.VISUAL;
     cat = lib.getExe pkgs.bat;
