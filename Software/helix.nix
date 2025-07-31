@@ -89,7 +89,7 @@
       }
       {
         name = "nu";
-        auto-format = true;
+        auto-format = false;
         formatter = {
           command = lib.getExe pkgs.nufmt;
           args = ["--stdin"];
