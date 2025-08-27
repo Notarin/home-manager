@@ -14,7 +14,6 @@
       "bat"
       "cava"
       "lazygit"
-      "wofi"
       "fuzzel"
       "gpg"
     ])
