@@ -4,6 +4,8 @@
   lib,
   ...
 }: {
+  imports = [./dynamic.nix];
+
   home = {
     packages = with pkgs; [
       (discord.override {
