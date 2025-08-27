@@ -15,6 +15,7 @@
       )
       r2modman
       heroic
+      prismlauncher
 
       # Editors
       (pkgs-stable.jetbrains.idea-community-bin.override {

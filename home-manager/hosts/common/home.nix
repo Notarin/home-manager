@@ -23,7 +23,6 @@
       wine
       file-roller
       wl-clipboard
-      prismlauncher
       qjackctl
       comma
       vlc
