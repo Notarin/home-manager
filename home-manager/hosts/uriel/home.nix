@@ -1,8 +1,31 @@
 {
   pkgs,
+  pkgs-stable,
   lib,
   ...
 }: {
+  home = {
+    packages = with pkgs; [
+      (discord.override {
+        withVencord = true;
+      })
+      (
+        pkgs.writeShellScriptBin "hydrus-client"
+        "env --unset=WAYLAND_DISPLAY ${lib.getExe' pkgs-stable.hydrus "hydrus-client"}"
+      )
+      r2modman
+      heroic
+
+      # Editors
+      (pkgs-stable.jetbrains.idea-community-bin.override {
+        jdk = pkgs.openjdk21;
+      })
+      (jetbrains.rust-rover.override {
+        jdk = pkgs.openjdk21;
+      })
+    ];
+  };
+
   wayland.windowManager.hyprland = {
     package = lib.mkForce null;
     #portalPackage = lib.mkForce null;

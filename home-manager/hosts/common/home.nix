@@ -1,7 +1,6 @@
 # This is the configuration that is deployed to ALL managed users.
 {
   pkgs,
-  pkgs-stable,
   plexpkgs,
   lib,
   self,
@@ -17,13 +16,6 @@
 
   home = {
     packages = with pkgs; [
-      (discord.override {
-        withVencord = true;
-      })
-      (
-        pkgs.writeShellScriptBin "hydrus-client"
-        "env --unset=WAYLAND_DISPLAY ${lib.getExe' pkgs-stable.hydrus "hydrus-client"}"
-      )
       pwvucontrol
       gnome-disk-utility
       overskride
@@ -32,7 +24,6 @@
       file-roller
       wl-clipboard
       prismlauncher
-      r2modman
       qjackctl
       comma
       vlc
@@ -40,17 +31,8 @@
       element-desktop
       logseq
       youtube-music
-      heroic
       nautilus
       plexpkgs.plex-htpc
-
-      # Editors
-      (pkgs-stable.jetbrains.idea-community-bin.override {
-        jdk = pkgs.openjdk21;
-      })
-      (jetbrains.rust-rover.override {
-        jdk = pkgs.openjdk21;
-      })
 
       # Fonts
       pkgs.nerd-fonts.fira-code
