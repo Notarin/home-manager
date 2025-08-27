@@ -5,5 +5,5 @@
   ...
 }: {
   programs =
-    lib.local.complexEnabledPrograms config (self + ./Software);
+    lib.local.complexEnabledPrograms config (./Software);
 }
