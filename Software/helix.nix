@@ -63,19 +63,27 @@
         };
       };
     };
-    keys.normal = rec {
-      y = "yank";
-      p = "paste_after";
-      P = "paste_clipboard_before";
-      w = ":write";
-      q = ":quit";
-      r = ":config-reload";
-      b = ":buffer-next";
-      C-right = "move_next_word_start";
-      C-left = "move_prev_word_start";
-      t = "command_mode";
-      ";" = t;
-      ":" = "no_op";
+    keys = let
+      global = {
+        C-left = "move_prev_word_start";
+        C-right = "move_next_word_start";
+      };
+    in {
+      normal =
+        rec {
+          y = "yank";
+          p = "paste_after";
+          P = "paste_clipboard_before";
+          w = ":write";
+          q = ":quit";
+          r = ":config-reload";
+          b = ":buffer-next";
+          t = "command_mode";
+          ";" = t;
+          ":" = "no_op";
+        }
+        // global;
+      insert = {} // global;
     };
   };
   languages = {
