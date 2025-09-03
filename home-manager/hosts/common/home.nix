@@ -31,6 +31,7 @@
       youtube-music
       nautilus
       plexpkgs.plex-htpc
+      gomuks
 
       # Fonts
       pkgs.nerd-fonts.fira-code
