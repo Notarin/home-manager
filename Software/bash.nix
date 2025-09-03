@@ -1,5 +1,13 @@
-{config, ...}: {
-  enable = true;
-  shellAliases = config.programs.nushell.shellAliases;
-  sessionVariables = config.home.sessionVariables;
-}
+{
+  lib,
+  config,
+  self,
+  ...
+} @ specialArgs: let
+  globalShellConfig = import (self + "/resources/shellConfig.nix") specialArgs;
+in
+  lib.recursiveUpdate {
+    enable = true;
+    sessionVariables = config.home.sessionVariables;
+  }
+  globalShellConfig
