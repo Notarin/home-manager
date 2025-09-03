@@ -22,6 +22,7 @@
   services =
     (lib.local.simpleEnabledServices [
       "swaync"
+      "gnome-keyring"
     ])
     // (lib.local.complexEnabledServices config (self + /Services));
 }
