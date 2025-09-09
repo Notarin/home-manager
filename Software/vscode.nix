@@ -160,6 +160,7 @@
       justarandomgeek.factoriomod-debug
       svizzini.factorio-lua-api-autocomplete
       vadimcn.vscode-lldb
+      elixir-lsp.vscode-elixir-ls
     ];
     enableExtensionUpdateCheck = false;
   };
