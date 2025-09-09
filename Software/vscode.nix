@@ -74,6 +74,7 @@
       "rust-analyzer.diagnostics.styleLints.enable" = true;
       "rust-analyzer.check.command" = "clippy";
       "rust-analyzer.checkOnSave" = true;
+      "rust-analyzer.restartServerOnConfigChange" = true;
       "rust-analyzer.server.extraEnv" = {
         "PATH" = lib.makeBinPath (
           with pkgs; [
@@ -84,6 +85,7 @@
           ]
         );
       };
+      "rust-analyzer.showSyntaxTree" = true;
       "github.copilot.nextEditSuggestions.enabled" = true;
       "github.copilot.enable" = {
         "*" = true;
