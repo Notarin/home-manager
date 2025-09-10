@@ -17,6 +17,10 @@
     treefmt-nix.url = "github:numtide/treefmt-nix";
     nixcord.url = "github:kaylorben/nixcord";
     nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions";
+    snix = {
+      url = "git+https://git.snix.dev/snix/snix";
+      flake = false;
+    };
   };
 
   outputs = {
@@ -30,6 +34,7 @@
     treefmt-nix,
     nixcord,
     nix-vscode-extensions,
+    snix,
     ...
   }:
     flake-utils.lib.eachDefaultSystemPassThrough (
@@ -75,7 +80,7 @@
           nixcord.homeModules.nixcord
         ];
         extraSpecialArgs = {
-          inherit self system pkgs-stable plexpkgs;
+          inherit self system pkgs-stable plexpkgs snix;
         };
       in {
         formatter.${system} = treefmt-config.config.build.wrapper;

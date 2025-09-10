@@ -2,6 +2,8 @@
   pkgs,
   pkgs-stable,
   lib,
+  snix,
+  system,
   ...
 }: {
   imports = [./dynamic.nix];
@@ -18,6 +20,9 @@
       r2modman
       heroic
       prismlauncher
+
+      # Snix
+      (pkgs.callPackage "${snix}/default.nix" {localSystem = system;}).snix.cli
 
       # Editors
       (pkgs-stable.jetbrains.idea-community-bin.override {

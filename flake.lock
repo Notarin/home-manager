@@ -409,8 +409,25 @@
         "nixpkgs": "nixpkgs_3",
         "nixpkgs-stable": "nixpkgs-stable",
         "plexnixpkgs": "plexnixpkgs",
+        "snix": "snix",
         "stylix": "stylix",
         "treefmt-nix": "treefmt-nix"
+      }
+    },
+    "snix": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1757253636,
+        "narHash": "sha256-GxekDj6y4JGvY8GNKo/LE2yhfyyBk9T1l9f3u2FwPJo=",
+        "ref": "refs/heads/canon",
+        "rev": "19f07c5ee9f27ca18c097824e512105f43bbcf87",
+        "revCount": 21963,
+        "type": "git",
+        "url": "https://git.snix.dev/snix/snix"
+      },
+      "original": {
+        "type": "git",
+        "url": "https://git.snix.dev/snix/snix"
       }
     },
     "stylix": {
