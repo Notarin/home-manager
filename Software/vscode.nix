@@ -75,16 +75,6 @@
       "rust-analyzer.check.command" = "clippy";
       "rust-analyzer.checkOnSave" = true;
       "rust-analyzer.restartServerOnConfigChange" = true;
-      "rust-analyzer.server.extraEnv" = {
-        "PATH" = lib.makeBinPath (
-          with pkgs; [
-            gcc
-            cargo
-            rustc
-            rustfmt
-          ]
-        );
-      };
       "rust-analyzer.showSyntaxTree" = true;
       "github.copilot.nextEditSuggestions.enabled" = true;
       "github.copilot.enable" = {
