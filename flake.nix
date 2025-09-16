@@ -3,7 +3,6 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-25.05";
     plexnixpkgs.url = "github:detroyejr/nixpkgs/plex-htpc";
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -34,7 +33,6 @@
   outputs = {
     self,
     nixpkgs,
-    nixpkgs-stable,
     plexnixpkgs,
     home-manager,
     stylix,
@@ -57,10 +55,6 @@
         overlays = [
           nix-vscode-extensions.overlays.default
         ];
-      };
-      pkgs-stable = import nixpkgs-stable {
-        inherit system;
-        config.allowUnfree = true;
       };
       plexpkgs = import plexnixpkgs {
         inherit system;
@@ -92,7 +86,7 @@
         nixcord.homeModules.nixcord
       ];
       extraSpecialArgs = {
-        inherit self system pkgs-stable plexpkgs snix;
+        inherit self system plexpkgs snix;
       };
     in {
       formatter.${system} = treefmt-config.config.build.wrapper;

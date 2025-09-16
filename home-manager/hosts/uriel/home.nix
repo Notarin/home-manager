@@ -1,6 +1,5 @@
 {
   pkgs,
-  pkgs-stable,
   lib,
   snix,
   system,
@@ -15,7 +14,7 @@
       })
       (
         pkgs.writeShellScriptBin "hydrus-client"
-        "env --unset=WAYLAND_DISPLAY ${lib.getExe' pkgs-stable.hydrus "hydrus-client"}"
+        "env --unset=WAYLAND_DISPLAY ${lib.getExe' pkgs.hydrus "hydrus-client"}"
       )
       r2modman
       heroic
@@ -25,7 +24,7 @@
       (pkgs.callPackage "${snix}/default.nix" {localSystem = system;}).snix.cli
 
       # Editors
-      (pkgs-stable.jetbrains.idea-community-bin.override {
+      (pkgs.jetbrains.idea-community-bin.override {
         jdk = pkgs.openjdk21;
       })
       (jetbrains.rust-rover.override {
