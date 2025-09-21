@@ -20,11 +20,7 @@
       file-roller
       wl-clipboard
       comma
-      gimp
-      element-desktop
-      youtube-music
       nautilus
-      plex-htpc
       gomuks
 
       # Fonts

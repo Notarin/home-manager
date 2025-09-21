@@ -18,6 +18,10 @@
       )
       r2modman
       prismlauncher
+      gimp
+      element-desktop
+      youtube-music
+      plex-htpc
 
       # Snix
       (pkgs.callPackage "${snix}/default.nix" {localSystem = system;}).snix.cli
