@@ -1,7 +1,6 @@
 # This is the configuration that is deployed to ALL managed users.
 {
   pkgs,
-  plexpkgs,
   lib,
   self,
   config,
@@ -30,7 +29,7 @@
       logseq
       youtube-music
       nautilus
-      plexpkgs.plex-htpc
+      plex-htpc
       gomuks
 
       # Fonts
