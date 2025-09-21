@@ -17,7 +17,6 @@
         "env --unset=WAYLAND_DISPLAY ${lib.getExe' pkgs.hydrus "hydrus-client"}"
       )
       r2modman
-      heroic
       prismlauncher
 
       # Snix

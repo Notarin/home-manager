@@ -15,18 +15,13 @@
   home = {
     packages = with pkgs; [
       pwvucontrol
-      gnome-disk-utility
       overskride
       google-chrome
-      wine
       file-roller
       wl-clipboard
-      qjackctl
       comma
-      vlc
       gimp
       element-desktop
-      logseq
       youtube-music
       nautilus
       plex-htpc
