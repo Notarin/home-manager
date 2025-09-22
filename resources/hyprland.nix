@@ -179,10 +179,6 @@
       mfact = 0.7;
     };
 
-    gestures = {
-      workspace_swipe = true;
-    };
-
     misc = {
       force_default_wallpaper = 0;
     };

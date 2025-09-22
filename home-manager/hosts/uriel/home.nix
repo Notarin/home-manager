@@ -38,7 +38,7 @@
 
   wayland.windowManager.hyprland = {
     package = lib.mkForce null;
-    #portalPackage = lib.mkForce null;
+    portalPackage = lib.mkForce null;
   };
 
   programs.btop.package = pkgs.btop-rocm;
