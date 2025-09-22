@@ -20,6 +20,7 @@
       prismlauncher
       gimp
       element-desktop
+      nheko
       youtube-music
       plex-htpc
 
