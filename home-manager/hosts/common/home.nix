@@ -22,6 +22,7 @@
       comma
       nautilus
       gomuks
+      vesktop
 
       bitwarden-desktop
 
