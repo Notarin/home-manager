@@ -21,6 +21,7 @@
       wl-clipboard
       comma
       nautilus
+      gvfs
       gomuks
       vesktop
 
@@ -33,6 +34,7 @@
     ];
 
     sessionVariables = {
+      GIO_EXTRA_MODULES = "${pkgs.gvfs}/lib/gio/modules";
       VISUAL =
         lib.local.patternMatch true
         (throw "No editor set to default!")
