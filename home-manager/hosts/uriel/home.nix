@@ -23,6 +23,10 @@
       nheko
       youtube-music
       plex-htpc
+      ytdownloader
+      vlc
+      plexamp
+      picard
 
       # Snix
       (pkgs.callPackage "${snix}/default.nix" {localSystem = system;}).snix.cli
