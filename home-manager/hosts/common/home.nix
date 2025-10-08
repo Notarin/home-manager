@@ -16,7 +16,6 @@
     packages = with pkgs; [
       pwvucontrol
       overskride
-      google-chrome
       file-roller
       wl-clipboard
       comma

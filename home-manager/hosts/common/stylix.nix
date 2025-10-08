@@ -29,6 +29,10 @@
     };
     targets.vscode.profileNames = ["default"];
     targets.qt.enable = true; # For whatever reason, this must be explicitly enabled.
+    targets.firefox = {
+      colorTheme.enable = true;
+      profileNames = ["default"];
+    };
   };
   i18n.inputMethod = {
     enable = false;
