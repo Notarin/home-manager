@@ -1,7 +1,6 @@
 {
   pkgs,
   lib,
-  snix,
   system,
   self,
   ...
@@ -9,11 +8,12 @@
   imports = [./dynamic.nix];
 
   home = {
-    packages = with pkgs; [
+    packages = with pkgs;
+    with self.packages.${system}; [
       (discord.override {
         withVencord = true;
       })
-      self.packages.${system}.hydrus-client
+      hydrus-client
       r2modman
       prismlauncher
       gimp
@@ -27,7 +27,7 @@
       picard
 
       # Snix
-      (pkgs.callPackage "${snix}/default.nix" {localSystem = system;}).snix.cli
+      snix-cli
 
       # Editors
       (pkgs.jetbrains.idea-community-bin.override {

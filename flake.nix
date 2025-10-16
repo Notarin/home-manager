@@ -122,6 +122,7 @@
             pkgs.hydrus
           ];
         };
+        snix-cli = (pkgs.callPackage "${snix}/default.nix" {localSystem = system;}).snix.cli;
       };
       homeConfigurations = builtins.listToAttrs (
         builtins.concatMap (
