@@ -1,4 +1,4 @@
-{
+_: {
   enable = true;
   policies = {
     Cookies.Behavior = "reject-tracker-and-partition-foreign";
