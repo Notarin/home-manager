@@ -3,6 +3,7 @@
   lib,
   snix,
   system,
+  self,
   ...
 }: {
   imports = [./dynamic.nix];
@@ -12,10 +13,7 @@
       (discord.override {
         withVencord = true;
       })
-      (
-        pkgs.writeShellScriptBin "hydrus-client"
-        "env --unset=WAYLAND_DISPLAY ${lib.getExe' pkgs.hydrus "hydrus-client"}"
-      )
+      self.packages.${system}.hydrus-client
       r2modman
       prismlauncher
       gimp

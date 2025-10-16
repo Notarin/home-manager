@@ -108,6 +108,21 @@
           fi
         '';
       };
+      packages.${system} = {
+        hydrus-client = pkgs.symlinkJoin {
+          name = "hydrus-client";
+          paths = [
+            (
+              pkgs.writeShellScriptBin
+              "hydrus-client"
+              ''
+                env --unset=WAYLAND_DISPLAY ${lib.getExe' pkgs.hydrus "hydrus-client"}
+              ''
+            )
+            pkgs.hydrus
+          ];
+        };
+      };
       homeConfigurations = builtins.listToAttrs (
         builtins.concatMap (
           user:
