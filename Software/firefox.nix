@@ -17,14 +17,14 @@ _: {
       Value = true;
     };
     EncryptedMediaExtensions.Enabled = true;
-    Extensions.Install = [
-      "https://addons.mozilla.org/firefox/downloads/latest/ublock-origin/latest.xpi"
-      "https://addons.mozilla.org/firefox/downloads/latest/sponsorblock/latest.xpi"
-      "https://addons.mozilla.org/firefox/downloads/latest/dearrow/latest.xpi"
-      "https://addons.mozilla.org/firefox/downloads/latest/bitwarden-password-manager/latest.xpi"
-      "https://addons.mozilla.org/firefox/downloads/latest/darkreader/latest.xpi"
-      "https://addons.mozilla.org/firefox/downloads/latest/pronoundb/latest.xpi"
-      "https://addons.mozilla.org/firefox/downloads/latest/violentmonkey/latest.xpi"
+    Extensions.Install = builtins.map (extension: "https://addons.mozilla.org/firefox/downloads/latest/${extension}/latest.xpi") [
+      "ublock-origin"
+      "sponsorblock"
+      "dearrow"
+      "bitwarden-password-manager"
+      "darkreader"
+      "pronoundb"
+      "violentmonkey"
     ];
     FirefoxHome = {
       Highlights = false;
