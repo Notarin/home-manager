@@ -24,6 +24,7 @@ _: {
       "https://addons.mozilla.org/firefox/downloads/latest/bitwarden-password-manager/latest.xpi"
       "https://addons.mozilla.org/firefox/downloads/latest/darkreader/latest.xpi"
       "https://addons.mozilla.org/firefox/downloads/latest/pronoundb/latest.xpi"
+      "https://addons.mozilla.org/firefox/downloads/latest/violentmonkey/latest.xpi"
     ];
     FirefoxHome = {
       Highlights = false;
