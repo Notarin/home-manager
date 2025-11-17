@@ -33,8 +33,13 @@
       (pkgs.jetbrains.idea-community-bin.override {
         jdk = pkgs.openjdk21;
       })
-      (jetbrains.rust-rover.override {
-        jdk = pkgs.openjdk21;
+      (pkgs.writeShellApplication {
+        name = "rust-rover";
+        runtimeInputs = with pkgs; [
+          gcc
+          rustup
+        ];
+        text = "${lib.getExe pkgs.jetbrains.rust-rover}";
       })
     ];
   };
