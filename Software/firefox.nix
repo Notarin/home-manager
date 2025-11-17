@@ -25,6 +25,7 @@ _: {
       "darkreader"
       "pronoundb"
       "violentmonkey"
+      "undisposition-racle-fork"
     ];
     FirefoxHome = {
       Highlights = false;
