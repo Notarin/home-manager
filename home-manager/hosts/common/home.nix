@@ -10,6 +10,7 @@
     ./nix.nix
     ./stylix.nix
     ./dynamic.nix
+    (self + /resources/nix-repl/qol-nix-repl.nix)
   ];
 
   home = {
