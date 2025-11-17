@@ -87,6 +87,7 @@
         "workbench.action.terminal.copySelection"
         "workbench.action.terminal.paste"
       ];
+      "direnv.path.executable" = lib.getExe pkgs.direnv;
     };
     userTasks = {
       version = "2.0.0";
