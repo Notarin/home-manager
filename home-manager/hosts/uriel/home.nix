@@ -25,6 +25,7 @@
       vlc
       plexamp
       picard
+      eog
 
       # Snix
       snix-cli
