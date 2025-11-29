@@ -31,9 +31,7 @@
       snix-cli
 
       # Editors
-      (pkgs.jetbrains.idea-community-bin.override {
-        jdk = pkgs.openjdk21;
-      })
+      jetbrains.idea-community-bin
       (pkgs.writeShellApplication {
         name = "rust-rover";
         runtimeInputs = with pkgs; [
