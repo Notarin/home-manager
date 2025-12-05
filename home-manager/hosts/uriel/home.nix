@@ -53,9 +53,14 @@
   # Do not touch
   home.stateVersion = "24.05";
 
-  wayland.windowManager.hyprland.settings.monitor = [
-    "DP-1,1920x1080@60,0x0,1"
-    "DP-2,1920x1080@60,1920x-420,1,transform,1"
-    "HDMI-A-1,1920x1080@60,0x0,1,mirror,DP-1"
-  ];
+  wayland.windowManager.hyprland.settings = {
+    monitor = [
+      "DP-1,1920x1080@60,0x0,1"
+      "HDMI-A-1,1920x1080@60,1920x-420,1,transform,1"
+    ];
+    bind = [
+      "$mod_ALT, RIGHT, movecurrentworkspacetomonitor, HDMI-A-1"
+      "$mod_ALT, LEFT, movecurrentworkspacetomonitor, DP-1"
+    ];
+  };
 }

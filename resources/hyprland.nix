@@ -94,11 +94,6 @@
       #"$mod, mouse:272, movewindow"
       #"$mod, mouse:273, resizewindow"
 
-      # Move workspaces over monitors
-      "$mod_ALT, RIGHT, movecurrentworkspacetomonitor, DP-2"
-      "$mod_ALT, LEFT, movecurrentworkspacetomonitor, DP-1"
-      "$mod_ALT, UP, movecurrentworkspacetomonitor, HDMI-A-1"
-
       # Screenshot
       ''$mod_SHIFT, S, exec, ${lib.getExe pkgs.grim} -g "$(${lib.getExe pkgs.slurp})" - | ${lib.getExe' pkgs.wl-clipboard "wl-copy"}''
       ",Print, exec, ${lib.getExe pkgs.grim} -t jpeg - | ${lib.getExe pkgs.imv} -f -"
