@@ -63,13 +63,12 @@
       "window.menuBarVisibility" = "toggle";
       "nix.enableLanguageServer" = true;
       "nix.serverPath" = "${lib.getExe pkgs.nil}";
-      "nix.serverSettings" = {
-        nil = {
-          formatting = {
-            command = ["${lib.getExe self.formatter.${system}}" "--quiet" "--stdin" "\${file}"];
-          };
-        };
-      };
+      "nix.formatterPath" = [
+        "${lib.getExe self.formatter.${system}}"
+        "--quiet"
+        "--stdin"
+        "\${file}"
+      ];
       "files.autoSave" = "onFocusChange";
       "rust-analyzer.diagnostics.styleLints.enable" = true;
       "rust-analyzer.check.command" = "clippy";
