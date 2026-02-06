@@ -116,11 +116,13 @@
       "XDG_SESSION_DESKTOP,Hyprland"
     ];
 
-    windowrulev2 = [
-      "renderunfocused,title:^.*$"
-      "noborder, fullscreen:1"
-      "noshortcutsinhibit,class:.*virt-manager.*"
-      "workspace 10, class:^(vesktop)$"
+    windowrule = [
+      # Fixes endless issues with programs bugging out in the background.
+      "match:title ^.*$, render_unfocused on"
+      # Fixes being unable to use any hyprland kebinds when a VM is focused.
+      "match:class .*virt-manager.*, no_shortcuts_inhibit on"
+      # Personal preference, I always put it on the tenth workspace.
+      "match:class ^(vesktop)$, workspace 10"
     ];
 
     input = {
