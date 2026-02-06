@@ -35,8 +35,7 @@
 
     sessionVariables = {
       GIO_EXTRA_MODULES = "${pkgs.gvfs}/lib/gio/modules";
-      VISUAL =
-        lib.local.patternMatch true
+      VISUAL = lib.mkForce (lib.local.patternMatch true
         (throw "No editor set to default!")
         (throw "Multiple editors set to default simultaneously!")
         [
@@ -48,7 +47,7 @@
             config.programs.neovim.enable
             (lib.getExe pkgs.neovim)
           ]
-        ];
+        ]);
       NIXOS_OZONE_WL = "1"; # Enables wayland support in nixpkgs
     };
   };

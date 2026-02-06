@@ -19,7 +19,7 @@
       gimp
       element-desktop
       nheko
-      youtube-music
+      pear-desktop
       plex-htpc
       ytdownloader
       vlc
@@ -31,7 +31,7 @@
       snix-cli
 
       # Editors
-      jetbrains.idea-community-bin
+      jetbrains.idea-oss
       (pkgs.writeShellApplication {
         name = "rust-rover";
         runtimeInputs = with pkgs; [
