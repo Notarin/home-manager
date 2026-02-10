@@ -1,9 +1,9 @@
 {
   lib,
   config,
-  self,
   ...
 }: {
   programs =
-    lib.local.complexEnabledPrograms config (./Software);
+    (lib.local.simpleEnabledPrograms ["obsidian"])
+    // (lib.local.complexEnabledPrograms config (./Software));
 }
