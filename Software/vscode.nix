@@ -87,6 +87,9 @@
         "workbench.action.terminal.paste"
       ];
       "direnv.path.executable" = lib.getExe pkgs.direnv;
+      "dotnetAcquisitionExtension.sharedExistingDotnetPath" = lib.getExe pkgs.dotnetCorePackages.sdk_9_0;
+      # For some reason, if we set this to true like the warning wants, it fucks everything.
+      #"dotnetAcquisitionExtension.allowInvalidPaths" = true;
     };
     userTasks = {
       version = "2.0.0";
@@ -150,6 +153,11 @@
     enableUpdateCheck = false;
     extensions = with pkgs.vscode-marketplace;
     with pkgs.vscode-extensions; [
+      ms-dotnettools.csdevkit
+      ms-dotnettools.csharp
+      ms-dotnettools.vscode-dotnet-runtime
+      ertanic.robust-lsp
+      editorconfig.editorconfig
       mkhl.direnv
       github.copilot
       github.copilot-chat
