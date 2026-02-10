@@ -94,7 +94,13 @@
         {
           label = "Rebuild & Deploy home with nh";
           type = "shell";
-          command = "nh home switch .";
+          command = ''
+            # Due to a bug, sometimes the tmpdir doesn't exist, so we need to create it if it doesn't exist.
+            let needToMakeTempDir = ($env.TEMPDIR? | describe) == string and not ($env.TEMPDIR | path exists);
+            if $needToMakeTempDir {mkdir $env.TEMPDIR;};
+            # And now we may do our business.
+            nh home switch .
+          '';
           presentation = {
             reveal = "always";
             revealProblems = "onProblem";
@@ -115,7 +121,13 @@
         {
           label = "Rebuild & Deploy NixOS with nh";
           type = "shell";
-          command = "nh os switch .";
+          command = ''
+            # Due to a bug, sometimes the tmpdir doesn't exist, so we need to create it if it doesn't exist.
+            let needToMakeTempDir = ($env.TEMPDIR? | describe) == string and not ($env.TEMPDIR | path exists);
+            if $needToMakeTempDir {mkdir $env.TEMPDIR;};
+            # And now we may do our business.
+            nh os switch .
+          '';
           presentation = {
             reveal = "always";
             revealProblems = "onProblem";
