@@ -87,6 +87,7 @@
         "workbench.action.terminal.paste"
       ];
       "direnv.path.executable" = lib.getExe pkgs.direnv;
+      "nixEnvSelector.useFlakes" = true;
       "dotnetAcquisitionExtension.sharedExistingDotnetPath" = lib.getExe pkgs.dotnetCorePackages.sdk_9_0;
       # For some reason, if we set this to true like the warning wants, it fucks everything.
       #"dotnetAcquisitionExtension.allowInvalidPaths" = true;
