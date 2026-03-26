@@ -41,6 +41,17 @@
         ];
         text = "${lib.getExe pkgs.jetbrains.rust-rover}";
       })
+      (pkgs.symlinkJoin {
+        name = "rider";
+        paths = [
+          (pkgs.writeShellApplication {
+            name = "rider";
+            runtimeInputs = [pkgs.dotnet-ef];
+            text = "${lib.getExe pkgs.jetbrains.rider}";
+          })
+          pkgs.jetbrains.rider
+        ];
+      })
     ];
   };
 
