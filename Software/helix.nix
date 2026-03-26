@@ -11,6 +11,8 @@
   settings = {
     editor = {
       default-yank-register = "+";
+      completion-timeout = 5;
+      completion-trigger-len = 1;
       shell = [
         (lib.getExe pkgs.nushell)
         "-c"
@@ -25,6 +27,7 @@
       color-modes = true;
       popup-border = "all";
       end-of-line-diagnostics = "hint";
+      inline-diagnostics.cursor-line = "hint";
       statusline = {
         mode.normal = "NORMAL";
         mode.insert = "INSERT";
@@ -62,6 +65,12 @@
           newline = "none";
         };
       };
+      lsp = {
+        display-inlay-hints = true;
+        display-progress-messages = true;
+      };
+      idle-timeout = 0;
+      indent-guides.render = true;
     };
     keys = let
       global = {
@@ -78,12 +87,15 @@
           q = ":quit";
           r = ":config-reload";
           b = ":buffer-next";
+          B = ":buffer-previous";
+          f = ":format";
           t = "command_mode";
           ";" = t;
           ":" = "no_op";
         }
         // global;
       insert = {} // global;
+      select = {} // global;
     };
   };
   languages = {
