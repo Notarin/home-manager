@@ -157,7 +157,12 @@
       ms-dotnettools.csdevkit
       ms-dotnettools.csharp
       ms-dotnettools.vscode-dotnet-runtime
-      ertanic.robust-lsp
+      ertanic.robust-lsp # Broken due to dynamic linked binary
+      aaron-bond.better-comments
+      pkgs.vscode-marketplace.slevesque.shader # Have to specify due to slevesque existing in both sources.
+      macabeus.vscode-fluent
+      redhat.vscode-yaml
+      slava0135.robust-yaml
       editorconfig.editorconfig
       mkhl.direnv
       github.copilot
