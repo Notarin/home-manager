@@ -103,6 +103,14 @@
           args = ["--stdin"];
         };
       }
+      {
+        name = "c-sharp";
+        language-servers = ["csharp-ls"];
+        auto-format = false;
+      }
     ];
+    language-server.csharp-ls = {
+      command = lib.getExe pkgs.csharp-ls;
+    };
   };
 }
