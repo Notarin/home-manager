@@ -1,7 +1,6 @@
 {
   pkgs,
   lib,
-  system,
   self,
   ...
 }: {
@@ -9,7 +8,7 @@
 
   home = {
     packages = with pkgs;
-    with self.packages.${system}; [
+    with self.packages.${pkgs.stdenv.system}; [
       (discord.override {
         withVencord = true;
       })

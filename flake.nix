@@ -33,9 +33,7 @@
     self,
     nixpkgs,
     home-manager,
-    stylix,
     treefmt-nix,
-    nixcord,
     nix-vscode-extensions,
     snix,
     ...
@@ -70,26 +68,6 @@
         }
         // home-manager.lib);
       treefmt-config = treefmt-nix.lib.evalModule pkgs ./treefmt.nix;
-
-      usersDir = ./home-manager/users;
-      users = (lib.local.dynamicOuts.parseRawUsers usersDir) (lib.local.dynamicOuts.usersRaw usersDir);
-
-      hostsDir = ./home-manager/hosts;
-      hosts =
-        builtins.map (host: {
-          hostName = host;
-          configPath = /. + "${builtins.toString hostsDir}/${host}/home.nix";
-        })
-        (lib.local.dynamicOuts.hostsRaw hostsDir);
-
-      commonModules = [
-        ./home-manager/hosts/common/home.nix
-        stylix.homeModules.stylix
-        nixcord.homeModules.nixcord
-      ];
-      extraSpecialArgs = {
-        inherit self system snix;
-      };
     in {
       formatter.${system} = treefmt-config.config.build.wrapper;
       checks.${system}.formatting = treefmt-config.config.build.check self;
@@ -124,35 +102,7 @@
         };
         snix-cli = (pkgs.callPackage "${snix}/default.nix" {localSystem = system;}).snix.cli.full-cli;
       };
-      homeConfigurations = builtins.listToAttrs (
-        builtins.concatMap (
-          user:
-            builtins.concatMap (host: [
-              {
-                name = "${user.userName}@${host.hostName}";
-                value = home-manager.lib.homeManagerConfiguration {
-                  inherit pkgs lib extraSpecialArgs;
-                  modules =
-                    commonModules
-                    ++ [
-                      host.configPath
-                      user.configPath
-                    ];
-                };
-              }
-            ])
-            hosts
-        )
-        users
-        ++ builtins.map (user: {
-          name = "${user.userName}";
-          value = home-manager.lib.homeManagerConfiguration {
-            inherit pkgs lib extraSpecialArgs;
-            modules = commonModules ++ [user.configPath];
-          };
-        })
-        users
-      );
+      homeConfigurations = import ./homeManagerModules {inherit pkgs lib self;};
     }
   ));
 }

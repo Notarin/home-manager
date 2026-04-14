@@ -11,6 +11,8 @@
     ./stylix.nix
     ./dynamic.nix
     (self + /resources/nix-repl/qol-nix-repl.nix)
+    self.inputs.stylix.homeModules.stylix
+    self.inputs.nixcord.homeModules.nixcord
   ];
 
   home = {
