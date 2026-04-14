@@ -11,10 +11,6 @@
       url = "github:danth/stylix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    treefmt-nix = {
-      url = "github:numtide/treefmt-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     nixcord = {
       url = "github:kaylorben/nixcord";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -33,16 +29,13 @@
     self,
     nixpkgs,
     home-manager,
-    treefmt-nix,
     nix-vscode-extensions,
     snix,
     ...
   }: let
     systems = ["x86_64-linux"];
     buildEachSystem = output: builtins.map (system: output system) systems;
-    buildAllSystems = output: (
-      builtins.foldl' (acc: elem: nixpkgs.lib.recursiveUpdate acc elem) {} (buildEachSystem output)
-    );
+    buildAllSystems = output: (builtins.foldl' (acc: elem: nixpkgs.lib.recursiveUpdate acc elem) {} (buildEachSystem output));
   in (buildAllSystems (
     system: let
       pkgs = import nixpkgs {
@@ -60,17 +53,23 @@
           nix-vscode-extensions.overlays.default
         ];
       };
-      lib = pkgs.lib.extend (prev: final:
-        {
-          local = import ./Functions/main.nix {
-            inherit pkgs lib self system;
-          };
-        }
-        // home-manager.lib);
-      treefmt-config = treefmt-nix.lib.evalModule pkgs ./treefmt.nix;
+      lib = pkgs.lib.extend (
+        prev: final:
+          {
+            local = import ./Functions/main.nix {
+              inherit
+                pkgs
+                lib
+                self
+                system
+                ;
+            };
+          }
+          // home-manager.lib
+      );
     in {
-      formatter.${system} = treefmt-config.config.build.wrapper;
-      checks.${system}.formatting = treefmt-config.config.build.check self;
+      formatter.${system} = pkgs.callPackage ./format.nix {};
+      checks.${system}.formatting = self.formatter.${system};
       devShells.${system}.default = pkgs.mkShell {
         shellHook = ''
           oldHookDir=$(git config --local core.hooksPath)
@@ -90,13 +89,9 @@
         hydrus-client = pkgs.symlinkJoin {
           name = "hydrus-client";
           paths = [
-            (
-              pkgs.writeShellScriptBin
-              "hydrus-client"
-              ''
-                env --unset=WAYLAND_DISPLAY ${lib.getExe' pkgs.hydrus "hydrus-client"}
-              ''
-            )
+            (pkgs.writeShellScriptBin "hydrus-client" ''
+              env --unset=WAYLAND_DISPLAY ${lib.getExe' pkgs.hydrus "hydrus-client"}
+            '')
             pkgs.hydrus
           ];
         };
