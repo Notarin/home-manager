@@ -4,7 +4,10 @@
   self,
   ...
 }: {
-  imports = [./dynamic.nix];
+  imports = [
+    ./mangohud.nix
+    ./obs-studio.nix
+  ];
 
   home = {
     packages = with pkgs;
@@ -54,25 +57,27 @@
     ];
   };
 
-  wayland.windowManager.hyprland = {
-    package = lib.mkForce null;
-    portalPackage = lib.mkForce null;
+  programs = {
+    obsidian.enable = true;
+    btop.package = pkgs.btop-rocm;
   };
-
-  programs.btop.package = pkgs.btop-rocm;
 
   # Do not touch
   home.stateVersion = "24.05";
 
-  wayland.windowManager.hyprland.settings = {
-    monitor = [
-      "DP-1,1920x1080@60,0x0,1"
-      "HDMI-A-1,1920x1080@60,1920x-420,1,transform,1"
-      "DP-2,1920x1080@60,0x0,1,mirror,DP-1"
-    ];
-    bind = [
-      "$mod_ALT, RIGHT, movecurrentworkspacetomonitor, HDMI-A-1"
-      "$mod_ALT, LEFT, movecurrentworkspacetomonitor, DP-1"
-    ];
+  wayland.windowManager.hyprland = {
+    package = lib.mkForce null;
+    portalPackage = lib.mkForce null;
+    settings = {
+      monitor = [
+        "DP-1,1920x1080@60,0x0,1"
+        "HDMI-A-1,1920x1080@60,1920x-420,1,transform,1"
+        "DP-2,1920x1080@60,0x0,1,mirror,DP-1"
+      ];
+      bind = [
+        "$mod_ALT, RIGHT, movecurrentworkspacetomonitor, HDMI-A-1"
+        "$mod_ALT, LEFT, movecurrentworkspacetomonitor, DP-1"
+      ];
+    };
   };
 }
