@@ -29,7 +29,6 @@
     self,
     nixpkgs,
     home-manager,
-    nix-vscode-extensions,
     snix,
     ...
   }: let
@@ -45,7 +44,6 @@
           trusted-public-keys = ["cache.snix.dev-1:miTqzIzmCbX/DyK2tLNXDROk77CbbvcRdWA4y2F8pno="];
           substituters = ["https://cache.snix.dev"];
         };
-        overlays = [nix-vscode-extensions.overlays.default];
       };
       lib = pkgs.lib.extend (
         prev: final:

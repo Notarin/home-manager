@@ -152,34 +152,37 @@
       ];
     };
     enableUpdateCheck = false;
-    extensions = with pkgs.vscode-marketplace;
-    with pkgs.vscode-extensions; [
-      ms-dotnettools.csdevkit
-      ms-dotnettools.csharp
-      ms-dotnettools.vscode-dotnet-runtime
-      ertanic.robust-lsp # Broken due to dynamic linked binary
-      aaron-bond.better-comments
-      pkgs.vscode-marketplace.slevesque.shader # Have to specify due to slevesque existing in both sources.
-      macabeus.vscode-fluent
-      redhat.vscode-yaml
-      slava0135.robust-yaml
-      editorconfig.editorconfig
-      mkhl.direnv
-      github.copilot
-      github.copilot-chat
-      yzhang.markdown-all-in-one
-      jnoortheen.nix-ide
-      arrterian.nix-env-selector
-      rust-lang.rust-analyzer
-      tamasfe.even-better-toml
-      fill-labs.dependi
-      thenuprojectcontributors.vscode-nushell-lang
-      sumneko.lua
-      justarandomgeek.factoriomod-debug
-      svizzini.factorio-lua-api-autocomplete
-      vadimcn.vscode-lldb
-      elixir-lsp.vscode-elixir-ls
-    ];
+    extensions = let
+      vscode-marketplace = self.inputs.nix-vscode-extensions.extensions.x86_64-linux.vscode-marketplace;
+    in
+      with vscode-marketplace;
+      with pkgs.vscode-extensions; [
+        ms-dotnettools.csdevkit
+        ms-dotnettools.csharp
+        ms-dotnettools.vscode-dotnet-runtime
+        ertanic.robust-lsp # Broken due to dynamic linked binary
+        aaron-bond.better-comments
+        vscode-marketplace.slevesque.shader # Have to specify due to slevesque existing in both sources.
+        macabeus.vscode-fluent
+        redhat.vscode-yaml
+        slava0135.robust-yaml
+        editorconfig.editorconfig
+        mkhl.direnv
+        github.copilot
+        github.copilot-chat
+        yzhang.markdown-all-in-one
+        jnoortheen.nix-ide
+        arrterian.nix-env-selector
+        rust-lang.rust-analyzer
+        tamasfe.even-better-toml
+        fill-labs.dependi
+        thenuprojectcontributors.vscode-nushell-lang
+        sumneko.lua
+        justarandomgeek.factoriomod-debug
+        svizzini.factorio-lua-api-autocomplete
+        vadimcn.vscode-lldb
+        elixir-lsp.vscode-elixir-ls
+      ];
     enableExtensionUpdateCheck = false;
   };
 }
