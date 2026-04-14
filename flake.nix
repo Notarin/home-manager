@@ -71,15 +71,7 @@
       formatter.${system} = pkgs.callPackage ./format.nix {};
       checks.${system}.formatting = self.formatter.${system};
       packages.${system} = {
-        hydrus-client = pkgs.symlinkJoin {
-          name = "hydrus-client";
-          paths = [
-            (pkgs.writeShellScriptBin "hydrus-client" ''
-              env --unset=WAYLAND_DISPLAY ${lib.getExe' pkgs.hydrus "hydrus-client"}
-            '')
-            pkgs.hydrus
-          ];
-        };
+        hydrus-client = pkgs.callPackage ./packages/hydrus-client.nix {};
         snix-cli = (pkgs.callPackage "${snix}/default.nix" {localSystem = system;}).snix.cli.eval;
       };
       homeConfigurations = import ./homeManagerModules {inherit pkgs lib self;};
