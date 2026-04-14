@@ -100,7 +100,7 @@
             pkgs.hydrus
           ];
         };
-        snix-cli = (pkgs.callPackage "${snix}/default.nix" {localSystem = system;}).snix.cli.full-cli;
+        snix-cli = (pkgs.callPackage "${snix}/default.nix" {localSystem = system;}).snix.cli.eval;
       };
       homeConfigurations = import ./homeManagerModules {inherit pkgs lib self;};
     }
