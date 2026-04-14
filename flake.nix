@@ -42,16 +42,10 @@
         inherit system;
         config = {
           allowUnfree = true;
-          trusted-public-keys = [
-            "cache.snix.dev-1:miTqzIzmCbX/DyK2tLNXDROk77CbbvcRdWA4y2F8pno="
-          ];
-          substituters = [
-            "https://cache.snix.dev"
-          ];
+          trusted-public-keys = ["cache.snix.dev-1:miTqzIzmCbX/DyK2tLNXDROk77CbbvcRdWA4y2F8pno="];
+          substituters = ["https://cache.snix.dev"];
         };
-        overlays = [
-          nix-vscode-extensions.overlays.default
-        ];
+        overlays = [nix-vscode-extensions.overlays.default];
       };
       lib = pkgs.lib.extend (
         prev: final:
