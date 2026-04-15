@@ -28,7 +28,6 @@
   outputs = {
     self,
     nixpkgs,
-    home-manager,
     snix,
     ...
   }: let
@@ -45,20 +44,6 @@
           substituters = ["https://cache.snix.dev"];
         };
       };
-      lib = pkgs.lib.extend (
-        prev: final:
-          {
-            local = import ./Functions/main.nix {
-              inherit
-                pkgs
-                lib
-                self
-                system
-                ;
-            };
-          }
-          // home-manager.lib
-      );
     in {
       formatter.${system} = pkgs.callPackage ./format.nix {};
       checks.${system}.formatting = self.formatter.${system};
@@ -66,7 +51,7 @@
         hydrus-client = pkgs.callPackage ./packages/hydrus-client.nix {};
         snix-cli = (pkgs.callPackage "${snix}/default.nix" {localSystem = system;}).snix.cli.eval;
       };
-      homeConfigurations = import ./homeManagerModules {inherit pkgs lib self;};
+      homeConfigurations = import ./homeManagerModules {inherit pkgs self;};
     }
   ));
 }
