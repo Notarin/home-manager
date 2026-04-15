@@ -7,7 +7,7 @@
     enable = true;
     autoEnable = true;
     base16Scheme = "${pkgs.base16-schemes}/share/themes/chalk.yaml";
-    image = self + /Images/Horizontal_WP.png;
+    image = self + /images/Horizontal_WP.png;
     fonts = rec {
       monospace = {
         name = "FiraCode Nerd Font";
