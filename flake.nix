@@ -45,7 +45,7 @@
           };
         };
       in {
-        formatter.${system} = pkgs.callPackage ./format.nix {};
+        formatter.${system} = pkgs.callPackage ./formatter.nix {};
         checks.${system}.formatting = self.formatter.${system};
         packages.${system} = {
           hydrus-client = pkgs.callPackage ./packages/hydrus-client.nix {};
