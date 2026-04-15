@@ -9,10 +9,12 @@
   imports = [
     ./nix.nix
     ./stylix.nix
-    ./dynamic.nix
     ./user.nix
     ./programs
-    (self + /resources/nix-repl/qol-nix-repl.nix)
+    ./nix-repl/qol-nix-repl.nix
+    ./shellAliases.nix
+    ./glance.nix
+    ./gpg-agent.nix
     self.inputs.stylix.homeModules.stylix
     self.inputs.nixcord.homeModules.nixcord
   ];
@@ -65,7 +67,6 @@
     tealdeer.enable = true;
     bat.enable = true;
     cava.enable = true;
-    lazygit.enable = true;
     fuzzel.enable = true;
     gpg.enable = true;
   };
@@ -79,8 +80,4 @@
   qt.enable = true;
 
   fonts.fontconfig.enable = true;
-
-  wayland.windowManager.hyprland = import (self + /resources/hyprland.nix) {
-    inherit pkgs lib;
-  };
 }

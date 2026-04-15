@@ -1,15 +1,17 @@
 {
   imports = [
+    ./wezterm
     ./bash.nix
     ./btop.nix
     ./carapace.nix
     ./firefox.nix
     ./helix.nix
+    ./hyprland.nix
+    ./lazygit.nix
     ./nixcord.nix
     ./nushell.nix
     ./starship.nix
     ./vscode.nix
-    ./wezterm.nix
     ./zellij.nix
     ./zoxide.nix
     ./zsh.nix
