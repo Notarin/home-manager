@@ -296,24 +296,7 @@
         "nix-vscode-extensions": "nix-vscode-extensions",
         "nixcord": "nixcord",
         "nixpkgs": "nixpkgs",
-        "snix": "snix",
         "stylix": "stylix"
-      }
-    },
-    "snix": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1770293763,
-        "narHash": "sha256-YEjXDFFITuLVnGWNFD7KfBpmCvlBh6d2jp6YiPvM1Rs=",
-        "ref": "refs/heads/canon",
-        "rev": "b0a9664987faa8c9331a54cd91ea7889c71bfe64",
-        "revCount": 22152,
-        "type": "git",
-        "url": "https://git.snix.dev/snix/snix"
-      },
-      "original": {
-        "type": "git",
-        "url": "https://git.snix.dev/snix/snix"
       }
     },
     "stylix": {

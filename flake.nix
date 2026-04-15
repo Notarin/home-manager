@@ -19,16 +19,11 @@
       url = "github:nix-community/nix-vscode-extensions";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    snix = {
-      url = "git+https://git.snix.dev/snix/snix";
-      flake = false;
-    };
   };
 
   outputs = {
     self,
     nixpkgs,
-    snix,
     ...
   }: let
     systems = ["x86_64-linux"];
@@ -47,10 +42,7 @@
       in {
         formatter.${system} = pkgs.callPackage ./formatter.nix {};
         checks.${system}.formatting = self.formatter.${system};
-        packages.${system} = {
-          hydrus-client = pkgs.callPackage ./packages/hydrus-client.nix {};
-          snix-cli = (pkgs.callPackage "${snix}/default.nix" {localSystem = system;}).snix.cli.eval;
-        };
+        packages.${system} = import ./packages pkgs;
         homeConfigurations = import ./homeManagerModules {inherit pkgs self;};
       }
     );
