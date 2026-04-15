@@ -8,7 +8,7 @@
     extraSpecialArgs = {inherit self;};
     modules = [
       ./home.nix
-      ./notarin.nix
+      {home.username = "notarin";}
     ];
   };
   "notarin@uriel" = self.inputs.home-manager.lib.homeManagerConfiguration {
@@ -16,7 +16,7 @@
     extraSpecialArgs = {inherit self;};
     modules = [
       ./home.nix
-      ./notarin.nix
+      {home.username = "notarin";}
       ./uriel/home.nix
     ];
   };
@@ -25,7 +25,7 @@
     extraSpecialArgs = {inherit self;};
     modules = [
       ./home.nix
-      ./root.nix
+      {home.username = "root";}
     ];
   };
 }
