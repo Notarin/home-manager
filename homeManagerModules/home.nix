@@ -11,6 +11,7 @@
     ./stylix.nix
     ./dynamic.nix
     ./user.nix
+    ./programs
     (self + /resources/nix-repl/qol-nix-repl.nix)
     self.inputs.stylix.homeModules.stylix
     self.inputs.nixcord.homeModules.nixcord
