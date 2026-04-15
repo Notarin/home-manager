@@ -32,26 +32,26 @@
     ...
   }: let
     systems = ["x86_64-linux"];
-    buildEachSystem = output: builtins.map (system: output system) systems;
-    buildAllSystems = output: (builtins.foldl' (acc: elem: nixpkgs.lib.recursiveUpdate acc elem) {} (buildEachSystem output));
-  in (buildAllSystems (
-    system: let
-      pkgs = import nixpkgs {
-        inherit system;
-        config = {
-          allowUnfree = true;
-          trusted-public-keys = ["cache.snix.dev-1:miTqzIzmCbX/DyK2tLNXDROk77CbbvcRdWA4y2F8pno="];
-          substituters = ["https://cache.snix.dev"];
+    buildAllSystems = output: builtins.foldl' nixpkgs.lib.recursiveUpdate {} (builtins.map output systems);
+  in
+    buildAllSystems (
+      system: let
+        pkgs = import nixpkgs {
+          inherit system;
+          config = {
+            allowUnfree = true;
+            trusted-public-keys = ["cache.snix.dev-1:miTqzIzmCbX/DyK2tLNXDROk77CbbvcRdWA4y2F8pno="];
+            substituters = ["https://cache.snix.dev"];
+          };
         };
-      };
-    in {
-      formatter.${system} = pkgs.callPackage ./format.nix {};
-      checks.${system}.formatting = self.formatter.${system};
-      packages.${system} = {
-        hydrus-client = pkgs.callPackage ./packages/hydrus-client.nix {};
-        snix-cli = (pkgs.callPackage "${snix}/default.nix" {localSystem = system;}).snix.cli.eval;
-      };
-      homeConfigurations = import ./homeManagerModules {inherit pkgs self;};
-    }
-  ));
+      in {
+        formatter.${system} = pkgs.callPackage ./format.nix {};
+        checks.${system}.formatting = self.formatter.${system};
+        packages.${system} = {
+          hydrus-client = pkgs.callPackage ./packages/hydrus-client.nix {};
+          snix-cli = (pkgs.callPackage "${snix}/default.nix" {localSystem = system;}).snix.cli.eval;
+        };
+        homeConfigurations = import ./homeManagerModules {inherit pkgs self;};
+      }
+    );
 }
