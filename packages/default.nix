@@ -8,5 +8,6 @@ pkgs: let
         rev = "b0a9664987faa8c9331a54cd91ea7889c71bfe64";
       })}/default.nix" {localSystem = pkgs.stdenv.system;}).snix.cli.eval;
   };
-in
-  packages
+in {
+  inherit (packages) hydrus-client snix-cli;
+}
