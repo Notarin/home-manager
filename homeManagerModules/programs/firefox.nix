@@ -30,6 +30,7 @@
           "pronoundb"
           "violentmonkey"
           "undisposition-racle-fork"
+          "redirector"
         ];
       FirefoxHome = {
         Highlights = false;
@@ -86,7 +87,6 @@
           }
         ];
       };
-      WebsiteFilter.Block = ["*://nixos.wiki/*"];
       NewTabPage = false;
       DisableAppUpdate = true;
       UserMessaging.SkipOnboarding = true;
