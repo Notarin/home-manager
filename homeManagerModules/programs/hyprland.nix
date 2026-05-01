@@ -30,80 +30,85 @@
           "$mod, mouse:273, resizewindow"
         ];
 
-        bind = [
-          # General Binds
-          "$mod, Q, killactive"
-          "$mod, code:36, exec, ${lib.getExe pkgs.wezterm}"
-          "$mod, E, exec, ${lib.getExe pkgs.nautilus}"
-          "$mod, SPACE, togglefloating,"
-          "$mod, D, exec, ${lib.getExe pkgs.fuzzel}"
-          "$mod, J, togglesplit,"
-          "$mod, F, fullscreen, 0"
-          ",F11, fullscreen, 0"
-          "$mod, L, exec, ${lib.getExe pkgs.hyprlock}"
+        bind =
+          [
+            # General Binds
+            "$mod, Q, killactive"
+            "$mod, code:36, exec, ${lib.getExe pkgs.wezterm}"
+            "$mod, E, exec, ${lib.getExe pkgs.nautilus}"
+            "$mod, SPACE, togglefloating,"
+            "$mod, D, exec, ${lib.getExe pkgs.fuzzel}"
+            "$mod, J, togglesplit,"
+            "$mod, F, fullscreen, 0"
+            ",F11, fullscreen, 0"
+            "$mod, L, exec, ${lib.getExe pkgs.hyprlock}"
 
-          # Moving Focus/Windows
-          ## Move focus with mainMod + arrow keys
-          "$mod, LEFT, movefocus, l"
-          "$mod, RIGHT, movefocus, r"
-          "$mod, UP, movefocus, u"
-          "$mod, DOWN, movefocus, d"
-          ## Move windows with mainMod + Shift + arrow keys
-          "$mod_SHIFT, LEFT, movewindoworgroup, l"
-          "$mod_SHIFT, RIGHT, movewindoworgroup, r"
-          "$mod_SHIFT, UP, movewindoworgroup, u"
-          "$mod_SHIFT, DOWN, movewindoworgroup, d"
+            # Moving Focus/Windows
+            ## Move focus with mainMod + arrow keys
+            "$mod, LEFT, movefocus, l"
+            "$mod, RIGHT, movefocus, r"
+            "$mod, UP, movefocus, u"
+            "$mod, DOWN, movefocus, d"
+            ## Move windows with mainMod + Shift + arrow keys
+            "$mod_SHIFT, LEFT, movewindoworgroup, l"
+            "$mod_SHIFT, RIGHT, movewindoworgroup, r"
+            "$mod_SHIFT, UP, movewindoworgroup, u"
+            "$mod_SHIFT, DOWN, movewindoworgroup, d"
 
-          # Grouping
-          ## Making/Deleting groups
-          "$mod, g, togglegroup"
-          ## Moving within a group
-          "$mod, Tab, changegroupactive, f"
-          "$mod_SHIFT, Tab, changegroupactive, b"
+            # Grouping
+            ## Making/Deleting groups
+            "$mod, g, togglegroup"
+            ## Moving within a group
+            "$mod, Tab, changegroupactive, f"
+            "$mod_SHIFT, Tab, changegroupactive, b"
 
-          # Switch workspaces with mainMod + Alt + LEFT/RIGHT
-          "$mod_CTRL, LEFT, workspace, e-1"
-          "$mod_CTRL, RIGHT, workspace, e+1"
+            # Switch workspaces with mainMod + Alt + LEFT/RIGHT
+            "$mod_CTRL, LEFT, workspace, e-1"
+            "$mod_CTRL, RIGHT, workspace, e+1"
 
-          # Switch workspaces with mainMod + [0-9]
-          "$mod, 1, workspace, 1"
-          "$mod, 2, workspace, 2"
-          "$mod, 3, workspace, 3"
-          "$mod, 4, workspace, 4"
-          "$mod, 5, workspace, 5"
-          "$mod, 6, workspace, 6"
-          "$mod, 7, workspace, 7"
-          "$mod, 8, workspace, 8"
-          "$mod, 9, workspace, 9"
-          "$mod, 0, workspace, 10"
+            # Switch workspaces with mainMod + [0-9]
+            "$mod, 1, workspace, 1"
+            "$mod, 2, workspace, 2"
+            "$mod, 3, workspace, 3"
+            "$mod, 4, workspace, 4"
+            "$mod, 5, workspace, 5"
+            "$mod, 6, workspace, 6"
+            "$mod, 7, workspace, 7"
+            "$mod, 8, workspace, 8"
+            "$mod, 9, workspace, 9"
+            "$mod, 0, workspace, 10"
 
-          # Move active window to a workspace with mainMod + SHIFT + [0-9]
-          "$mod SHIFT, 1, movetoworkspace, 1"
-          "$mod SHIFT, 2, movetoworkspace, 2"
-          "$mod SHIFT, 3, movetoworkspace, 3"
-          "$mod SHIFT, 4, movetoworkspace, 4"
-          "$mod SHIFT, 5, movetoworkspace, 5"
-          "$mod SHIFT, 6, movetoworkspace, 6"
-          "$mod SHIFT, 7, movetoworkspace, 7"
-          "$mod SHIFT, 8, movetoworkspace, 8"
-          "$mod SHIFT, 9, movetoworkspace, 9"
-          "$mod SHIFT, 0, movetoworkspace, 10"
+            # Move active window to a workspace with mainMod + SHIFT + [0-9]
+            "$mod SHIFT, 1, movetoworkspace, 1"
+            "$mod SHIFT, 2, movetoworkspace, 2"
+            "$mod SHIFT, 3, movetoworkspace, 3"
+            "$mod SHIFT, 4, movetoworkspace, 4"
+            "$mod SHIFT, 5, movetoworkspace, 5"
+            "$mod SHIFT, 6, movetoworkspace, 6"
+            "$mod SHIFT, 7, movetoworkspace, 7"
+            "$mod SHIFT, 8, movetoworkspace, 8"
+            "$mod SHIFT, 9, movetoworkspace, 9"
+            "$mod SHIFT, 0, movetoworkspace, 10"
 
-          # Switch workspaces with mainMod + scroll
-          "$mod, mouse_down, workspace, e+1"
-          "$mod, mouse_up, workspace, e-1"
+            # Switch workspaces with mainMod + scroll
+            "$mod, mouse_down, workspace, e+1"
+            "$mod, mouse_up, workspace, e-1"
 
-          # Move/resize windows with mainMod + LMB/RMB and dragging
-          #"$mod, mouse:272, movewindow"
-          #"$mod, mouse:273, resizewindow"
+            # Move/resize windows with mainMod + LMB/RMB and dragging
+            #"$mod, mouse:272, movewindow"
+            #"$mod, mouse:273, resizewindow"
 
-          # Screenshot
-          ''$mod_SHIFT, S, exec, ${lib.getExe pkgs.grim} -g "$(${lib.getExe pkgs.slurp})" - | ${lib.getExe' pkgs.wl-clipboard "wl-copy"}''
-          ",Print, exec, ${lib.getExe pkgs.grim} -t jpeg - | ${lib.getExe pkgs.imv} -f -"
+            # Screenshot
+            ''$mod_SHIFT, S, exec, ${lib.getExe pkgs.grim} -g "$(${lib.getExe pkgs.slurp})" - | ${lib.getExe' pkgs.wl-clipboard "wl-copy"}''
+            ",Print, exec, ${lib.getExe pkgs.grim} -t jpeg - | ${lib.getExe pkgs.imv} -f -"
 
-          # Notification center
-          "$mod, N, exec, ${lib.getExe' pkgs.swaynotificationcenter "swaync-client"} -t"
-        ];
+            # Notification center
+            "$mod, N, exec, ${lib.getExe' pkgs.swaynotificationcenter "swaync-client"} -t"
+          ]
+          ++ lib.optionals (config.host == "uriel") [
+            "$mod_ALT, RIGHT, movecurrentworkspacetomonitor, HDMI-A-1"
+            "$mod_ALT, LEFT, movecurrentworkspacetomonitor, DP-1"
+          ];
 
         workspace = [
           "w[t1], gapsin:0, gapsout:0, border:0, rounding:0"
@@ -193,10 +198,6 @@
           "DP-1,1920x1080@60,0x0,1"
           "HDMI-A-1,1920x1080@60,1920x-420,1,transform,1"
           "DP-2,1920x1080@60,0x0,1,mirror,DP-1"
-        ];
-        bind = [
-          "$mod_ALT, RIGHT, movecurrentworkspacetomonitor, HDMI-A-1"
-          "$mod_ALT, LEFT, movecurrentworkspacetomonitor, DP-1"
         ];
       };
   };
