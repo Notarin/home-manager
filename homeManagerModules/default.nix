@@ -14,9 +14,8 @@
     inherit pkgs;
     extraSpecialArgs = {inherit self;};
     modules = [
-      ./home.nix
+      ./uriel.nix
       {home.username = "notarin";}
-      ./uriel/home.nix
     ];
   };
   root = self.inputs.home-manager.lib.homeManagerConfiguration {

@@ -8,8 +8,10 @@
     ./helix.nix
     ./hyprland.nix
     ./lazygit.nix
+    ./mangohud.nix
     ./nixcord.nix
     ./nushell.nix
+    ./obs-studio.nix
     ./starship.nix
     ./vscode.nix
     ./zellij.nix

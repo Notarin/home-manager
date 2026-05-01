@@ -5,8 +5,7 @@
   ...
 }: {
   imports = [
-    ./mangohud.nix
-    ./obs-studio.nix
+    ./home.nix
   ];
 
   home = {
@@ -60,6 +59,8 @@
   programs = {
     obsidian.enable = true;
     btop.package = pkgs.btop-rocm;
+    mangohud.enable = true;
+    obs-studio.enable = true;
   };
 
   # Do not touch
