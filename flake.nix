@@ -27,7 +27,7 @@
     ...
   }: let
     systems = ["x86_64-linux"];
-    buildAllSystems = output: builtins.foldl' nixpkgs.lib.recursiveUpdate {} (builtins.map output systems);
+    buildAllSystems = output: builtins.foldl' nixpkgs.lib.recursiveUpdate {} (map output systems);
   in
     buildAllSystems (
       system: let
