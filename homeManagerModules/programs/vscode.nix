@@ -62,13 +62,26 @@
         "security.workspace.trust.enabled" = false;
         "window.menuBarVisibility" = "toggle";
         "nix.enableLanguageServer" = true;
-        "nix.serverPath" = "${lib.getExe pkgs.nil}";
-        "nix.formatterPath" = [
-          "${lib.getExe self.formatter.${pkgs.stdenv.system}}"
-          "--quiet"
-          "--stdin"
-          "\${file}"
-        ];
+        "nix.serverPath" = "${lib.getExe pkgs.nixd}";
+        "nix.serverSettings" = {
+          nixd = {
+            formatting = {
+              command = [
+                "${lib.getExe pkgs.alejandra}"
+                "-"
+              ];
+            };
+            options = {
+              # These are using uriel and notarin as a best-guess source of truth.
+              nixos = {
+                expr = "(builtins.getFlake (builtins.toString ./.)).nixosConfigurations.uriel.options";
+              };
+              home-manager = {
+                expr = "(builtins.getFlake (builtins.toString ./.)).homeConfigurations.notarin.options";
+              };
+            };
+          };
+        };
         "files.autoSave" = "onFocusChange";
         "rust-analyzer.diagnostics.styleLints.enable" = true;
         "rust-analyzer.check.command" = "clippy";
