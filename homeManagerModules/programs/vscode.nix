@@ -39,7 +39,7 @@
       userSettings = {
         "editor.renderWhitespace" = "all";
         "editor.fontLigatures" = true;
-        "editor.formatOnSave" = true;
+        "editor.formatOnSave" = false;
         "editor.rulers" = [
           {
             "column" = 79;

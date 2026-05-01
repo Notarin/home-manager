@@ -3,6 +3,7 @@
   pkgs,
   lib,
   self,
+  config,
   ...
 }: {
   imports = [
@@ -13,29 +14,70 @@
     ./nix-repl
     ./shellAliases.nix
     ./services
+    ./host.nix
     self.inputs.stylix.homeModules.stylix
     self.inputs.nixcord.homeModules.nixcord
   ];
 
   home = {
-    packages = with pkgs; [
-      pwvucontrol
-      overskride
-      file-roller
-      wl-clipboard
-      comma
-      nautilus
-      gvfs
-      gomuks
-      vesktop
+    packages = with pkgs;
+      [
+        pwvucontrol
+        overskride
+        file-roller
+        wl-clipboard
+        comma
+        nautilus
+        gvfs
+        gomuks
+        vesktop
 
-      bitwarden-desktop
+        bitwarden-desktop
 
-      # Fonts
-      pkgs.nerd-fonts.fira-code
-      pkgs.dejavu_fonts
-      pkgs.jetbrains-mono
-    ];
+        # Fonts
+        pkgs.nerd-fonts.fira-code
+        pkgs.dejavu_fonts
+        pkgs.jetbrains-mono
+      ]
+      ++ lib.optionals (config.host == "uriel") [
+        (discord.override {
+          withVencord = true;
+        })
+        self.packages.${pkgs.stdenv.system}.hydrus-client
+        gimp
+        element-desktop
+        nheko
+        pear-desktop
+        plex-htpc
+        vlc
+        plexamp
+        eog
+
+        # Snix
+        self.packages.${pkgs.stdenv.system}.snix-cli
+
+        # Editors
+        jetbrains.idea-oss
+        (pkgs.writeShellApplication {
+          name = "rust-rover";
+          runtimeInputs = with pkgs; [
+            gcc
+            rustup
+          ];
+          text = "${lib.getExe pkgs.jetbrains.rust-rover}";
+        })
+        (pkgs.symlinkJoin {
+          name = "rider";
+          paths = [
+            (pkgs.writeShellApplication {
+              name = "rider";
+              runtimeInputs = [pkgs.dotnet-ef];
+              text = "${lib.getExe pkgs.jetbrains.rider}";
+            })
+            pkgs.jetbrains.rider
+          ];
+        })
+      ];
 
     sessionVariables = {
       GIO_EXTRA_MODULES = "${pkgs.gvfs}/lib/gio/modules";
@@ -54,6 +96,8 @@
     cava.enable = true;
     fuzzel.enable = true;
     gpg.enable = true;
+    obsidian.enable = lib.mkIf (config.host == "uriel") true;
+    btop.package = lib.mkIf (config.host == "uriel") pkgs.btop-rocm;
   };
 
   services = {
