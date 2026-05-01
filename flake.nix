@@ -1,5 +1,5 @@
 {
-  description = "Home Manager configuration of Notarin";
+  description = "Home Manager configuration for Notarin";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
