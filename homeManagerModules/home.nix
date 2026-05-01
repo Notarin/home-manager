@@ -10,7 +10,7 @@
     ./stylix.nix
     ./user.nix
     ./programs
-    ./nix-repl/qol-nix-repl.nix
+    ./nix-repl
     ./shellAliases.nix
     ./glance.nix
     ./gpg-agent.nix
