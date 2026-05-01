@@ -33,11 +33,7 @@
       system: let
         pkgs = import nixpkgs {
           inherit system;
-          config = {
-            allowUnfree = true;
-            trusted-public-keys = ["cache.snix.dev-1:miTqzIzmCbX/DyK2tLNXDROk77CbbvcRdWA4y2F8pno="];
-            substituters = ["https://cache.snix.dev"];
-          };
+          config.allowUnfree = true;
         };
       in {
         formatter.${system} = pkgs.callPackage ./formatter.nix {};
