@@ -4,6 +4,30 @@
   config,
   ...
 }: {
+  home = {
+    packages = with pkgs;
+      [
+        wl-clipboard
+        nautilus
+        gvfs
+        file-roller
+      ]
+      ++ lib.optionals (config.host == "uriel") [
+        vlc
+        eog
+      ];
+    sessionVariables = {
+      NIXOS_OZONE_WL = "1";
+      GIO_EXTRA_MODULES = "${pkgs.gvfs}/lib/gio/modules";
+    };
+  };
+  programs.fuzzel.enable = true;
+  services = {
+    swaync.enable = true;
+    gnome-keyring.enable = true;
+  };
+  gtk.enable = true;
+  qt.enable = true;
   wayland.windowManager.hyprland = {
     enable = true;
     package = lib.mkIf (config.host == "uriel") null;

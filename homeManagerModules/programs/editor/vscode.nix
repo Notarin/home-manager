@@ -2,10 +2,11 @@
   pkgs,
   lib,
   self,
+  config,
   ...
 }: {
   programs.vscode = {
-    enable = true;
+    enable = lib.mkIf (config.host == "uriel") true;
     mutableExtensionsDir = false;
     profiles.default = {
       keybindings = [

@@ -1,21 +1,13 @@
-{
+{pkgs, ...}: {
   imports = [
+    ./editor
+    ./media
+    ./messaging
+    ./shell
     ./wezterm
-    ./bash.nix
-    ./btop.nix
-    ./carapace.nix
     ./firefox.nix
-    ./helix.nix
     ./hyprland.nix
-    ./lazygit.nix
-    ./mangohud.nix
-    ./nixcord.nix
-    ./nushell.nix
-    ./obs-studio.nix
-    ./starship.nix
-    ./vscode.nix
-    ./zellij.nix
-    ./zoxide.nix
-    ./zsh.nix
   ];
+  programs.gpg.enable = true;
+  home.packages = [pkgs.bitwarden-desktop];
 }
