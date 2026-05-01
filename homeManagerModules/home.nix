@@ -12,8 +12,7 @@
     ./programs
     ./nix-repl
     ./shellAliases.nix
-    ./glance.nix
-    ./gpg-agent.nix
+    ./services
     self.inputs.stylix.homeModules.stylix
     self.inputs.nixcord.homeModules.nixcord
   ];
