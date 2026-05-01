@@ -24,6 +24,7 @@
   outputs = {
     self,
     nixpkgs,
+    home-manager,
     ...
   }: let
     systems = ["x86_64-linux"];
@@ -36,7 +37,29 @@
         formatter.${system} = pkgs.callPackage ./formatter.nix {};
         checks.${system}.formatting = self.formatter.${system};
         packages.${system} = import ./packages pkgs;
-        homeConfigurations = import ./homeManagerModules {inherit pkgs self;};
+        homeConfigurations = {
+          notarin = home-manager.lib.homeManagerConfiguration {
+            inherit pkgs;
+            extraSpecialArgs = {inherit self;};
+            modules = [./homeManagerModules];
+          };
+          "notarin@uriel" = home-manager.lib.homeManagerConfiguration {
+            inherit pkgs;
+            extraSpecialArgs = {inherit self;};
+            modules = [
+              ./homeManagerModules
+              {config.host = "uriel";}
+            ];
+          };
+          root = home-manager.lib.homeManagerConfiguration {
+            inherit pkgs;
+            extraSpecialArgs = {inherit self;};
+            modules = [
+              ./homeManagerModules
+              {home.username = "root";}
+            ];
+          };
+        };
       }
     );
 }

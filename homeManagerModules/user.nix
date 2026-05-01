@@ -1,4 +1,9 @@
-{config, ...}: {
+{
+  config,
+  lib,
+  ...
+}: {
+  home.username = lib.mkDefault "notarin";
   home.homeDirectory =
     if config.home.username == "notarin"
     then "/home/notarin"
