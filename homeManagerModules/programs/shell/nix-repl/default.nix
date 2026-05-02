@@ -1,12 +1,10 @@
 {
-  pkgs,
   lib,
-  ...
+  writeScriptBin,
+  nushell,
 }: let
-  commonConfig = {shellAliases."nix repl" = lib.getExe (pkgs.callPackage ./package.nix {});};
-in {
-  programs.bash = commonConfig;
-  programs.zsh = commonConfig;
-  programs.fish = commonConfig;
-  programs.nushell = commonConfig;
-}
+  preprocessedScript = builtins.readFile ./nix-repl.nu;
+  shebang = "#!${lib.getExe nushell}";
+  processedScript = "${shebang}\n${preprocessedScript}";
+in
+  writeScriptBin "nix-repl" processedScript

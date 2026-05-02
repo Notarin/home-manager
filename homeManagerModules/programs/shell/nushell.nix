@@ -28,6 +28,8 @@
         reload = "exec nu"; # Technically just starts a fresh nushell
         "nix build" = "${lib.getExe pkgs.nix-output-monitor} build";
         "nix shell" = "${lib.getExe pkgs.nix-output-monitor} shell";
+        "nix develop" = "${lib.getExe pkgs.nix-output-monitor} develop";
+        "nix repl" = lib.getExe (pkgs.callPackage ./nix-repl {});
       }
       // config.shellAliases;
     environmentVariables = config.home.sessionVariables;

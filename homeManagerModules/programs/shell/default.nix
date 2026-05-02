@@ -6,7 +6,6 @@
   ...
 }: {
   imports = [
-    ./nix-repl
     ./bash.nix
     ./btop.nix
     ./carapace.nix
