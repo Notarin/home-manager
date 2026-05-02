@@ -169,17 +169,13 @@
       extensions = let
         vscode-marketplace = self.inputs.nix-vscode-extensions.extensions.x86_64-linux.vscode-marketplace;
       in
-        with vscode-marketplace;
-        with pkgs.vscode-extensions; [
+        (with pkgs.vscode-extensions; [
           ms-dotnettools.csdevkit
           ms-dotnettools.csharp
           ms-dotnettools.vscode-dotnet-runtime
-          ertanic.robust-lsp # Broken due to dynamic linked binary
           aaron-bond.better-comments
           vscode-marketplace.slevesque.shader # Have to specify due to slevesque existing in both sources.
-          macabeus.vscode-fluent
           redhat.vscode-yaml
-          slava0135.robust-yaml
           editorconfig.editorconfig
           mkhl.direnv
           github.copilot
@@ -192,11 +188,17 @@
           fill-labs.dependi
           thenuprojectcontributors.vscode-nushell-lang
           sumneko.lua
-          justarandomgeek.factoriomod-debug
-          svizzini.factorio-lua-api-autocomplete
           vadimcn.vscode-lldb
           elixir-lsp.vscode-elixir-ls
-        ];
+          ms-python.vscode-pylance
+        ])
+        ++ (with vscode-marketplace; [
+          ertanic.robust-lsp # Broken due to dynamic linked binary
+          macabeus.vscode-fluent
+          slava0135.robust-yaml
+          justarandomgeek.factoriomod-debug
+          svizzini.factorio-lua-api-autocomplete
+        ]);
       enableExtensionUpdateCheck = false;
     };
   };
