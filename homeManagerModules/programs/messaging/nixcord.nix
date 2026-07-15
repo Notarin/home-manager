@@ -6,10 +6,10 @@
   ...
 }: {
   imports = [self.inputs.nixcord.homeModules.nixcord];
-  programs.nixcord.vesktop.enable = lib.mkIf (config.host == "uriel") true;
-  home.packages =
-    lib.mkIf (config.host == "uriel")
-    [
+  config = lib.mkIf (config.host == "uriel") {
+    programs.nixcord.vesktop.enable = true;
+    home.packages = [
       pkgs.vesktop
     ];
+  };
 }
