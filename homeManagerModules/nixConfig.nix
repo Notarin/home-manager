@@ -7,6 +7,7 @@
   };
   nixpkgs.config = {
     allowUnfree = true;
+    microsoftVisualStudioLicenseAccepted = true;
     vivaldi = {
       proprietaryCodecs = true;
       enableWideVine = true;
