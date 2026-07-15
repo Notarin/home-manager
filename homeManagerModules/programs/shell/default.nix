@@ -21,6 +21,7 @@
     [
       pkgs.comma
       pkgs.gomuks
+      pkgs.git-bug
     ]
     ++ lib.optional (config.host == "uriel") self.packages.${pkgs.stdenv.system}.snix-cli;
   programs = {
