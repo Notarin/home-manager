@@ -5,7 +5,11 @@
 def --wrapped main [...args: string]: nothing -> nothing {
     let arg_count: int = ($args | length);
     if ($arg_count == 0) {
-        let qol_values: string = "rec {pkgs = import <nixpkgs> {};lib=pkgs.lib;}";
+        let qol_values: string = "rec {pkgs = import <nixpkgs> {
+            config = {
+                allowUnfree = true;
+                microsoftVisualStudioLicenseAccepted = true;
+            };};inherit (pkgs) lib;}";
         nix repl --expr $qol_values;
     } else {
         # Running the nix repl with the user provided args.
