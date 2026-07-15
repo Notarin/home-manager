@@ -30,5 +30,6 @@
     direnv.enable = true;
     tealdeer.enable = true;
     bat.enable = true;
+    nix-index.enable = true;
   };
 }
