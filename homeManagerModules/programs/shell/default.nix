@@ -9,7 +9,7 @@
     ./bash.nix
     ./btop.nix
     ./carapace.nix
-    ./lazygit.nix
+    ./git.nix
     ./nushell.nix
     ./shellAliases.nix
     ./starship.nix
@@ -21,13 +21,11 @@
     [
       pkgs.comma
       pkgs.gomuks
-      pkgs.git-bug
       pkgs.killall
     ]
     ++ lib.optional (config.host == "uriel") self.packages.${pkgs.stdenv.system}.snix-cli;
   programs = {
     nh.enable = true;
-    git.enable = true;
     direnv.enable = true;
     tealdeer.enable = true;
     bat.enable = true;
