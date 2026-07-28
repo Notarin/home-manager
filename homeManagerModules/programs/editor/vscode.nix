@@ -198,6 +198,7 @@
           slava0135.robust-yaml
           justarandomgeek.factoriomod-debug
           svizzini.factorio-lua-api-autocomplete
+          sanderronde.vscode--gerrit
         ]);
       enableExtensionUpdateCheck = false;
     };
