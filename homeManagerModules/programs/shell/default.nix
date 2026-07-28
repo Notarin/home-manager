@@ -32,5 +32,6 @@
     tealdeer.enable = true;
     bat.enable = true;
     nix-index.enable = true;
+    ripgrep.enable = true;
   };
 }
