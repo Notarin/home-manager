@@ -35,194 +35,66 @@
     systemd.variables = ["--all"];
     settings =
       {
-        "$mod" = "SUPER";
-
-        bindl = [
-          ",XF86AudioPlay, exec, ${lib.getExe pkgs.playerctl} play-pause"
-          ",XF86AudioPrev, exec, ${lib.getExe pkgs.playerctl} previous"
-          ",XF86AudioNext, exec, ${lib.getExe pkgs.playerctl} next"
-          ",XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
+        workspace_rule = [
+          (lib.generators.mkLuaInline "{ workspace = \"w[tv1]\", gaps_out = 0, gaps_in = 0, no_border = true }")
+          (lib.generators.mkLuaInline "{ workspace = \"f[1]\", gaps_out = 0, gaps_in = 0, no_border = true }")
         ];
 
-        bindel = [
-          ",XF86AudioRaiseVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 1%+"
-          ",XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 1%-"
-        ];
-
-        bindm = [
-          "$mod, mouse:272, movewindow"
-          "$mod, mouse:273, resizewindow"
-        ];
-
-        bind =
+        bind = let
+          bind = bindName: command: {
+            _args = [
+              bindName
+              (lib.generators.mkLuaInline command)
+            ];
+          };
+        in
           [
-            # General Binds
-            "$mod, Q, killactive"
-            "$mod, code:36, exec, ${lib.getExe pkgs.wezterm}"
-            "$mod, E, exec, ${lib.getExe pkgs.nautilus}"
-            "$mod, SPACE, togglefloating,"
-            "$mod, D, exec, ${lib.getExe pkgs.fuzzel}"
-            "$mod, J, togglesplit,"
-            "$mod, F, fullscreen, 0"
-            ",F11, fullscreen, 0"
-            "$mod, L, exec, ${lib.getExe pkgs.hyprlock}"
+            (bind "SUPER + code:36" "hl.dsp.exec_raw(\"${lib.getExe pkgs.wezterm}\")")
+            (bind "SUPER + E" "hl.dsp.exec_raw(\"${lib.getExe pkgs.nautilus}\")")
+            (bind "SUPER + D" "hl.dsp.exec_raw(\"${lib.getExe pkgs.fuzzel}\")")
+            (bind "SUPER + Q" "hl.dsp.window.close()")
+            (bind "SUPER + K" "hl.dsp.exit()")
+            (bind "SUPER + G" "hl.dsp.group.toggle()")
+            (bind "SUPER + SHIFT + S" "hl.dsp.exec_cmd(\"${lib.getExe pkgs.grim} -g \" .. '\"' .. \"$(${lib.getExe pkgs.slurp})\" .. '\"' .. \" - | ${lib.getExe' pkgs.wl-clipboard "wl-copy"}\")")
 
-            # Moving Focus/Windows
-            ## Move focus with mainMod + arrow keys
-            "$mod, LEFT, movefocus, l"
-            "$mod, RIGHT, movefocus, r"
-            "$mod, UP, movefocus, u"
-            "$mod, DOWN, movefocus, d"
-            ## Move windows with mainMod + Shift + arrow keys
-            "$mod_SHIFT, LEFT, movewindoworgroup, l"
-            "$mod_SHIFT, RIGHT, movewindoworgroup, r"
-            "$mod_SHIFT, UP, movewindoworgroup, u"
-            "$mod_SHIFT, DOWN, movewindoworgroup, d"
+            (bind "SUPER + mouse_down" "hl.dsp.focus({ workspace = \"r-1\"})")
+            (bind "SUPER + mouse_up" "hl.dsp.focus({ workspace = \"r+1\"})")
 
-            # Grouping
-            ## Making/Deleting groups
-            "$mod, g, togglegroup"
-            ## Moving within a group
-            "$mod, Tab, changegroupactive, f"
-            "$mod_SHIFT, Tab, changegroupactive, b"
+            (bind "SUPER + Tab" "hl.dsp.group.next()")
+            (bind "SUPER + SHIFT + Tab" "hl.dsp.group.prev()")
 
-            # Switch workspaces with mainMod + Alt + LEFT/RIGHT
-            "$mod_CTRL, LEFT, workspace, e-1"
-            "$mod_CTRL, RIGHT, workspace, e+1"
-
-            # Switch workspaces with mainMod + [0-9]
-            "$mod, 1, workspace, 1"
-            "$mod, 2, workspace, 2"
-            "$mod, 3, workspace, 3"
-            "$mod, 4, workspace, 4"
-            "$mod, 5, workspace, 5"
-            "$mod, 6, workspace, 6"
-            "$mod, 7, workspace, 7"
-            "$mod, 8, workspace, 8"
-            "$mod, 9, workspace, 9"
-            "$mod, 0, workspace, 10"
-
-            # Move active window to a workspace with mainMod + SHIFT + [0-9]
-            "$mod SHIFT, 1, movetoworkspace, 1"
-            "$mod SHIFT, 2, movetoworkspace, 2"
-            "$mod SHIFT, 3, movetoworkspace, 3"
-            "$mod SHIFT, 4, movetoworkspace, 4"
-            "$mod SHIFT, 5, movetoworkspace, 5"
-            "$mod SHIFT, 6, movetoworkspace, 6"
-            "$mod SHIFT, 7, movetoworkspace, 7"
-            "$mod SHIFT, 8, movetoworkspace, 8"
-            "$mod SHIFT, 9, movetoworkspace, 9"
-            "$mod SHIFT, 0, movetoworkspace, 10"
-
-            # Switch workspaces with mainMod + scroll
-            "$mod, mouse_down, workspace, e+1"
-            "$mod, mouse_up, workspace, e-1"
-
-            # Move/resize windows with mainMod + LMB/RMB and dragging
-            #"$mod, mouse:272, movewindow"
-            #"$mod, mouse:273, resizewindow"
-
-            # Screenshot
-            ''$mod_SHIFT, S, exec, ${lib.getExe pkgs.grim} -g "$(${lib.getExe pkgs.slurp})" - | ${lib.getExe' pkgs.wl-clipboard "wl-copy"}''
-            ",Print, exec, ${lib.getExe pkgs.grim} -t jpeg - | ${lib.getExe pkgs.imv} -f -"
-
-            # Notification center
-            "$mod, N, exec, ${lib.getExe' pkgs.swaynotificationcenter "swaync-client"} -t"
+            {
+              _args = [
+                "SUPER + mouse:272"
+                (lib.generators.mkLuaInline "hl.dsp.window.drag()")
+                (lib.generators.mkLuaInline "{mouse = true}")
+              ];
+            }
+            {
+              _args = [
+                "SUPER + mouse:273"
+                (lib.generators.mkLuaInline "hl.dsp.window.resize()")
+                (lib.generators.mkLuaInline "{mouse = true}")
+              ];
+            }
           ]
           ++ lib.optionals (config.host == "uriel") [
-            "$mod_ALT, RIGHT, movecurrentworkspacetomonitor, HDMI-A-1"
-            "$mod_ALT, LEFT, movecurrentworkspacetomonitor, DP-1"
+            (bind "SUPER + CONTROL + LEFT" "hl.dsp.focus({ workspace = \"e-1\"})")
+            (bind "SUPER + CONTROL + RIGHT" "hl.dsp.focus({ workspace = \"e+1\"})")
           ];
-
-        workspace = [
-          "w[t1], gapsin:0, gapsout:0, border:0, rounding:0"
-          "w[tg1], gapsin:0, gapsout:0, border:0, rounding:0"
-          "f[1], gapsin:0, gapsout:0, border:0, rounding:0"
-        ];
-
-        exec-once = [
-        ];
-
-        env = [
-          "XCURSOR_SIZE,32"
-          "XDG_SESSION_DESKTOP,Hyprland"
-        ];
-
-        windowrule = [
-          # Fixes endless issues with programs bugging out in the background.
-          "match:title ^.*$, render_unfocused on"
-          # Fixes being unable to use any hyprland kebinds when a VM is focused.
-          "match:class .*virt-manager.*, no_shortcuts_inhibit on"
-          # Personal preference, I always put it on the tenth workspace.
-          "match:class ^(vesktop)$, workspace 10"
-        ];
-
-        input = {
-          kb_layout = "us";
-          kb_options = "caps:super";
-          follow_mouse = 1;
-          mouse_refocus = false;
-          touchpad = {
-            natural_scroll = false;
-            disable_while_typing = true;
-            drag_lock = true;
-          };
-          sensitivity = 0;
-        };
-
-        general = {
-          gaps_in = 2;
-          gaps_out = 6;
-          border_size = 2;
-          layout = "dwindle";
-        };
-
-        decoration = {
-          rounding = 10;
-          blur = {
-            enabled = true;
-            size = 3;
-            passes = 1;
-          };
-        };
-
-        animations = {
-          enabled = true;
-          bezier = "myBezier, 0.05, 0.9, 0.1, 1.05";
-          animation = [
-            "windows, 1, 7, myBezier"
-            "windowsOut, 1, 7, default, popin 80%"
-            "border, 1, 10, default"
-            "borderangle, 1, 8, default"
-            "fade, 1, 7, default"
-            "workspaces, 1, 6, default"
-          ];
-        };
-
-        dwindle = {
-          pseudotile = true;
-          preserve_split = true;
-        };
-
-        master = {
-          mfact = 0.7;
-        };
-
-        misc = {
-          force_default_wallpaper = 0;
-        };
-
-        debug = {
-          disable_logs = false;
-          enable_stdout_logs = true;
-        };
       }
       // lib.optionalAttrs (config.host == "uriel") {
         monitor = [
-          "DP-1,1920x1080@60,0x0,1"
-          "HDMI-A-1,1920x1080@60,1920x-420,1,transform,1"
-          "DP-2,1920x1080@60,0x0,1,mirror,DP-1"
+          (lib.generators.mkLuaInline "{ output = \"DP-1\", mode = \"1920x1080@60\", position = \"0x0\", scale = 1}")
+          (lib.generators.mkLuaInline "{ output = \"HDMI-A-1\", mode = \"1920x1080@60\", position = \"1920x-420\", scale = 1, transform = 1}")
         ];
       };
+    extraConfig = "
+        for i = 1, 10 do
+          local key = i % 10 -- 10 maps to key 0
+            hl.bind(\"SUPER + \" .. key,             hl.dsp.focus({ workspace = i}))
+            hl.bind(\"SUPER + SHIFT + \" .. key,     hl.dsp.window.move({ workspace = i }))
+        end
+      ";
   };
 }
