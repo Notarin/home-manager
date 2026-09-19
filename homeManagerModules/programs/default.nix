@@ -8,6 +8,9 @@
     ./firefox.nix
     ./hyprland.nix
   ];
-  programs.gpg.enable = true;
+  programs = {
+    gpg.enable = true;
+    thunderbird.enable = true;
+  };
   home.packages = [pkgs.bitwarden-desktop];
 }
