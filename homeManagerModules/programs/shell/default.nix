@@ -20,7 +20,7 @@
   home.packages =
     [
       pkgs.comma
-      pkgs.gomuks
+      #pkgs.gomuks # TODO: replace gomuks with a new client.
       pkgs.killall
     ]
     ++ lib.optional (config.host == "uriel") self.packages.${pkgs.stdenv.system}.snix-cli;
