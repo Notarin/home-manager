@@ -35,9 +35,11 @@
     systemd.variables = ["--all"];
     settings =
       {
-        #input = {
-        #  kb_options = "caps:super";
-        #};
+        config = {
+          input = {
+            kb_options = "caps:super";
+          };
+        };
 
         workspace_rule = [
           (lib.generators.mkLuaInline "{ workspace = \"w[tv1]\", gaps_out = 0, gaps_in = 0, no_border = true }")
@@ -79,7 +81,7 @@
             (bind "SUPER + code:36" "hl.dsp.exec_raw(\"${lib.getExe pkgs.wezterm}\")")
             (bind "SUPER + E" "hl.dsp.exec_raw(\"${lib.getExe pkgs.nautilus}\")")
             (bind "SUPER + D" "hl.dsp.exec_raw(\"${lib.getExe pkgs.fuzzel}\")")
-            #(bind "SUPER + SPACE" "hl.dsp.window.toggle_floating()")
+            (bind "SUPER + SPACE" "hl.dsp.window.float()")
             #(bind "SUPER + J" "hl.dsp.window.toggle_split()")
             (bind "SUPER + F" "hl.dsp.window.fullscreen(0)")
             (bind "F11" "hl.dsp.window.fullscreen(0)")
@@ -100,10 +102,10 @@
             (bind "SUPER + DOWN" "hl.dsp.focus({ direction = \"d\" })")
 
             # Moving Windows (Or to group)
-            #(bind "SUPER + SHIFT + LEFT" "hl.dsp.window.move_or_group({ direction = \"l\" })")
-            #(bind "SUPER + SHIFT + RIGHT" "hl.dsp.window.move_or_group({ direction = \"r\" })")
-            #(bind "SUPER + SHIFT + UP" "hl.dsp.window.move_or_group({ direction = \"u\" })")
-            #(bind "SUPER + SHIFT + DOWN" "hl.dsp.window.move_or_group({ direction = \"d\" })")
+            (bind "SUPER + SHIFT + LEFT" "hl.dsp.window.move({ direction = \"l\", group_aware = true })")
+            (bind "SUPER + SHIFT + RIGHT" "hl.dsp.window.move({ direction = \"r\", group_aware = true })")
+            (bind "SUPER + SHIFT + UP" "hl.dsp.window.move({ direction = \"u\", group_aware = true })")
+            (bind "SUPER + SHIFT + DOWN" "hl.dsp.window.move({ direction = \"d\", group_aware = true })")
 
             # Workspace / Group scrolling
             (bind "SUPER + mouse_down" "hl.dsp.focus({ workspace = \"r-1\"})")
