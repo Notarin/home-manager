@@ -12,5 +12,7 @@
     gpg.enable = true;
     thunderbird.enable = true;
   };
-  home.packages = [pkgs.bitwarden-desktop];
+  home.packages = builtins.attrValues {
+    inherit (pkgs) bitwarden-desktop wine-wayland;
+  };
 }
