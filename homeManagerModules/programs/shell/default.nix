@@ -31,5 +31,6 @@
     bat.enable = true;
     nix-index.enable = true;
     ripgrep.enable = true;
+    moor.enable = true;
   };
 }
