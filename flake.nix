@@ -32,7 +32,10 @@
   in
     buildAllSystems (
       system: let
-        pkgs = nixpkgs.legacyPackages.${system};
+        pkgs = import nixpkgs {
+          inherit system;
+          config.allowUnfree = true;
+        };
       in {
         formatter.${system} = pkgs.callPackage ./formatter.nix {};
         checks.${system}.formatting = self.formatter.${system};
