@@ -39,11 +39,20 @@
           input = {
             kb_options = "caps:super";
           };
+          misc = {
+            render_unfocused_fps = 60;
+          };
         };
 
         workspace_rule = [
           (lib.generators.mkLuaInline "{ workspace = \"w[tv1]\", gaps_out = 0, gaps_in = 0, no_border = true }")
           (lib.generators.mkLuaInline "{ workspace = \"f[1]\", gaps_out = 0, gaps_in = 0, no_border = true }")
+        ];
+
+        window_rule = [
+          # Ensure windows on non-visible workspaces continue to render
+          (lib.generators.mkLuaInline "{ name = \"render-unfocused-class\", match = { class = \".*\" }, render_unfocused = true }")
+          (lib.generators.mkLuaInline "{ name = \"render-unfocused-title\", match = { title = \".*\" }, render_unfocused = true }")
         ];
 
         bind = let
