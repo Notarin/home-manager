@@ -12,7 +12,6 @@
   home = {
     sessionVariables.VISUAL = lib.mkForce "${lib.getExe pkgs.helix}";
     packages = lib.mkIf (config.host == "uriel") (with pkgs; [
-      jetbrains.idea-oss
       (pkgs.writeShellApplication {
         name = "rust-rover";
         runtimeInputs = with pkgs; [
