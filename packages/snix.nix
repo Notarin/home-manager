@@ -9,7 +9,7 @@
   cargoProject = builtins.fromTOML (builtins.readFile "${src}/${cargoRoot}/cli/eval/Cargo.toml");
   src =
     (fetchgit {
-      url = "https://git.snix.dev/snix/snix";
+      url = "https://cl.snix.dev/snix";
       rev = "e952b5ae99242baed8f6ffa1b98aa80f4f02911e";
       sha256 = "sha256-pXRO6pHWfgBSMokoXhdoTAAF6s3ycObxYz80LaP/1/o=";
     }).overrideAttrs
