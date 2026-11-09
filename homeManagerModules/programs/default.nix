@@ -13,6 +13,6 @@
     thunderbird.enable = true;
   };
   home.packages = builtins.attrValues {
-    inherit (pkgs) bitwarden-desktop wine-wayland;
+    inherit (pkgs) bitwarden-desktop wine-wayland nixpkgs-review;
   };
 }
