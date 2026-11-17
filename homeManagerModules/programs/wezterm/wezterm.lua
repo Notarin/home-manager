@@ -41,6 +41,14 @@ return {
 				end
 			end),
 		},
+		{
+			mods = "CTRL",
+			key = "l",
+			action = wezterm.action.Multiple({
+				wezterm.action.ClearScrollback("ScrollbackAndViewport"),
+				wezterm.action.SendKey({ key = "l", mods = "CTRL" }),
+			}),
+		},
 		{ mods = "CTRL", key = "v", action = wezterm.action.PasteFrom("Clipboard") },
 		{ mods = "ALT", key = "Enter", action = wezterm.action.DisableDefaultAssignment },
 		{ mods = "CTRL", key = "Enter", action = wezterm.action.SendKey({ key = "/", mods = "CTRL" }) },
