@@ -13,7 +13,10 @@
   };
   programs = {
     git.enable = true;
-    lazygit.enable = true;
+    lazygit = {
+      enable = true;
+      settings.git.overrideGpg = true;
+    };
     delta = {
       enable = true;
       enableGitIntegration = true;
