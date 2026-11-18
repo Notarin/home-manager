@@ -42,6 +42,17 @@
           misc = {
             render_unfocused_fps = 60;
           };
+          group = {
+            groupbar = {
+              gradients = true;
+              indicator_height = 0;
+              font_size = 11;
+              font_weight_active = "ultrabold";
+              font_weight_inactive = "normal";
+              text_color = lib.mkForce "rgb(${config.lib.stylix.colors.base00})";
+              text_color_inactive = "rgb(${config.lib.stylix.colors.base05})";
+            };
+          };
         };
 
         workspace_rule = [
