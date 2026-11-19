@@ -1,4 +1,5 @@
 {
+  config,
   pkgs,
   self,
   ...
@@ -22,6 +23,7 @@
       dark = "Papirus-Dark";
       light = "Papirus-Light";
     };
+    targets.rofi.enable = config.programs.rofi.enable;
     targets.vscode.profileNames = ["default"];
     targets.qt.enable = true; # For whatever reason, this must be explicitly enabled.
     targets.firefox = {
