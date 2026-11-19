@@ -29,7 +29,13 @@
     direnv.enable = true;
     tealdeer.enable = true;
     bat.enable = true;
-    nix-index.enable = true;
+    nix-index = {
+      enable = true;
+      enableBashIntegration = false;
+      enableFishIntegration = false;
+      enableZshIntegration = false;
+      enableNushellIntegration = false;
+    };
     ripgrep.enable = true;
     moor.enable = true;
   };
