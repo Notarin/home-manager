@@ -1,7 +1,9 @@
 {
   rustPlatform,
   fetchgit,
+  pkg-config,
   protobuf,
+  zstd,
   lib,
   busybox-sandbox-shell,
 }: let
@@ -35,7 +37,11 @@ in
     ];
 
     nativeBuildInputs = [
+      pkg-config
       protobuf
+    ];
+    buildInputs = [
+      zstd
     ];
     env = {
       SNIX_BUILD_SANDBOX_SHELL = lib.getExe busybox-sandbox-shell;
